@@ -331,3 +331,29 @@ CDK デプロイや EC2 環境構築に必要な最小限の権限例です。IA
 - **最小権限運用を推奨します。**
 - S3 バケット名を限定する場合は `"Resource"` を適宜制限してください。
 - `iam:PassRole` には CDK で作成するロールの ARN を指定するのがベストです。
+
+---
+
+## 📝 EC2接続情報CSV出力について
+
+CDKデプロイ完了後、EC2への接続情報を `ec2-connection-info.csv` としてリポジトリ直下に出力してください。以下は自動生成用のサンプルスクリプトです：
+
+### CSVフォーマット例
+
+| InstanceId | PublicIp     | User     | KeyName | Region         | SSHCommand                                     | CreatedAt            |
+| ---------- | ------------ | -------- | ------- | -------------- | ---------------------------------------------- | -------------------- |
+| i-xxxxxxxx | 203.0.113.10 | ec2-user | my-key  | ap-northeast-1 | "ssh -i keys/my-key.pem ec2-user@203.0.113.10" | 2025-05-31T12:34:56Z |
+
+```csv
+InstanceId,PublicIp,User,KeyName,Region,SSHCommand,CreatedAt
+i-xxxxxxxx,203.0.113.10,ec2-user,my-key,ap-northeast-1,"ssh -i keys/my-key.pem ec2-user@203.0.113.10",2025-05-31T12:34:56Z
+```
+
+- `User` は Amazon Linux の場合 `ec2-user` です。
+- `KeyName` はCDKで指定したキーペア名。
+- `SSHCommand` は実際の接続コマンド例。
+- `CreatedAt` は出力時のUTC日時。
+
+> このファイルは `.gitignore` によりGit管理対象外です。
+
+---

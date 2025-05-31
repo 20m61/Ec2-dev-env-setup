@@ -137,3 +137,6 @@ dist
 
 # EC2 SSH keys (never commit your private key!)
 *.pem
+
+# EC2接続情報（自動出力ファイル）
+ec2-connection-info.csv

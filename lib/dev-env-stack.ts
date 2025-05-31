@@ -102,5 +102,16 @@ export class DevEnvStack extends cdk.Stack {
 
     // EC2 Nameタグ付与
     instance.instance.addPropertyOverride('Tags', [{ Key: 'Name', Value: id }]);
+
+    // --- 追加: EC2接続情報をOutputsとして出力 ---
+    const createOutput = (name: string, value: string, description: string) => {
+      new cdk.CfnOutput(this, name, { value, description });
+    };
+
+    createOutput('EC2InstanceId', instance.instanceId, 'EC2 Instance ID');
+    createOutput('EC2PublicIp', instance.instancePublicIp, 'EC2 Public IP');
+    createOutput('EC2Region', cdk.Stack.of(this).region, 'EC2 Region');
+    createOutput('EC2KeyName', instance.instance.keyName || '(not set)', 'EC2 SSH Key Name');
+    // ---
   }
 }

@@ -46,7 +46,7 @@ Amazon EC2（Graviton）と AWS CDK、GitHub Actions を使って、コスパ最
 
 | ツール名               | 主な用途・使い方例                                           |
 | ---------------------- | ------------------------------------------------------------ | ----- |
-| git                    | バージョン管理。`git clone`, `git worktree` など             |
+| git                    | バージン管理。`git clone`, `git worktree` など               |
 | docker                 | コンテナ実行。`docker run`, `docker build` など              |
 | docker compose         | 複数コンテナの管理。`docker compose up -d` など              |
 | awscli                 | AWS 操作 CLI。`aws s3 ls`, `aws ec2 describe-instances` など |
@@ -338,6 +338,16 @@ new events.Rule(this, 'StopInstanceRule', {
 
 > 💎 Graviton で爆速＆激安、S3 も SSM も使えて、git worktree で並列作業も OK！
 > 完全なテンプレート化で、開発環境の構築が「ボタンひとつ」でできる世界を実現します ✨
+
+---
+
+## 💰 コストシミュレーション
+
+本テンプレートの代表的なAWSリソース構成（EC2 t4g.xlarge, 100GB gp3 EBS, 東京リージョン等）は、
+[AWS Pricing Calculatorの共有見積もりリンク](https://calculator.aws/#/estimate?id=68ab2b06136098be931a29dcc0b963da7253358d) から、
+ダイレクトにコスト試算できます。
+
+> ※ 実際の利用状況や追加リソースに応じて金額は変動します。必要に応じて見積もり内容を編集してください。
 
 ---
 

@@ -100,6 +100,45 @@ npm install
 
 ---
 
+### 2.5. EC2 キーペアの作成・SSH接続手順
+
+このテンプレートでは、EC2インスタンスへSSH接続するためのキーペア（秘密鍵）は自動生成されません。以下の手順でご自身で作成・設定してください。
+
+#### 1. キーペアの作成
+
+AWSコンソールまたはCLIでキーペア（.pemファイル）を作成します。
+
+```bash
+aws ec2 create-key-pair --key-name my-key --query 'KeyMaterial' --output text > my-key.pem
+chmod 600 my-key.pem
+```
+
+#### 2. CDKスタックでキーペア名を指定
+
+`lib/dev-env-stack.ts` の `ec2.Instance` 作成時に `keyName` プロパティを追加してください。
+
+```ts
+const instance = new ec2.Instance(this, 'DevEnvInstance', {
+  // ...existing code...
+  keyName: 'my-key', // 作成したキーペア名
+  // ...existing code...
+});
+```
+
+#### 3. EC2のパブリックIPアドレスを確認
+
+AWSコンソールや `aws ec2 describe-instances` コマンドでパブリックIPを確認します。
+
+#### 4. SSH接続
+
+```bash
+ssh -i my-key.pem ec2-user@<EC2のパブリックIP>
+```
+
+> ※ 秘密鍵（.pemファイル）は安全に保管し、第三者に渡さないでください。
+
+---
+
 ### 3. CLI ツールの自動インストール・認証
 
 - EC2 インスタンス起動時に `gh`（GitHub CLI）、`gh copilot`、`claude` CLI も自動インストールされます。
@@ -225,6 +264,20 @@ new events.Rule(this, 'StopInstanceRule', {
 - 保存していないデータや未 push のコードは失われる可能性があります。
 - 重要な作業は**こまめに保存・git/S3 等にバックアップ**してください。
 - スポットインスタンスも同様に、AWS 側都合で中断される場合があります。
+
+---
+
+## 🛡️ バリデーション・セキュリティ強化
+
+- `ALLOWED_IP`（CIDR形式）や `PROJECT_BUCKET_NAME`（S3命名規則）のバリデーションをCDKで自動チェックします。
+- 不正な値の場合はデプロイ時にエラーとなります。
+- EC2インスタンスにはNameタグが自動付与されます。
+
+## 🧪 品質・CI/CD強化
+
+- `eslint`/`prettier`/`jest`による静的解析・自動整形・テストが追加されています。
+- `npm run lint`/`npm run format`/`npm test` で品質チェックが可能です。
+- GitHub Actionsでも自動でlint/testが実行されます。
 
 ---
 

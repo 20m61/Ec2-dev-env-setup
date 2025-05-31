@@ -180,7 +180,7 @@ def handler(event, context):
         actions: ['ec2:StopInstances'],
         // 本番運用ではResourceを特定インスタンスのみに制限することを推奨
         resources: [
-          `arn:aws:ec2:${cdk.Stack.of(this).region}:${cdk.Stack.of(this).account}:instance/${instance.instanceId}`
+          `arn:aws:ec2:${cdk.Stack.of(this).region}:${cdk.Stack.of(this).account}:instance/${instance.instanceId}`,
         ],
       }),
     );

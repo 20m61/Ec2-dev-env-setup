@@ -578,42 +578,35 @@ neovim
 
 ---
 
-## 🧪 テスト実行方法
+## 🧪 テスト・品質保証
 
-- 静的解析・テストは以下のコマンドで実行できます。
+本テンプレートは、AWS CDKスタックの主要な構成・分岐・異常系を網羅的にテストしています。
 
-```bash
-npm run lint
-npm run format
-npm test
-```
+- **テストフレームワーク:** Jest（TypeScript対応）
+- **テスト実行:** `npm test` または `npx jest`
+- **カバレッジ確認:** `npm test -- --coverage`
+- **テストファイル:** `test/dev-env-stack.test.ts`
 
-- テスト内容は `test/dev-env-stack.test.ts` を参照してください。
-- GitHub Actionsでも自動でlint/testが実行されます。
+### 主なテスト内容
 
----
+- **CDKリソース生成:** EC2, S3, IAM, Lambda, CloudWatch, EventBridge など
+- **環境変数・Contextによる分岐:**
+  - ALLOWED_IP/SSH_PORTの組み合わせによるセキュリティグループ挙動
+  - PROJECT_BUCKET_NAME, KEY_PAIR_NAME などの有無によるリソース生成分岐
+- **バリデーション・異常系:**
+  - CIDR形式やS3バケット名の不正値時の例外
+  - user-data.shが存在しない場合の例外
+- **EBS設定・IAMロール・タグ付与などの詳細検証**
+- **user-data.shの内容検証（Tailscale等の自動インストール確認）**
 
-## 🔐 code-serverパスワード管理の注意
+### テストカバレッジ
 
-- code-serverの初回起動時、ランダムなパスワードが `/home/ec2-user/code-server-password.txt` に保存されます。
-- パスワードは `/etc/profile.d/code-server.sh` で環境変数として渡されます。
-- パスワードは第三者に漏洩しないよう厳重に管理してください。
-- パブリックIPでアクセスする場合は必ずセキュリティグループやVPN等でアクセス制限を行ってください。
+- 主要な分岐・異常系を含め、Statements/Branches/Functionsともに高いカバレッジを維持
+- カバレッジレポートは `coverage/` ディレクトリに出力
 
----
+### テスト追加・カスタマイズ
 
-## 🛡️ Maxplan/Claude CLIの注意
-
-- Maxplan CLI（Claude Code）は自動インストール対象外です。必要な場合は公式手順で各自インストールしてください。
-- Claude CLIは非推奨です。Maxplanへの移行を推奨します。
-- APIキーは `.env` で明示的に設定してください。
-
----
-
-## 🛡️ SSM Session Manager推奨
-
-- EC2へのアクセスはSSHよりもSSM Session Managerの利用を推奨します。
-- SSMはAWS公式で推奨されており、セキュリティ・監査性が高いです。
-- 詳細は [Session Manager公式](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) を参照してください。
+- Jestのモック/スタブ機能を活用し、fsや環境変数の異常系も柔軟にテスト可能
+- 新たなリソースや分岐を追加した場合は、`test/dev-env-stack.test.ts`に追記してください
 
 ---

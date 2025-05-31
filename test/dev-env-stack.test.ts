@@ -154,6 +154,53 @@ describe('DevEnvStack', () => {
     expect(userData).toMatch(/tailscale up/);
   });
 
+  test('PROJECT_BUCKET_NAMEが正しい場合にS3バケットが作成される', () => {
+    process.env.PROJECT_BUCKET_NAME = 'valid-bucket-123';
+    const app = new App();
+    const stack = new DevEnvStack(app, 'TestStackS3');
+    const template = Template.fromStack(stack);
+    const buckets = template.findResources('AWS::S3::Bucket');
+    expect(Object.keys(buckets).length).toBe(1);
+    delete process.env.PROJECT_BUCKET_NAME;
+  });
+
+  test('PROJECT_BUCKET_NAMEが不正な場合は例外が投げられる', () => {
+    process.env.PROJECT_BUCKET_NAME = 'Invalid_Bucket!';
+    const app = new App();
+    expect(() => new DevEnvStack(app, 'TestStackS3Invalid')).toThrow(/S3バケット名が不正/);
+    delete process.env.PROJECT_BUCKET_NAME;
+  });
+
+  test('EC2インスタンスのEBS設定が正しい', () => {
+    const app = new App();
+    const stack = new DevEnvStack(app, 'TestStackEBS');
+    const template = Template.fromStack(stack);
+    const resources = template.findResources('AWS::EC2::Instance');
+    const instance = Object.values(resources)[0];
+    expect(instance.Properties.BlockDeviceMappings[0].Ebs.VolumeType).toBe('gp3');
+    expect(instance.Properties.BlockDeviceMappings[0].Ebs.DeleteOnTermination).toBe(true);
+    expect(instance.Properties.BlockDeviceMappings[0].Ebs.VolumeSize).toBe(100);
+  });
+
+  test('S3バケット指定時のみIAMロールにS3権限が追加される', () => {
+    process.env.PROJECT_BUCKET_NAME = 'valid-bucket-123';
+    const app = new App();
+    const stack = new DevEnvStack(app, 'TestStackS3Policy');
+    const template = Template.fromStack(stack);
+    const policies = template.findResources('AWS::IAM::Policy');
+    const s3Policy = Object.values(policies).find((p) => JSON.stringify(p).includes('s3:*'));
+    expect(s3Policy).toBeDefined();
+    delete process.env.PROJECT_BUCKET_NAME;
+  });
+
+  test('user-data.shが存在しない場合は例外が投げられる', () => {
+    jest.spyOn(fs, 'readFileSync').mockImplementationOnce(() => {
+      throw new Error('ENOENT: no such file or directory');
+    });
+    const app = new App();
+    expect(() => new DevEnvStack(app, 'TestStackUserDataMissing')).toThrow(/ENOENT/);
+  });
+
   // S3バケットは環境変数/Contextで指定時のみ作成されるため、ここでは省略
   // UserDataの内容検証はCDKのTemplate APIでは難しいため、別途スタブ化やモックでの検証が必要
 });

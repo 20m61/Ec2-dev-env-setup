@@ -3,8 +3,6 @@ import { Construct } from 'constructs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
 import * as iam from 'aws-cdk-lib/aws-iam';
 import * as s3 from 'aws-cdk-lib/aws-s3';
-import * as fs from 'fs';
-import * as path from 'path';
 import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as events from 'aws-cdk-lib/aws-events';
@@ -31,20 +29,32 @@ export class DevEnvStack extends cdk.Stack {
 
     // セキュリティグループ
     const allowedIp = process.env.ALLOWED_IP || this.node.tryGetContext('ALLOWED_IP');
+    const sshPort = parseInt(
+      process.env.SSH_PORT || this.node.tryGetContext('SSH_PORT') || '22',
+      10,
+    );
     // CIDR形式バリデーション
     const cidrRegex = /^([0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$/;
     if (allowedIp && !allowedIp.split(',').every((ip: string) => cidrRegex.test(ip.trim()))) {
       throw new Error(`ALLOWED_IPはCIDR形式で指定してください: ${allowedIp}`);
     }
-    const sshSource = allowedIp ? ec2.Peer.ipv4(allowedIp) : ec2.Peer.anyIpv4();
     const sg = new ec2.SecurityGroup(this, 'DevEnvSG', {
       vpc,
       allowAllOutbound: true,
-      description: 'Allow SSH and HTTPS',
+      description: 'Allow SSH',
     });
-    sg.addIngressRule(sshSource, ec2.Port.tcp(22), 'Allow SSH');
-    sg.addIngressRule(sshSource, ec2.Port.tcp(443), 'Allow HTTPS');
-    sg.addIngressRule(sshSource, ec2.Port.tcp(8080), 'Allow code-server');
+    if (allowedIp) {
+      const sshSource = ec2.Peer.ipv4(allowedIp);
+      sg.addIngressRule(sshSource, ec2.Port.tcp(sshPort), `Allow SSH (port ${sshPort})`);
+    } else if (process.env.SSH_PORT || this.node.tryGetContext('SSH_PORT')) {
+      // ALLOWED_IP未指定かつSSH_PORTのみ指定時は全IPに対してそのポートを解放
+      sg.addIngressRule(
+        ec2.Peer.anyIpv4(),
+        ec2.Port.tcp(sshPort),
+        `Allow SSH (any, port ${sshPort})`,
+      );
+    }
+    // allowedIp未指定時はIngressルールを追加しない（全ポート閉鎖）
 
     // Amazon Linux 2023 ARM64 AMI
     const ami = ec2.MachineImage.latestAmazonLinux({

@@ -31,6 +31,40 @@ Amazon EC2（Graviton）と AWS CDK、GitHub Actions を使って、コスパ最
 
 ---
 
+## 🛠️ EC2 にインストールされる主なツールと使い方
+
+| ツール名       | 主な用途・使い方例                                           |
+| -------------- | ------------------------------------------------------------ | ----- |
+| git            | バージョン管理。`git clone`, `git worktree` など             |
+| docker         | コンテナ実行。`docker run`, `docker build` など              |
+| docker compose | 複数コンテナの管理。`docker compose up -d` など              |
+| awscli         | AWS 操作 CLI。`aws s3 ls`, `aws ec2 describe-instances` など |
+| code-server    | ブラウザで VSCode。`http://<EC2-IP>:8080` でアクセス         |
+| gh CLI         | GitHub 操作 CLI。`gh repo clone`, `gh pr create` など        |
+| gh copilot CLI | GitHub Copilot CLI 拡張。`gh copilot` コマンド               |
+| claude CLI     | Claude API 利用 CLI。`claude chat` など                      |
+| zsh            | 高機能シェル。`chsh -s $(which zsh)` でデフォルト化          |
+| tmux           | ターミナル多重化。`tmux` で起動、`Ctrl+b` で操作             |
+| htop           | プロセス監視。`htop`                                         |
+| jq             | JSON 整形・抽出。`cat file.json                              | jq .` |
+| tree           | ディレクトリ構造表示。`tree`                                 |
+| unzip          | zip 解凍。`unzip file.zip`                                   |
+| make           | ビルド自動化。`make`                                         |
+| gcc            | C/C++コンパイラ。`gcc main.c -o main`                        |
+| python3        | Python 実行。`python3 script.py`                             |
+| nodejs         | Node.js 実行。`node app.js`                                  |
+| n              | Node.js バージョン管理。`sudo n lts` で LTS 版に切替         |
+| yarn           | Node.js パッケージ管理。`yarn install`, `yarn run`           |
+| corepack       | Node.js 公式パッケージ管理ラッパー。`corepack enable`        |
+| fzf            | 高速ファジーファインダー。`fzf`                              |
+| bat            | cat の高機能版。`bat file.txt`                               |
+| ripgrep        | 高速 grep。`rg pattern`                                      |
+| neovim         | 高機能エディタ。`nvim`                                       |
+
+> それぞれの詳細な使い方は公式ドキュメントや `--help` オプションで確認できます。
+
+---
+
 ## 🚀 セットアップ手順
 
 ### 1. リポジトリ作成 & 初期化

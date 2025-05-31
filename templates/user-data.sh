@@ -44,3 +44,21 @@ fi
 if [ -n "$CLAUDE_API_KEY" ]; then
   echo "export CLAUDE_API_KEY=$CLAUDE_API_KEY" >> /home/ec2-user/.bashrc
 fi
+
+# 追加でインストールする便利ツール
+sudo yum install -y zsh tmux htop jq tree unzip make gcc python3 nodejs yarn fzf bat ripgrep neovim
+
+# docker compose (v2) install
+sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+sudo chmod +x /usr/local/bin/docker-compose
+docker-compose --version
+
+# Node.js バージョン管理（n, nvm どちらか選択。ここでは n を例示）
+sudo npm install -g n
+sudo n lts
+# パスの再設定（必要に応じて）
+export PATH="/usr/local/bin:$PATH"
+
+# yarn（公式推奨のcorepack経由でインストール）
+corepack enable
+yarn --version

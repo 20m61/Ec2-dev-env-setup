@@ -1,6 +1,31 @@
+<!-- filepath: /Users/20m61/Documents/workspace/Ec2-dev-env-setup/README.md -->
+
 # 🌱 EC2 Dev Environment Template with CDK + GitHub Actions
 
-Amazon EC2（Graviton）と AWS CDK、GitHub Actions を使って、コスパ最強・快適・セキュアな開発環境を構築するテンプレートです。
+## 📚 目次（Table of Contents）
+
+- [特徴](#特徴)
+- [ディレクトリ構成](#ディレクトリ構成)
+- [EC2にインストールされる主なツールと使い方](#ec2-にインストールされる主なツールと使い方)
+- [前提条件](#前提条件)
+- [セットアップ手順](#セットアップ手順)
+- [シークレットの設定（GitHub）](#シークレットの設定github)
+- [EC2キーペアの作成・SSH接続手順](#ec2-キーペアの作成ssh接続手順)
+- [CLIツールの自動インストール・認証](#cli-ツールの自動インストール認証)
+- [CDK構成](#cdk-構成)
+- [GitHub Actionsデプロイ](#github-actions-デプロイgithubworkflowsdeployyml)
+- [よくあるTips](#よくある-tips)
+- [セキュリティグループのIP・ポート制御仕様](#セキュリティグループのipポート制御仕様)
+- [スポットインスタンス運用](#スポットインスタンス運用)
+- [S3バケット権限の最小化](#s3-バケット権限の最小化)
+- [EC2自動停止スケジュール（サンプル）](#ec2-自動停止スケジュールサンプル)
+- [バリデーション・セキュリティ強化](#バリデーションセキュリティ強化)
+- [品質・CI/CD強化](#品質cicd強化)
+- [クリーンアップ・リソース削除](#クリーンアップリソース削除)
+- [まとめ](#まとめ)
+- [コストシミュレーション](#コストシミュレーション)
+- [必要なAWS権限（ポリシー例）](#必要な-aws-権限ポリシー例)
+- [EC2接続情報CSV出力について](#ec2接続情報csv出力について)
 
 ## ✅ 特徴
 
@@ -31,22 +56,13 @@ Amazon EC2（Graviton）と AWS CDK、GitHub Actions を使って、コスパ最
 
 ---
 
-## 🛠️ EC2 にインストールされる主なツールと使い方
+## 🛠️ EC2にインストールされる主なツールと使い方
 
 本テンプレートのEC2インスタンスでは、AWS CLI（awscli）に加え、以下のAWS関連コマンドも自動インストールされます。
 
-- session-manager-plugin
-- amazon-ssm-agent
-- ecs-cli
-- eksctl
-- aws-cdk
-- aws-sam-cli
-
-これにより、EC2上で幅広いAWSサービスの操作や開発が可能です。
-
 | ツール名               | 主な用途・使い方例                                           |
-| ---------------------- | ------------------------------------------------------------ | ----- |
-| git                    | バージン管理。`git clone`, `git worktree` など               |
+| ---------------------- | ------------------------------------------------------------ |
+| git                    | バージョン管理。`git clone`, `git worktree` など             |
 | docker                 | コンテナ実行。`docker run`, `docker build` など              |
 | docker compose         | 複数コンテナの管理。`docker compose up -d` など              |
 | awscli                 | AWS 操作 CLI。`aws s3 ls`, `aws ec2 describe-instances` など |
@@ -64,7 +80,7 @@ Amazon EC2（Graviton）と AWS CDK、GitHub Actions を使って、コスパ最
 | zsh                    | 高機能シェル。`chsh -s $(which zsh)` でデフォルト化          |
 | tmux                   | ターミナル多重化。`tmux` で起動、`Ctrl+b` で操作             |
 | htop                   | プロセス監視。`htop`                                         |
-| jq                     | JSON 整形・抽出。`cat file.json                              | jq .` |
+| jq                     | JSON 整形・抽出。`cat file.json \| jq .`                     |
 | tree                   | ディレクトリ構造表示。`tree`                                 |
 | unzip                  | zip 解凍。`unzip file.zip`                                   |
 | make                   | ビルド自動化。`make`                                         |
@@ -434,5 +450,24 @@ i-xxxxxxxx,203.0.113.10,ec2-user,my-key,ap-northeast-1,"ssh -i keys/my-key.pem e
 - `CreatedAt` は出力時のUTC日時。
 
 > このファイルは `.gitignore` によりGit管理対象外です。
+
+---
+
+## ⚠️ 注意事項
+
+- AWSリソース作成にはコストが発生します。不要になったリソースは必ず削除してください。
+- 秘密鍵（.pemファイル）は安全に保管し、第三者に渡さないでください。
+- セキュリティのため、秘密鍵は絶対にリポジトリにコミットしないでください。
+
+---
+
+## 🔗 参考リンク
+
+- [AWS 公式ドキュメント](https://docs.aws.amazon.com/ja_jp/)
+- [AWS CDK 公式ドキュメント](https://docs.aws.amazon.com/cdk/latest/guide/home.html)
+- [GitHub Actions 公式ドキュメント](https://docs.github.com/ja/actions)
+- [code-server 公式](https://github.com/coder/code-server)
+- [Maxplan CLI 公式](https://github.com/maxplan-io/cli)
+- [Claude API 公式](https://console.anthropic.com/)
 
 ---

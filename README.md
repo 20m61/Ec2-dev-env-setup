@@ -79,16 +79,16 @@ npm install
 
 ### 2. シークレットの設定（GitHub）
 
-| シークレット名          | 内容                                                                 |
-| ----------------------- | -------------------------------------------------------------------- |
-| `AWS_ACCESS_KEY_ID`     | IAM ユーザーのアクセスキー                                           |
-| `AWS_SECRET_ACCESS_KEY` | 同上                                                                 |
-| `AWS_REGION`            | 例：`ap-northeast-1`                                                 |
-| `PROJECT_BUCKET_NAME`   | S3 バケット名（任意）                                                |
-| `GITHUB_TOKEN`          | GitHub CLI/Copilot 用トークン（必須）                                |
-| `CLAUDE_API_KEY`        | Claude CLI 用 API キー（任意）                                       |
-| `ALLOWED_IP`            | SSH/HTTPS/code-server の許可 IP（例: `203.0.113.1/32`）              |
-| `SPOT_MAX_PRICE`        | スポットインスタンスの最大価格（例: `0.05`、未指定ならオンデマンド） |
+| シークレット名          | 内容                                                                                                                                          |
+| ----------------------- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AWS_ACCESS_KEY_ID`     | IAM ユーザーのアクセスキー                                                                                                                    |
+| `AWS_SECRET_ACCESS_KEY` | 同上                                                                                                                                          |
+| `AWS_REGION`            | 例：`ap-northeast-1`                                                                                                                          |
+| `PROJECT_BUCKET_NAME`   | S3 バケット名（任意）                                                                                                                         |
+| `GITHUB_TOKEN`          | GitHub CLI/Copilot 用トークン（必須）                                                                                                         |
+| `CLAUDE_API_KEY`        | Claude CLI 用 API キー（任意）                                                                                                                |
+| `ALLOWED_IP`            | SSH/HTTPS/code-server の許可 IP（例: `203.0.113.1/32`。複数指定したい場合はカンマ区切りで `203.0.113.1/32,198.51.100.2/32` のように記載可能） |
+| `SPOT_MAX_PRICE`        | スポットインスタンスの最大価格（例: `0.05`、未指定ならオンデマンド）                                                                          |
 
 > ⚠️ **注意:**
 > GitHub Actions で AWS にデプロイするには、必ずリポジトリの「Settings > Secrets and variables > Actions > Secrets」に

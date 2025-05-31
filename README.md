@@ -109,10 +109,14 @@
 - AWS CDK CLI（推奨: v2系、`npm install -g aws-cdk`）
 - GitHub CLI（`gh`、推奨: v2系、`brew install gh` など）
 - git
+- **（推奨）SSM Session ManagerによるEC2へのシェルアクセス**
+  - SSHより安全なため、AWS公式推奨。詳細: [Session Manager公式](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html)
 
 > ※バージョンは `node -v` `npm -v` `aws --version` `cdk --version` `gh --version` で確認できます。
 >
 > AWSリソース作成にはコストが発生します。不要になったリソースは必ず削除してください。
+>
+> **セキュリティアップデートは定期的に実施してください。Amazon Linuxは自動アップデート設定も推奨です。**
 
 ---
 
@@ -382,6 +386,8 @@ new events.Rule(this, 'StopInstanceRule', {
 - `user-data.sh`で`sudo usermod -aG docker ec2-user`を実行し、ec2-userでsudo無しでdockerコマンドが利用可能です。
 - `code-server`は初回起動時にランダムなパスワードが自動生成され、`/home/ec2-user/code-server-password.txt`に保存されます。パスワードは環境変数経由で設定され、セキュリティを強化しています。
 - **code-serverのパスワードは必ず安全に管理し、第三者に漏洩しないよう注意してください。パブリックIPでアクセスする場合はセキュリティグループやVPC、VPN等でアクセス制限を必ず行ってください。**
+- **code-serverやSSHをインターネット経由で公開する場合は、必ずIP制限やVPN、SSM Session Manager等の安全なアクセス手段を利用してください。**
+- **SSM Session Managerの利用を推奨します（SSHより安全）。**
 
 ## 🧪 品質・CI/CD強化
 

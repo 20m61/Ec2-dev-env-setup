@@ -178,7 +178,10 @@ def handler(event, context):
     stopInstanceFn.addToRolePolicy(
       new iam.PolicyStatement({
         actions: ['ec2:StopInstances'],
-        resources: ['*'],
+        // 本番運用ではResourceを特定インスタンスのみに制限することを推奨
+        resources: [
+          `arn:aws:ec2:${cdk.Stack.of(this).region}:${cdk.Stack.of(this).account}:instance/${instance.instanceId}`
+        ],
       }),
     );
 

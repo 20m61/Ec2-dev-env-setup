@@ -1,7 +1,8 @@
 #!/bin/bash
 set -eux
-# 基本ツール
+# セキュリティアップデートは定期的に実施してください（Amazon Linuxは自動アップデート設定も推奨）
 sudo yum update -y
+# 基本ツール
 sudo yum install -y git docker awscli
 # AWS CLI v2 install（明示的にv2をインストール）
 if ! command -v aws &>/dev/null || [[ $(aws --version 2>&1) != aws-cli/2* ]]; then

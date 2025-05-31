@@ -5,6 +5,10 @@ import * as iam from 'aws-cdk-lib/aws-iam';
 import * as s3 from 'aws-cdk-lib/aws-s3';
 import * as fs from 'fs';
 import * as path from 'path';
+import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+import * as events from 'aws-cdk-lib/aws-events';
+import * as targets from 'aws-cdk-lib/aws-events-targets';
 
 export class DevEnvStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -113,5 +117,59 @@ export class DevEnvStack extends cdk.Stack {
     createOutput('EC2Region', cdk.Stack.of(this).region, 'EC2 Region');
     createOutput('EC2KeyName', instance.instance.keyName || '(not set)', 'EC2 SSH Key Name');
     // ---
+
+    // --- CloudWatch アラーム + Lambda でアイドル時自動停止 ---
+    // 1. CloudWatch アラーム（CPU利用率5%未満が30分続いたら）
+    const cpuAlarm = new cloudwatch.Alarm(this, 'CpuIdleAlarm', {
+      metric: new cloudwatch.Metric({
+        namespace: 'AWS/EC2',
+        metricName: 'CPUUtilization',
+        dimensionsMap: { InstanceId: instance.instanceId },
+        period: cdk.Duration.minutes(5),
+        statistic: 'Average',
+      }),
+      threshold: 5,
+      evaluationPeriods: 6, // 5分x6=30分
+      comparisonOperator: cloudwatch.ComparisonOperator.LESS_THAN_THRESHOLD,
+      treatMissingData: cloudwatch.TreatMissingData.NOT_BREACHING,
+      alarmDescription: 'EC2が30分間アイドル状態なら自動停止',
+    });
+
+    // 2. Lambda（EC2停止用）
+    const stopInstanceFn = new lambda.Function(this, 'AutoStopInstanceFn', {
+      runtime: lambda.Runtime.PYTHON_3_11,
+      handler: 'index.handler',
+      code: lambda.Code.fromInline(`
+import boto3
+import os
+def handler(event, context):
+    ec2 = boto3.client('ec2')
+    instance_id = os.environ['INSTANCE_ID']
+    ec2.stop_instances(InstanceIds=[instance_id])
+`),
+      timeout: cdk.Duration.seconds(30),
+      environment: {
+        INSTANCE_ID: instance.instanceId,
+      },
+    });
+    stopInstanceFn.addToRolePolicy(
+      new iam.PolicyStatement({
+        actions: ['ec2:StopInstances'],
+        resources: ['*'],
+      }),
+    );
+
+    // 3. CloudWatchアラーム→EventBridge→Lambda連携
+    const rule = new events.Rule(this, 'AutoStopRule', {
+      eventPattern: {
+        source: ['aws.cloudwatch'],
+        detailType: ['CloudWatch Alarm State Change'],
+        detail: {
+          state: { value: ['ALARM'] },
+          alarmName: [cpuAlarm.alarmName],
+        },
+      },
+    });
+    rule.addTarget(new targets.LambdaFunction(stopInstanceFn));
   }
 }

@@ -44,9 +44,20 @@ fi
 # AWS SAM CLI
 sudo yum install -y aws-sam-cli || sudo pip3 install aws-sam-cli
 
+# dockerグループにec2-userを追加し、sudo無しでdocker利用可
+sudo usermod -aG docker ec2-user
+
 # code-server install
 curl -fsSL https://code-server.dev/install.sh | sh
-sudo systemctl enable --now code-server@$USER
+# code-serverのパスワードをランダム生成しファイルに保存（セキュリティ強化）
+CODE_SERVER_PASS=$(openssl rand -base64 32)
+echo "code-server password: $CODE_SERVER_PASS" > /home/ec2-user/code-server-password.txt
+chown ec2-user:ec2-user /home/ec2-user/code-server-password.txt
+chmod 600 /home/ec2-user/code-server-password.txt
+# systemd起動時にパスワードを環境変数で渡す
+sudo bash -c 'echo "export PASSWORD=\"$CODE_SERVER_PASS\"" > /etc/profile.d/code-server.sh'
+# code-serverをec2-userで起動
+sudo systemctl enable --now code-server@ec2-user
 
 # git worktree用ディレクトリ
 mkdir -p /home/ec2-user/repos

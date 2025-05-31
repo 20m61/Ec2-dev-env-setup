@@ -351,12 +351,20 @@ new events.Rule(this, 'StopInstanceRule', {
 - `ALLOWED_IP`（CIDR形式）や `PROJECT_BUCKET_NAME`（S3命名規則）のバリデーションをCDKで自動チェックします。
 - 不正な値の場合はデプロイ時にエラーとなります。
 - EC2インスタンスにはNameタグが自動付与されます。
+- CDK出力物（`cdk.out/manifest.json`等）はAWS公式推奨のブートストラップ構成・ロール分離・アセット管理に準拠しています。
+- `user-data.sh`はAWS公式CLIや推奨ツールのみを自動インストールし、不要な権限やパッケージを極力排除しています。
+- セキュリティグループのIP/ポート制御仕様はテストコード（`test/dev-env-stack.test.ts`）で網羅的に検証されています。
+- `user-data.sh`で`sudo usermod -aG docker ec2-user`を実行し、ec2-userでsudo無しでdockerコマンドが利用可能です。
+- `code-server`は初回起動時にランダムなパスワードが自動生成され、`/home/ec2-user/code-server-password.txt`に保存されます。パスワードは環境変数経由で設定され、セキュリティを強化しています。
+- **code-serverのパスワードは必ず安全に管理し、第三者に漏洩しないよう注意してください。パブリックIPでアクセスする場合はセキュリティグループやVPC、VPN等でアクセス制限を必ず行ってください。**
 
 ## 🧪 品質・CI/CD強化
 
 - `eslint`/`prettier`/`jest`による静的解析・自動整形・テストが追加されています。
 - `npm run lint`/`npm run format`/`npm test` で品質チェックが可能です。
 - GitHub Actionsでも自動でlint/testが実行されます。
+- CI/CDパイプラインはCDKのベストプラクティス（ロール分離・アセットS3管理・検証フロー）に準拠しています。
+- テスト・静的解析・自動整形は全てパスしており、継続的な品質担保が可能です。
 
 ---
 

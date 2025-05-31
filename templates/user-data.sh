@@ -63,25 +63,12 @@ sudo yum install -y gh
 # gh copilot CLI (gh拡張)
 sudo -u ec2-user gh extension install github/gh-copilot
 
-# claude CLI (npm経由)
-sudo -u ec2-user npm install -g claude-cli || sudo -u ec2-user npm install -g @anthropic-ai/claude-cli
-
-# MCP（Model Context Protocol）を利用したい場合は、各自で必要なMCPサーバー/クライアントの公式手順に従いインストール・設定してください。
-
-# .envからトークンを設定（存在すれば）
-if [ -f /home/ec2-user/.env ]; then
-  export $(grep -v '^#' /home/ec2-user/.env | xargs)
-fi
-
-# gh認証
-if [ -n "$GITHUB_TOKEN" ]; then
-  sudo -u ec2-user gh auth login --with-token < <(echo "$GITHUB_TOKEN")
-fi
-
-# claude CLI用APIキー設定
-if [ -n "$CLAUDE_API_KEY" ]; then
-  echo "export CLAUDE_API_KEY=$CLAUDE_API_KEY" >> /home/ec2-user/.bashrc
-fi
+# Maxplan CLI (Claude Code)は自動インストール対象外です。必要な場合は各自で公式手順に従いインストール・認証設定を行ってください。
+# 例: sudo -u ec2-user npm install -g maxplan-cli
+# .envのMAXPLAN_API_KEYも自動設定しません。必要に応じて手動で設定してください。
+# if [ -n "$MAXPLAN_API_KEY" ]; then
+#   echo "export MAXPLAN_API_KEY=$MAXPLAN_API_KEY" >> /home/ec2-user/.bashrc
+# fi
 
 # 追加でインストールする便利ツール
 sudo yum install -y zsh tmux htop jq tree unzip make gcc python3 nodejs yarn fzf bat ripgrep neovim

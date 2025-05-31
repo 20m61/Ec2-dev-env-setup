@@ -513,3 +513,20 @@ i-xxxxxxxx,203.0.113.10,ec2-user,my-key,ap-northeast-1,"ssh -i keys/my-key.pem e
 - [Claude API 公式](https://console.anthropic.com/)
 
 ---
+
+## 📝 .envファイルの配置・反映方法
+
+- プロジェクトルートに `.env` ファイルを作成し、`.env.example` を参考に必要な値を設定してください。
+- `.env` ファイルはEC2インスタンスの `/home/ec2-user/.env` に自動配置されることを推奨します。
+- `user-data.sh` では `/home/ec2-user/.env` が存在すれば自動的に読み込まれ、環境変数として反映されます。
+- セキュリティのため `.env` ファイルのパーミッションは `600`（所有者のみ読み書き）に設定してください。
+
+```bash
+chmod 600 .env
+```
+
+- `keys/` ディレクトリや秘密鍵（\*.pem）は `.gitignore` で管理対象外です。パーミッションも `600` を推奨します。
+
+```bash
+chmod 600 keys/*.pem
+```

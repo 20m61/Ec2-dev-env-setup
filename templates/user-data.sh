@@ -1,5 +1,13 @@
 #!/bin/bash
 set -eux
+
+# .envファイルの自動読込（存在すれば）
+if [ -f /home/ec2-user/.env ]; then
+  set -a
+  source /home/ec2-user/.env
+  set +a
+fi
+
 # セキュリティアップデートは定期的に実施してください（Amazon Linuxは自動アップデート設定も推奨）
 sudo yum update -y
 # 基本ツール

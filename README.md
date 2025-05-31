@@ -278,6 +278,29 @@ jobs:
 
 ---
 
+## 🧑‍💻 AI自律セットアップ・自動化例
+
+本テンプレートはAIや自動化ツールによる完全自律セットアップにも対応しています。
+
+- `.env` で `DOTFILES_REPO`, `GIT_REPO_URL`, `GIT_WORKTREES`, `GITHUB_TOKEN` などを指定することで、EC2起動時に自動でdotfilesセットアップ・任意リポジトリのクローン・git worktree展開・gh CLI認証が行われます。
+- 例:
+
+```env
+DOTFILES_REPO=https://github.com/yourname/dotfiles.git
+GIT_REPO_URL=https://github.com/yourname/yourproject.git
+GIT_WORKTREES=feature/foo,feature/bar
+GITHUB_TOKEN=ghp_xxx
+```
+
+- `user-data.sh` では以下のような自動化処理が実行されます:
+  - dotfilesリポジトリのクローンとセットアップスクリプト実行
+  - 任意リポジトリのクローンと複数ブランチのworktree展開
+  - gh CLIの認証自動化（トークンは.env/Secretsで明示的に渡す設計）
+
+> 詳細なスクリプト例は `templates/user-data.sh` を参照してください。
+
+---
+
 ## 🦄 Tailscale の自動インストール・認証
 
 本テンプレートでは、EC2インスタンス起動時に Tailscale が自動インストール・自動起動されます。

@@ -84,8 +84,27 @@ sudo systemctl enable --now code-server@ec2-user
 mkdir -p /home/ec2-user/repos
 chown ec2-user:ec2-user /home/ec2-user/repos
 
-# 任意: dotfilesや初期セットアップ
-# su - ec2-user -c 'git clone ...'
+# --- dotfilesや初期セットアップ（AI自律化例）---
+# 例: dotfilesリポジトリをクローンし、セットアップスクリプトを実行
+if [ -n "$DOTFILES_REPO" ]; then
+  su - ec2-user -c "git clone --depth=1 $DOTFILES_REPO /home/ec2-user/dotfiles && bash /home/ec2-user/dotfiles/setup.sh || true"
+fi
+
+# 例: 任意の開発リポジトリをクローンし、worktree展開（GIT_REPO_URL, GIT_WORKTREES 変数を.envで指定）
+if [ -n "$GIT_REPO_URL" ]; then
+  su - ec2-user -c "git clone $GIT_REPO_URL /home/ec2-user/repos/main"
+  if [ -n "$GIT_WORKTREES" ]; then
+    IFS=',' read -ra WT <<< \"$GIT_WORKTREES\"
+    for branch in \"${WT[@]}\"; do
+      su - ec2-user -c \"cd /home/ec2-user/repos/main && git fetch origin $branch && git worktree add ../$branch origin/$branch\"
+    done
+  fi
+fi
+
+# --- gh CLI認証の完全自動化（GITHUB_TOKENがあれば）---
+if [ -n "$GITHUB_TOKEN" ]; then
+  su - ec2-user -c "echo $GITHUB_TOKEN | gh auth login --with-token || true"
+fi
 
 # gh CLI install
 sudo yum install -y yum-utils

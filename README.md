@@ -59,7 +59,8 @@ Amazon EC2（Graviton）と AWS CDK、GitHub Actions を使って、コスパ最
 | code-server            | ブラウザで VSCode。`http://<EC2-IP>:8080` でアクセス         |
 | gh CLI                 | GitHub 操作 CLI。`gh repo clone`, `gh pr create` など        |
 | gh copilot CLI         | GitHub Copilot CLI 拡張。`gh copilot` コマンド               |
-| claude CLI             | Claude API 利用 CLI。`claude chat` など                      |
+| maxplan-cli            | Claude Code (Maxplan) API利用CLI。`maxplan chat` など        |
+| claude-cli             | Claude API 利用 CLI（非推奨、Maxplanへ移行推奨）             |
 | zsh                    | 高機能シェル。`chsh -s $(which zsh)` でデフォルト化          |
 | tmux                   | ターミナル多重化。`tmux` で起動、`Ctrl+b` で操作             |
 | htop                   | プロセス監視。`htop`                                         |
@@ -120,7 +121,8 @@ npm install
 | `AWS_REGION`            | 例：`ap-northeast-1`                                                                                                                                                     |
 | `PROJECT_BUCKET_NAME`   | S3 バケット名（任意）                                                                                                                                                    |
 | `GITHUB_TOKEN`          | GitHub CLI/Copilot 用トークン（必須）                                                                                                                                    |
-| `CLAUDE_API_KEY`        | Claude CLI 用 API キー（任意）                                                                                                                                           |
+| `MAXPLAN_API_KEY`       | Maxplan CLI 用 API キー（公式でAPIキー発行がない場合は不要。利用時は各自で取得・設定）                                                                                   |
+| `CLAUDE_API_KEY`        | Claude CLI 用 API キー（非推奨、Maxplanへ移行推奨）                                                                                                                      |
 | `ALLOWED_IP`            | SSH/HTTPS/code-server の許可 IP（CIDR 表記）。例: `203.0.113.1/32`（単一 IP 許可）や `0.0.0.0/0`（全 IP 許可）。複数 IP を許可する場合は CIDR をカンマ区切りで指定。     |
 | `SPOT_MAX_PRICE`        | スポットインスタンスの最大価格（USD/h）。例: `0.05`（最大 0.05 USD/h まで）。未指定の場合はオンデマンドインスタンスとして起動。価格は AWS のスポット価格を確認して設定。 |
 
@@ -128,6 +130,7 @@ npm install
 > GitHub Actions で AWS にデプロイするには、必ずリポジトリの「Settings > Secrets and variables > Actions > Secrets」に
 > `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION` を登録してください。
 > `GITHUB_TOKEN` は EC2 上で gh/gh copilot CLI の認証に利用されます。
+> `MAXPLAN_API_KEY` は Maxplan CLI 利用時に必要です（Maxplan を使う場合のみ）。
 > `CLAUDE_API_KEY` は Claude CLI 利用時に必要です（Claude を使う場合のみ）。
 > MCP（Model Context Protocol）はプロトコル仕様であり、特定の CLI や共通トークン（MCP_TOKEN）は存在しません。利用したい MCP サーバーやクライアント（例: GitHub, Notion, DB, Claude Desktop 等）ごとに、各実装の公式手順に従ってインストール・設定・認証情報（API キー等）を用意してください。
 > これらが未設定の場合、一部機能が利用できません。
@@ -185,11 +188,12 @@ ssh -i my-key.pem ec2-user@<EC2のパブリックIP>
 
 ### 3. CLI ツールの自動インストール・認証
 
-- EC2 インスタンス起動時に `gh`（GitHub CLI）、`gh copilot`、`claude` CLI も自動インストールされます。
-- `.env` ファイルに `GITHUB_TOKEN` や `CLAUDE_API_KEY` を記載しておくと、初回起動時に自動で認証・設定されます。
+- EC2 インスタンス起動時に `gh`（GitHub CLI）、`gh copilot` CLI は自動インストールされます。
+- Maxplan（Claude Code）CLIは自動インストール対象外です。利用したい場合は各自で公式手順に従いインストール・認証設定を行ってください。
+- Claude CLI/CLAUDE_API_KEY は非推奨です。
 - Copilot CLI は `gh` の認証トークンを利用します。
-- Claude CLI は `CLAUDE_API_KEY` を `~/.bashrc` に自動で追記します。
-- MCP を利用したい場合は、利用したい MCP サーバー/クライアントの公式手順に従い、必要な OSS やサービスを各自インストール・設定してください。
+
+> Maxplan（Claude Code）は、APIキーやCLIの利用方法は公式ドキュメントを参照し、各自でセットアップしてください。
 
 ---
 

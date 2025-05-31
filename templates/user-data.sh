@@ -70,8 +70,21 @@ sudo -u ec2-user gh extension install github/gh-copilot
 #   echo "export MAXPLAN_API_KEY=$MAXPLAN_API_KEY" >> /home/ec2-user/.bashrc
 # fi
 
-# 追加でインストールする便利ツール
-sudo yum install -y zsh tmux htop jq tree unzip make gcc python3 nodejs yarn fzf bat ripgrep neovim
+# 追加でインストールする便利ツール（外部ファイルから読み込み）
+if [ -f /home/ec2-user/tools.txt ]; then
+  TOOL_LIST="/home/ec2-user/tools.txt"
+else
+  TOOL_LIST="/tmp/tools.txt"
+fi
+if [ ! -f "$TOOL_LIST" ]; then
+  cp /opt/tools.txt "$TOOL_LIST" 2>/dev/null || cp $(dirname "$0")/tools.txt "$TOOL_LIST" 2>/dev/null || true
+fi
+if [ -f "$TOOL_LIST" ]; then
+  xargs -a "$TOOL_LIST" sudo yum install -y
+else
+  # fallback: デフォルトリスト
+  sudo yum install -y zsh tmux htop jq tree unzip make gcc python3 nodejs yarn fzf bat ripgrep neovim
+fi
 
 # docker compose (v2) install
 sudo curl -L "https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose

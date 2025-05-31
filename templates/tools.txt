@@ -1,0 +1,16 @@
+# 追加でインストールするツールを1行ずつ記載
+zsh
+tmux
+htop
+jq
+tree
+unzip
+make
+gcc
+python3
+nodejs
+yarn
+fzf
+bat
+ripgrep
+neovim

@@ -47,6 +47,18 @@ sudo yum install -y aws-sam-cli || sudo pip3 install aws-sam-cli
 # dockerグループにec2-userを追加し、sudo無しでdocker利用可
 sudo usermod -aG docker ec2-user
 
+# --- Tailscale install & 起動 ---
+if ! command -v tailscale &>/dev/null; then
+  curl -fsSL https://pkgs.tailscale.com/stable/install.sh | sh
+fi
+sudo systemctl enable --now tailscaled
+# 認証キーがあれば自動ログイン
+if [ -n "$TAILSCALE_AUTHKEY" ]; then
+  sudo tailscale up --authkey $TAILSCALE_AUTHKEY --ssh
+else
+  echo "Tailscaleの認証は手動で行ってください: sudo tailscale up --ssh"
+fi
+
 # code-server install
 curl -fsSL https://code-server.dev/install.sh | sh
 # code-serverのパスワードをランダム生成しファイルに保存（セキュリティ強化）

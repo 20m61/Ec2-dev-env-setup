@@ -1,3 +1,5 @@
+import fs from 'fs';
+import path from 'path';
 import { App } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import { DevEnvStack } from '../lib/dev-env-stack';
@@ -53,7 +55,7 @@ describe('DevEnvStack', () => {
     expect(ingress2[0].ToPort).toBe(2022);
     expect(ingress2[0].CidrIp).toBe('0.0.0.0/0');
 
-    // 3. どちらも未指定 → Ingressルールなし（全ポート閉鎖）
+    // 3. どちらも未指定 → Tailscaleサブネットから22番ポートのみ許可
     delete process.env.ALLOWED_IP;
     delete process.env.SSH_PORT;
     app = new App();
@@ -62,7 +64,10 @@ describe('DevEnvStack', () => {
     sg = template.findResources('AWS::EC2::SecurityGroup');
     sgResource = Object.values(sg)[0];
     const ingress3 = sgResource.Properties.SecurityGroupIngress;
-    expect(!ingress3 || ingress3.length === 0).toBe(true);
+    expect(ingress3.length).toBe(1);
+    expect(ingress3[0].FromPort).toBe(22);
+    expect(ingress3[0].ToPort).toBe(22);
+    expect(ingress3[0].CidrIp).toBe('100.64.0.0/10');
   });
 
   test('Lambdaのコード・環境変数・IAM権限・CloudWatchアラーム・EventBridgeルールを検証', () => {
@@ -139,6 +144,14 @@ describe('DevEnvStack', () => {
     const resources = template.findResources('AWS::EC2::Instance');
     const instance = Object.values(resources)[0];
     expect(instance.Properties.KeyName).toBeUndefined();
+  });
+
+  test('user-data.shにTailscale自動インストール・認証コマンドが含まれる', () => {
+    const userData = fs.readFileSync(path.join(__dirname, '../templates/user-data.sh'), 'utf8');
+    expect(userData).toMatch(/tailscale/);
+    expect(userData).toMatch(/tailscaled/);
+    expect(userData).toMatch(/TAILSCALE_AUTHKEY/);
+    expect(userData).toMatch(/tailscale up/);
   });
 
   // S3バケットは環境変数/Contextで指定時のみ作成されるため、ここでは省略

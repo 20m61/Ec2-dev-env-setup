@@ -274,9 +274,33 @@ jobs:
 
 ---
 
+## 🦄 Tailscale の自動インストール・認証
+
+本テンプレートでは、EC2インスタンス起動時に Tailscale が自動インストール・自動起動されます。
+
+- `.env` または GitHub Secrets で `TAILSCALE_AUTHKEY` を指定すると、インスタンス起動時に自動で Tailscale にログインし、SSH接続が有効化されます。
+- `TAILSCALE_AUTHKEY` を指定しない場合は、EC2上で `sudo tailscale up --ssh` を手動実行してください。
+- Tailscale経由でのみSSH(22番)が許可されるため、インターネットにポートを開放せず安全です。
+- Tailscaleのベストプラクティス（公式: https://tailscale.com/ja/docs/ ）に準拠しています。
+
+### .env/Secrets例
+
+```
+TAILSCALE_AUTHKEY=tskey-xxxxxxxxxxxxxxxxxxxx
+```
+
+### セットアップ手順（抜粋）
+
+1. [Tailscale管理画面](https://login.tailscale.com/admin/settings/keys)で認証キーを発行
+2. `.env` または GitHub Secrets に `TAILSCALE_AUTHKEY` を追加
+3. デプロイ後、Tailscale管理画面でEC2がネットワークに参加していることを確認
+4. Tailscale経由のIP（100.64.0.0/10）でSSH接続
+
+---
+
 ## 🔒 セキュリティグループのIP・ポート制御仕様
 
-本テンプレートのEC2インスタンスは、環境変数 `ALLOWED_IP` および `SSH_PORT` の組み合わせにより、SSHポートの公開範囲を柔軟に制御できます。
+本テンプレートのEC2インスタンスは、デフォルトでTailscale経由（100.64.0.0/10）からのSSH(22番)のみ許可されます。
 
 - `ALLOWED_IP` と `SSH_PORT` の両方を指定した場合：
   - 指定したIP（CIDR）・指定したポートのみが許可されます。
@@ -285,10 +309,11 @@ jobs:
   - そのポートが全IP（0.0.0.0/0）に対して許可されます。
   - 例: `SSH_PORT=2022` → 2022番ポートが全IPに対して許可
 - どちらも未指定の場合：
-  - セキュリティグループのIngressルールは追加されず、全てのポートが閉じられます（外部から一切アクセス不可）。
+  - Tailscaleサブネット（100.64.0.0/10）からの22番ポートSSHのみ許可されます。
+  - 外部（インターネット）からは一切アクセス不可です。
 
-> **注意:**
-> SSHポートを全IPに公開する場合はセキュリティリスクが高まるため、必ず強力なキーペア認証・パスワード無効化・IP制限等の対策を推奨します。
+> **Tailscaleを利用することで、インターネットにポートを開放せずに安全にSSH接続できます。**
+> Tailscaleのセットアップ方法やベストプラクティスは[公式ドキュメント](https://tailscale.com/ja/docs/)を参照してください。
 
 ---
 

@@ -45,7 +45,16 @@ export class DevEnvStack extends cdk.Stack {
       allowAllOutbound: true,
       description: 'Allow SSH',
     });
-    if (allowedIp) {
+    // --- Tailscale前提: デフォルトで22番ポートはTailscale経由のみ許可 ---
+    // allowedIp/SSH_PORT未指定時はTailscaleネットワークからのSSHのみ許可
+    // Tailscaleのデフォルトサブネット（100.64.0.0/10）から22番ポートを許可
+    if (!allowedIp && !(process.env.SSH_PORT || this.node.tryGetContext('SSH_PORT'))) {
+      sg.addIngressRule(
+        ec2.Peer.ipv4('100.64.0.0/10'),
+        ec2.Port.tcp(22),
+        'Allow SSH (Tailscale subnet, port 22)',
+      );
+    } else if (allowedIp) {
       const sshSource = ec2.Peer.ipv4(allowedIp);
       sg.addIngressRule(sshSource, ec2.Port.tcp(sshPort), `Allow SSH (port ${sshPort})`);
     } else if (process.env.SSH_PORT || this.node.tryGetContext('SSH_PORT')) {
@@ -56,7 +65,7 @@ export class DevEnvStack extends cdk.Stack {
         `Allow SSH (any, port ${sshPort})`,
       );
     }
-    // allowedIp未指定時はIngressルールを追加しない（全ポート閉鎖）
+    // allowedIp/SSH_PORT未指定時はTailscale以外のIngressルールを追加しない（全ポート閉鎖）
 
     // Amazon Linux 2023 ARM64 AMI
     const ami = ec2.MachineImage.latestAmazonLinux({

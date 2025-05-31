@@ -3,8 +3,24 @@ set -eux
 # 基本ツール
 sudo yum update -y
 sudo yum install -y git docker awscli
-sudo systemctl enable --now docker
-sudo usermod -aG docker ec2-user
+# AWS関連追加コマンド
+# Session Manager Plugin
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux/$(uname -m)/session-manager-plugin.rpm" -o session-manager-plugin.rpm
+sudo yum install -y session-manager-plugin.rpm
+rm -f session-manager-plugin.rpm
+# SSM Agent（Amazon Linux 2/2023は標準搭載だが念のため）
+sudo yum install -y amazon-ssm-agent || true
+sudo systemctl enable --now amazon-ssm-agent
+# ECS CLI
+sudo curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
+sudo chmod +x /usr/local/bin/ecs-cli
+# eksctl
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv /tmp/eksctl /usr/local/bin
+# AWS CDK
+sudo npm install -g aws-cdk
+# AWS SAM CLI
+sudo yum install -y aws-sam-cli || sudo pip3 install aws-sam-cli
 
 # code-server install
 curl -fsSL https://code-server.dev/install.sh | sh

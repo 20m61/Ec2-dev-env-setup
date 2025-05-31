@@ -45,21 +45,36 @@ npm install
 
 ### 2. シークレットの設定（GitHub）
 
-| シークレット名          | 内容                       |
-| ----------------------- | -------------------------- |
-| `AWS_ACCESS_KEY_ID`     | IAM ユーザーのアクセスキー |
-| `AWS_SECRET_ACCESS_KEY` | 同上                       |
-| `AWS_REGION`            | 例：`ap-northeast-1`       |
-| `PROJECT_BUCKET_NAME`   | S3 バケット名（任意）      |
+| シークレット名          | 内容                                  |
+| ----------------------- | ------------------------------------- |
+| `AWS_ACCESS_KEY_ID`     | IAM ユーザーのアクセスキー            |
+| `AWS_SECRET_ACCESS_KEY` | 同上                                  |
+| `AWS_REGION`            | 例：`ap-northeast-1`                  |
+| `PROJECT_BUCKET_NAME`   | S3 バケット名（任意）                 |
+| `GITHUB_TOKEN`          | GitHub CLI/Copilot 用トークン（必須） |
+| `CLAUDE_API_KEY`        | Claude CLI 用 API キー（任意）        |
 
 > ⚠️ **注意:**
 > GitHub Actions で AWS にデプロイするには、必ずリポジトリの「Settings > Secrets and variables > Actions > Secrets」に
 > `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION` を登録してください。
-> これらが未設定の場合、ワークフローは失敗します。
+> `GITHUB_TOKEN` は EC2 上で gh/gh copilot CLI の認証に利用されます。
+> `CLAUDE_API_KEY` は Claude CLI 利用時に必要です（Claude を使う場合のみ）。
+> MCP（Model Context Protocol）はプロトコル仕様であり、特定の CLI や共通トークン（MCP_TOKEN）は存在しません。利用したい MCP サーバーやクライアント（例: GitHub, Notion, DB, Claude Desktop 等）ごとに、各実装の公式手順に従ってインストール・設定・認証情報（API キー等）を用意してください。
+> これらが未設定の場合、一部機能が利用できません。
 
 ---
 
-### 3. CDK 構成
+### 3. CLI ツールの自動インストール・認証
+
+- EC2 インスタンス起動時に `gh`（GitHub CLI）、`gh copilot`、`claude` CLI も自動インストールされます。
+- `.env` ファイルに `GITHUB_TOKEN` や `CLAUDE_API_KEY` を記載しておくと、初回起動時に自動で認証・設定されます。
+- Copilot CLI は `gh` の認証トークンを利用します。
+- Claude CLI は `CLAUDE_API_KEY` を `~/.bashrc` に自動で追記します。
+- MCP を利用したい場合は、利用したい MCP サーバー/クライアントの公式手順に従い、必要な OSS やサービスを各自インストール・設定してください。
+
+---
+
+### 4. CDK 構成
 
 #### `lib/dev-env-stack.ts`
 
@@ -75,7 +90,7 @@ npm install
 
 ---
 
-### 4. GitHub Actions デプロイ（`.github/workflows/deploy.yml`）
+### 5. GitHub Actions デプロイ（`.github/workflows/deploy.yml`）
 
 ```yaml
 name: Deploy EC2 Environment

@@ -3,22 +3,44 @@ set -eux
 # 基本ツール
 sudo yum update -y
 sudo yum install -y git docker awscli
-# AWS関連追加コマンド
+# AWS CLI v2 install（明示的にv2をインストール）
+if ! command -v aws &>/dev/null || [[ $(aws --version 2>&1) != aws-cli/2* ]]; then
+  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  unzip -o awscliv2.zip
+  sudo ./aws/install --update
+  rm -rf awscliv2.zip aws/
+fi
+
 # Session Manager Plugin
-curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux/$(uname -m)/session-manager-plugin.rpm" -o session-manager-plugin.rpm
-sudo yum install -y session-manager-plugin.rpm
-rm -f session-manager-plugin.rpm
+if ! command -v session-manager-plugin &>/dev/null; then
+  curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux/$(uname -m)/session-manager-plugin.rpm" -o session-manager-plugin.rpm
+  sudo yum install -y session-manager-plugin.rpm
+  rm -f session-manager-plugin.rpm
+fi
+
 # SSM Agent（Amazon Linux 2/2023は標準搭載だが念のため）
 sudo yum install -y amazon-ssm-agent || true
 sudo systemctl enable --now amazon-ssm-agent
-# ECS CLI
-sudo curl -Lo /usr/local/bin/ecs-cli https://amazon-ecs-cli.s3.amazonaws.com/ecs-cli-linux-amd64-latest
-sudo chmod +x /usr/local/bin/ecs-cli
+
+# AWS Copilot CLI（ECS CLIは非推奨のため置換）
+if ! command -v copilot &>/dev/null; then
+  curl -Lo copilot https://github.com/aws/copilot-cli/releases/latest/download/copilot-linux
+  chmod +x copilot
+  sudo mv copilot /usr/local/bin/copilot
+fi
+
 # eksctl
-curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
-sudo mv /tmp/eksctl /usr/local/bin
-# AWS CDK
-sudo npm install -g aws-cdk
+curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" -o /tmp/eksctl.tar.gz
+mkdir -p /tmp/eksctl-unpack
+ tar xz -C /tmp/eksctl-unpack -f /tmp/eksctl.tar.gz
+sudo mv /tmp/eksctl-unpack/eksctl /usr/local/bin/eksctl
+rm -rf /tmp/eksctl.tar.gz /tmp/eksctl-unpack
+
+# AWS CDK（バージョン固定例: v2系最新安定版。必要に応じてバージョンを調整）
+if ! command -v cdk &>/dev/null; then
+  sudo npm install -g aws-cdk@2
+fi
+
 # AWS SAM CLI
 sudo yum install -y aws-sam-cli || sudo pip3 install aws-sam-cli
 

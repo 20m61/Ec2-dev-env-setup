@@ -21,15 +21,17 @@ export class DevEnvStack extends cdk.Stack {
       assumedBy: new iam.ServicePrincipal('ec2.amazonaws.com'),
     });
     role.addManagedPolicy(
-      iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonSSMManagedInstanceCore')
+      iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonSSMManagedInstanceCore'),
     );
-    role.addManagedPolicy(
-      iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonS3FullAccess')
-    );
+    role.addManagedPolicy(iam.ManagedPolicy.fromAwsManagedPolicyName('AmazonS3FullAccess'));
 
     // セキュリティグループ
-    const allowedIp =
-      process.env.ALLOWED_IP || this.node.tryGetContext('ALLOWED_IP');
+    const allowedIp = process.env.ALLOWED_IP || this.node.tryGetContext('ALLOWED_IP');
+    // CIDR形式バリデーション
+    const cidrRegex = /^([0-9]{1,3}\.){3}[0-9]{1,3}\/[0-9]{1,2}$/;
+    if (allowedIp && !allowedIp.split(',').every((ip: string) => cidrRegex.test(ip.trim()))) {
+      throw new Error(`ALLOWED_IPはCIDR形式で指定してください: ${allowedIp}`);
+    }
     const sshSource = allowedIp ? ec2.Peer.ipv4(allowedIp) : ec2.Peer.anyIpv4();
     const sg = new ec2.SecurityGroup(this, 'DevEnvSG', {
       vpc,
@@ -57,20 +59,13 @@ export class DevEnvStack extends cdk.Stack {
     };
 
     // user-data
-    const userData = fs.readFileSync(
-      path.join(__dirname, '../templates/user-data.sh'),
-      'utf8'
-    );
+    const userData = fs.readFileSync(path.join(__dirname, '../templates/user-data.sh'), 'utf8');
 
     // EC2 Instance
-    const spotMaxPrice =
-      this.node.tryGetContext('SPOT_MAX_PRICE') || process.env.SPOT_MAX_PRICE;
+    const spotMaxPrice = this.node.tryGetContext('SPOT_MAX_PRICE') || process.env.SPOT_MAX_PRICE;
     const instance = new ec2.Instance(this, 'DevEnvInstance', {
       vpc,
-      instanceType: ec2.InstanceType.of(
-        ec2.InstanceClass.T4G,
-        ec2.InstanceSize.XLARGE
-      ),
+      instanceType: ec2.InstanceType.of(ec2.InstanceClass.T4G, ec2.InstanceSize.XLARGE),
       machineImage: ami,
       securityGroup: sg,
       role,
@@ -83,8 +78,12 @@ export class DevEnvStack extends cdk.Stack {
 
     // S3バケット（任意）
     const bucketName =
-      process.env.PROJECT_BUCKET_NAME ||
-      this.node.tryGetContext('PROJECT_BUCKET_NAME');
+      process.env.PROJECT_BUCKET_NAME || this.node.tryGetContext('PROJECT_BUCKET_NAME');
+    // S3バケット名バリデーション
+    const bucketNameRegex = /^[a-z0-9.-]{3,63}$/;
+    if (bucketName && !bucketNameRegex.test(bucketName)) {
+      throw new Error(`S3バケット名が不正です: ${bucketName}`);
+    }
     if (bucketName) {
       const bucket = new s3.Bucket(this, 'ProjectBucket', {
         bucketName,
@@ -96,9 +95,12 @@ export class DevEnvStack extends cdk.Stack {
         new iam.PolicyStatement({
           actions: ['s3:*'],
           resources: [bucket.bucketArn, `${bucket.bucketArn}/*`],
-        })
+        }),
       );
     }
     // CloudWatch Logs等を追加する場合もremovalPolicy: DESTROYを必ず指定してください
+
+    // EC2 Nameタグ付与
+    instance.instance.addPropertyOverride('Tags', [{ Key: 'Name', Value: id }]);
   }
 }

@@ -82,6 +82,23 @@ Amazon EC2（Graviton）と AWS CDK、GitHub Actions を使って、コスパ最
 
 ---
 
+## 📝 前提条件
+
+- AWSアカウント（EC2, S3, IAM, CloudFormation等が利用可能な権限）
+- macOS/Linux/Windows いずれかのPC
+- Node.js（推奨: v18以上）
+- npm（Node.jsに同梱、推奨: v9以上）
+- AWS CLI（推奨: v2系）
+- AWS CDK CLI（推奨: v2系、`npm install -g aws-cdk`）
+- GitHub CLI（`gh`、推奨: v2系、`brew install gh` など）
+- git
+
+> ※バージョンは `node -v` `npm -v` `aws --version` `cdk --version` `gh --version` で確認できます。
+>
+> AWSリソース作成にはコストが発生します。不要になったリソースは必ず削除してください。
+
+---
+
 ## 🚀 セットアップ手順
 
 ### 1. リポジトリ作成 & 初期化
@@ -305,6 +322,15 @@ new events.Rule(this, 'StopInstanceRule', {
 - `eslint`/`prettier`/`jest`による静的解析・自動整形・テストが追加されています。
 - `npm run lint`/`npm run format`/`npm test` で品質チェックが可能です。
 - GitHub Actionsでも自動でlint/testが実行されます。
+
+---
+
+## 🧹 クリーンアップ・リソース削除
+
+- 不要になったEC2インスタンスやEBS、S3バケット等はAWSマネジメントコンソールや `cdk destroy` コマンドで削除してください。
+- `cdk destroy` でCDKスタック全体を削除できます。
+- S3バケットやIAMロールなど一部リソースは手動削除が必要な場合があります。
+- 削除漏れがあるとコストが継続発生するため、必ずご確認ください。
 
 ---
 

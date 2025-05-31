@@ -1,0 +1,20 @@
+{
+  "version": "41.0.0",
+  "files": {
+    "dbb18045c0a2711139fae7ac8e025470a13882644f39c12687045c913da67998": {
+      "displayName": "DevEnvStack Template",
+      "source": {
+        "path": "DevEnvStack.template.json",
+        "packaging": "file"
+      },
+      "destinations": {
+        "current_account-current_region": {
+          "bucketName": "cdk-hnb659fds-assets-${AWS::AccountId}-${AWS::Region}",
+          "objectKey": "dbb18045c0a2711139fae7ac8e025470a13882644f39c12687045c913da67998.json",
+          "assumeRoleArn": "arn:${AWS::Partition}:iam::${AWS::AccountId}:role/cdk-hnb659fds-file-publishing-role-${AWS::AccountId}-${AWS::Region}"
+        }
+      }
+    }
+  },
+  "dockerImages": {}
+}

@@ -537,19 +537,83 @@ i-xxxxxxxx,203.0.113.10,ec2-user,my-key,ap-northeast-1,"ssh -i keys/my-key.pem e
 
 ---
 
-## 📝 .envファイルの配置・反映方法
+## 📝 .env.example・tools.txt のサンプルと説明
 
 - プロジェクトルートに `.env` ファイルを作成し、`.env.example` を参考に必要な値を設定してください。
-- `.env` ファイルはEC2インスタンスの `/home/ec2-user/.env` に自動配置されることを推奨します。
-- `user-data.sh` では `/home/ec2-user/.env` が存在すれば自動的に読み込まれ、環境変数として反映されます。
-- セキュリティのため `.env` ファイルのパーミッションは `600`（所有者のみ読み書き）に設定してください。
+- 追加でインストールしたいツールは `templates/tools.txt` に1行ずつ記載できます。
+- `.env.example` と `templates/tools.txt` の内容例:
 
-```bash
-chmod 600 .env
+```env
+# .env.example
+AWS_ACCESS_KEY_ID=your-access-key-id
+AWS_SECRET_ACCESS_KEY=your-secret-access-key
+AWS_REGION=ap-northeast-1
+PROJECT_BUCKET_NAME=your-s3-bucket-name
+KEY_PAIR_NAME=your-keypair-name
+GITHUB_TOKEN=your-github-token
+# ALLOWED_IP=203.0.113.1/32
+# SSH_PORT=22
+# SPOT_MAX_PRICE=0.05
+# TAILSCALE_AUTHKEY=tskey-xxxxxxxxxxxxxxxxxxxx
 ```
 
-- `keys/` ディレクトリや秘密鍵（\*.pem）は `.gitignore` で管理対象外です。パーミッションも `600` を推奨します。
+```txt
+# templates/tools.txt
+zsh
+tmux
+htop
+jq
+tree
+unzip
+make
+gcc
+python3
+nodejs
+yarn
+fzf
+bat
+ripgrep
+neovim
+```
+
+---
+
+## 🧪 テスト実行方法
+
+- 静的解析・テストは以下のコマンドで実行できます。
 
 ```bash
-chmod 600 keys/*.pem
+npm run lint
+npm run format
+npm test
 ```
+
+- テスト内容は `test/dev-env-stack.test.ts` を参照してください。
+- GitHub Actionsでも自動でlint/testが実行されます。
+
+---
+
+## 🔐 code-serverパスワード管理の注意
+
+- code-serverの初回起動時、ランダムなパスワードが `/home/ec2-user/code-server-password.txt` に保存されます。
+- パスワードは `/etc/profile.d/code-server.sh` で環境変数として渡されます。
+- パスワードは第三者に漏洩しないよう厳重に管理してください。
+- パブリックIPでアクセスする場合は必ずセキュリティグループやVPN等でアクセス制限を行ってください。
+
+---
+
+## 🛡️ Maxplan/Claude CLIの注意
+
+- Maxplan CLI（Claude Code）は自動インストール対象外です。必要な場合は公式手順で各自インストールしてください。
+- Claude CLIは非推奨です。Maxplanへの移行を推奨します。
+- APIキーは `.env` で明示的に設定してください。
+
+---
+
+## 🛡️ SSM Session Manager推奨
+
+- EC2へのアクセスはSSHよりもSSM Session Managerの利用を推奨します。
+- SSMはAWS公式で推奨されており、セキュリティ・監査性が高いです。
+- 詳細は [Session Manager公式](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html) を参照してください。
+
+---

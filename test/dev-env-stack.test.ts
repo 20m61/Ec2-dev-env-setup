@@ -120,6 +120,27 @@ describe('DevEnvStack', () => {
     }
   });
 
+  test('keyNameが指定された場合にEC2インスタンスに反映される', () => {
+    process.env.KEY_PAIR_NAME = 'my-key';
+    const app = new App();
+    const stack = new DevEnvStack(app, 'TestStackKeyPair');
+    const template = Template.fromStack(stack);
+    const resources = template.findResources('AWS::EC2::Instance');
+    const instance = Object.values(resources)[0];
+    expect(instance.Properties.KeyName).toBe('my-key');
+    delete process.env.KEY_PAIR_NAME;
+  });
+
+  test('keyNameが未指定の場合はEC2インスタンスにKeyNameプロパティが含まれない', () => {
+    delete process.env.KEY_PAIR_NAME;
+    const app = new App();
+    const stack = new DevEnvStack(app, 'TestStackNoKeyPair');
+    const template = Template.fromStack(stack);
+    const resources = template.findResources('AWS::EC2::Instance');
+    const instance = Object.values(resources)[0];
+    expect(instance.Properties.KeyName).toBeUndefined();
+  });
+
   // S3バケットは環境変数/Contextで指定時のみ作成されるため、ここでは省略
   // UserDataの内容検証はCDKのTemplate APIでは難しいため、別途スタブ化やモックでの検証が必要
 });

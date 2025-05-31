@@ -141,6 +141,7 @@ npm install
 | `CLAUDE_API_KEY`        | Claude CLI 用 API キー（非推奨、Maxplanへ移行推奨）                                                                                                                      |
 | `ALLOWED_IP`            | SSH/HTTPS/code-server の許可 IP（CIDR 表記）。例: `203.0.113.1/32`（単一 IP 許可）や `0.0.0.0/0`（全 IP 許可）。複数 IP を許可する場合は CIDR をカンマ区切りで指定。     |
 | `SPOT_MAX_PRICE`        | スポットインスタンスの最大価格（USD/h）。例: `0.05`（最大 0.05 USD/h まで）。未指定の場合はオンデマンドインスタンスとして起動。価格は AWS のスポット価格を確認して設定。 |
+| `KEY_PAIR_NAME`         | EC2用キーペア名（必須）。AWSコンソールやCLIで作成したキーペア名を指定。                                                                                                  |
 
 > ⚠️ **注意:**
 > GitHub Actions で AWS にデプロイするには、必ずリポジトリの「Settings > Secrets and variables > Actions > Secrets」に
@@ -168,15 +169,17 @@ chmod 600 my-key.pem
 
 #### 2. CDKスタックでキーペア名を指定
 
-`lib/dev-env-stack.ts` の `ec2.Instance` 作成時に `keyName` プロパティを追加してください。
+`KEY_PAIR_NAME` 環境変数またはGitHub Secretsでキーペア名を指定してください。CDKスタックは自動的にこの値を利用します。
 
-```ts
-const instance = new ec2.Instance(this, 'DevEnvInstance', {
-  // ...existing code...
-  keyName: 'my-key', // 作成したキーペア名
-  // ...existing code...
-});
+例: .env または GitHub Secrets に
+
 ```
+KEY_PAIR_NAME=my-key
+```
+
+を設定してください。
+
+`lib/dev-env-stack.ts` の `ec2.Instance` 作成時は自動的に `keyName: process.env.KEY_PAIR_NAME` が利用されます。
 
 #### 3. EC2のパブリックIPアドレスを確認
 

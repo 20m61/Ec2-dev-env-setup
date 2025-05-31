@@ -79,14 +79,16 @@ npm install
 
 ### 2. シークレットの設定（GitHub）
 
-| シークレット名          | 内容                                  |
-| ----------------------- | ------------------------------------- |
-| `AWS_ACCESS_KEY_ID`     | IAM ユーザーのアクセスキー            |
-| `AWS_SECRET_ACCESS_KEY` | 同上                                  |
-| `AWS_REGION`            | 例：`ap-northeast-1`                  |
-| `PROJECT_BUCKET_NAME`   | S3 バケット名（任意）                 |
-| `GITHUB_TOKEN`          | GitHub CLI/Copilot 用トークン（必須） |
-| `CLAUDE_API_KEY`        | Claude CLI 用 API キー（任意）        |
+| シークレット名          | 内容                                                                 |
+| ----------------------- | -------------------------------------------------------------------- |
+| `AWS_ACCESS_KEY_ID`     | IAM ユーザーのアクセスキー                                           |
+| `AWS_SECRET_ACCESS_KEY` | 同上                                                                 |
+| `AWS_REGION`            | 例：`ap-northeast-1`                                                 |
+| `PROJECT_BUCKET_NAME`   | S3 バケット名（任意）                                                |
+| `GITHUB_TOKEN`          | GitHub CLI/Copilot 用トークン（必須）                                |
+| `CLAUDE_API_KEY`        | Claude CLI 用 API キー（任意）                                       |
+| `ALLOWED_IP`            | SSH/HTTPS/code-server の許可 IP（例: `203.0.113.1/32`）              |
+| `SPOT_MAX_PRICE`        | スポットインスタンスの最大価格（例: `0.05`、未指定ならオンデマンド） |
 
 > ⚠️ **注意:**
 > GitHub Actions で AWS にデプロイするには、必ずリポジトリの「Settings > Secrets and variables > Actions > Secrets」に
@@ -166,11 +168,63 @@ jobs:
 
 ---
 
-## 📦 TODO（今後の拡張）
+## 🔒 セキュリティグループの IP 制限
 
-- [ ] `bootstrap.sh` で一発セットアップ
-- [ ] OIDC で GitHub Actions からロール連携
-- [ ] CloudWatch ログ収集設定
+デフォルトでは全 IP 許可ですが、`ALLOWED_IP` 環境変数（例: `203.0.113.1/32`）を指定すると、その IP のみ SSH/HTTPS/8080 が許可されます。
+
+---
+
+## 💸 スポットインスタンス運用
+
+`SPOT_MAX_PRICE` 環境変数を指定すると、EC2 がスポットインスタンスとして起動します。
+
+- 例: `SPOT_MAX_PRICE=0.05` で最大 0.05USD/h まで
+- 未指定ならオンデマンド
+
+---
+
+## 🛡️ S3 バケット権限の最小化
+
+S3 バケットを作成した場合、IAM ロールにはそのバケット単位の権限のみが付与されます。
+
+- `AmazonS3FullAccess`は不要になり、セキュリティが向上します。
+- 既存バケットを使う場合は、必要に応じて権限を調整してください。
+
+---
+
+## ⏰ EC2 自動停止スケジュール（サンプル）
+
+コスト削減のため、EventBridge + Lambda で自動停止が可能です。
+
+```ts
+// CDK例: 毎日23時にEC2を停止
+import * as events from 'aws-cdk-lib/aws-events';
+import * as targets from 'aws-cdk-lib/aws-events-targets';
+import * as lambda from 'aws-cdk-lib/aws-lambda';
+
+const stopInstanceFn = new lambda.Function(this, 'StopInstanceFn', {
+  runtime: lambda.Runtime.PYTHON_3_11,
+  handler: 'index.handler',
+  code: lambda.Code.fromInline(`
+import boto3
+def handler(event, context):
+  ec2 = boto3.client('ec2')
+  ec2.stop_instances(InstanceIds=['i-xxxxxxxxxxxxxxxxx'])
+`),
+  environment: { INSTANCE_ID: instance.instanceId },
+});
+new events.Rule(this, 'StopInstanceRule', {
+  schedule: events.Schedule.cron({ minute: '0', hour: '14' }), // UTC+9=23時
+  targets: [new targets.LambdaFunction(stopInstanceFn)],
+});
+```
+
+### ⚠️ 自動停止時の注意点
+
+- 自動停止時、EC2 上で実行中のプロセスや作業は**強制的に中断**されます。
+- 保存していないデータや未 push のコードは失われる可能性があります。
+- 重要な作業は**こまめに保存・git/S3 等にバックアップ**してください。
+- スポットインスタンスも同様に、AWS 側都合で中断される場合があります。
 
 ---
 

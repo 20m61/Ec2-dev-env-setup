@@ -15,3 +15,9 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION || env.AWS_REGION }}
       - run: npm ci
       - run: npx cdk deploy --require-approval never
+      - name: Set ALLOWED_IP (optionally)
+        run: echo "ALLOWED_IP=203.0.113.1/32" >> $GITHUB_ENV
+        if: false # Enable this step only if you need to restrict access to a specific IP address
+      - name: Set SPOT_MAX_PRICE (optionally)
+        run: echo "SPOT_MAX_PRICE=0.05" >> $GITHUB_ENV
+        if: false # 必要な場合のみ有効化

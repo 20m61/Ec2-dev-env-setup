@@ -28,18 +28,17 @@ export class DevEnvStack extends cdk.Stack {
     );
 
     // セキュリティグループ
+    const allowedIp =
+      process.env.ALLOWED_IP || this.node.tryGetContext('ALLOWED_IP');
+    const sshSource = allowedIp ? ec2.Peer.ipv4(allowedIp) : ec2.Peer.anyIpv4();
     const sg = new ec2.SecurityGroup(this, 'DevEnvSG', {
       vpc,
       allowAllOutbound: true,
       description: 'Allow SSH and HTTPS',
     });
-    sg.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(22), 'Allow SSH');
-    sg.addIngressRule(ec2.Peer.anyIpv4(), ec2.Port.tcp(443), 'Allow HTTPS');
-    sg.addIngressRule(
-      ec2.Peer.anyIpv4(),
-      ec2.Port.tcp(8080),
-      'Allow code-server'
-    );
+    sg.addIngressRule(sshSource, ec2.Port.tcp(22), 'Allow SSH');
+    sg.addIngressRule(sshSource, ec2.Port.tcp(443), 'Allow HTTPS');
+    sg.addIngressRule(sshSource, ec2.Port.tcp(8080), 'Allow code-server');
 
     // Amazon Linux 2023 ARM64 AMI
     const ami = ec2.MachineImage.latestAmazonLinux({
@@ -53,6 +52,7 @@ export class DevEnvStack extends cdk.Stack {
       deviceName: '/dev/xvda',
       volume: ec2.BlockDeviceVolume.ebs(100, {
         volumeType: ec2.EbsDeviceVolumeType.GP3,
+        deleteOnTermination: true, // インスタンス削除時にEBSも削除
       }),
     };
 
@@ -63,6 +63,8 @@ export class DevEnvStack extends cdk.Stack {
     );
 
     // EC2 Instance
+    const spotMaxPrice =
+      this.node.tryGetContext('SPOT_MAX_PRICE') || process.env.SPOT_MAX_PRICE;
     const instance = new ec2.Instance(this, 'DevEnvInstance', {
       vpc,
       instanceType: ec2.InstanceType.of(
@@ -74,6 +76,9 @@ export class DevEnvStack extends cdk.Stack {
       role,
       blockDevices: [ebs],
       userData: ec2.UserData.custom(userData),
+      ...(spotMaxPrice && {
+        spotPrice: spotMaxPrice,
+      }),
     });
 
     // S3バケット（任意）
@@ -81,11 +86,19 @@ export class DevEnvStack extends cdk.Stack {
       process.env.PROJECT_BUCKET_NAME ||
       this.node.tryGetContext('PROJECT_BUCKET_NAME');
     if (bucketName) {
-      new s3.Bucket(this, 'ProjectBucket', {
+      const bucket = new s3.Bucket(this, 'ProjectBucket', {
         bucketName,
-        removalPolicy: cdk.RemovalPolicy.DESTROY,
-        autoDeleteObjects: true,
+        removalPolicy: cdk.RemovalPolicy.DESTROY, // スタック削除時にバケットも削除
+        autoDeleteObjects: true, // バケット内の全オブジェクトも削除
       });
+      // S3バケット単位の権限のみ付与
+      role.addToPolicy(
+        new iam.PolicyStatement({
+          actions: ['s3:*'],
+          resources: [bucket.bucketArn, `${bucket.bucketArn}/*`],
+        })
+      );
     }
+    // CloudWatch Logs等を追加する場合もremovalPolicy: DESTROYを必ず指定してください
   }
 }

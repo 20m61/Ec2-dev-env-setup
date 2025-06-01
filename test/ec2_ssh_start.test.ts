@@ -93,7 +93,7 @@ describe('tools/ec2_ssh_start.sh', () => {
     console.log('stdout:', result.stdout);
     console.log('stderr:', result.stderr);
     console.log('error:', result.error);
-    expect(result.stdout).toMatch(/SSH接続/);
+    expect(result.stdout).toContain('SSH接続');
     expect(result.status).toBe(0);
     console.timeEnd('インスタンス起動からSSHまで');
     done();

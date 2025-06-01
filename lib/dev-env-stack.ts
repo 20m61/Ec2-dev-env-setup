@@ -88,9 +88,11 @@ export class DevEnvStack extends cdk.Stack {
 
     // EC2 Instance
     const spotMaxPrice = this.node.tryGetContext('SPOT_MAX_PRICE') || process.env.SPOT_MAX_PRICE;
+    // --- キーペア名の決定ロジックを修正 ---
+    let keyPairName: string | undefined =
+      process.env.KEY_PAIR_NAME || this.node.tryGetContext('KEY_PAIR_NAME');
     const keyPairDir = path.join(__dirname, '../keys');
-    let keyPairName: string | undefined = undefined;
-    if (fs.existsSync(keyPairDir)) {
+    if (!keyPairName && fs.existsSync(keyPairDir)) {
       const pemFiles = fs.readdirSync(keyPairDir).filter((f) => f.endsWith('.pem'));
       if (pemFiles.length > 0) {
         keyPairName = path.parse(pemFiles[0]).name;
@@ -109,7 +111,6 @@ export class DevEnvStack extends cdk.Stack {
           })
           .catch(() => {
             // aws-sdkが無い場合は警告のみ
-
             console.warn('AWS EC2にキーペアが存在するか確認できません（aws-sdk未インストール）');
           });
       }

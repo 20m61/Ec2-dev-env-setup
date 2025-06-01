@@ -4,6 +4,25 @@ import { App } from 'aws-cdk-lib';
 import { Template } from 'aws-cdk-lib/assertions';
 import { DevEnvStack } from '../lib/dev-env-stack';
 
+// --- 追加: .env存在・内容をグローバルモック ---
+const origExistsSync = fs.existsSync;
+const origReadFileSync = fs.readFileSync;
+beforeAll(() => {
+  jest.spyOn(fs, 'existsSync').mockImplementation((p) => {
+    if (typeof p === 'string' && p.toString().includes('.env')) return true;
+    return origExistsSync(p);
+  });
+  jest.spyOn(fs, 'readFileSync').mockImplementation((p: any, ...args: any[]) => {
+    if (typeof p === 'string' && p.toString().includes('.env'))
+      return 'DUMMY_ENV=1\nTAILSCALE_AUTHKEY=dummy';
+    return origReadFileSync(p, ...args);
+  });
+});
+afterAll(() => {
+  (fs.existsSync as any).mockRestore && (fs.existsSync as any).mockRestore();
+  (fs.readFileSync as any).mockRestore && (fs.readFileSync as any).mockRestore();
+});
+
 describe('DevEnvStack', () => {
   beforeEach(() => {
     delete process.env.ALLOWED_IP;
@@ -235,18 +254,17 @@ describe('DevEnvStack', () => {
   });
 
   test('CDKデプロイ時にSSH接続情報CSVとec2_ssh_configが正しく出力される', () => {
-    // fs.writeFileSync, existsSync, readdirSync, readFileSyncをモック
+    // App/Stack生成の直前でモックをセット
     const writeFileSyncMock = jest.spyOn(fs, 'writeFileSync').mockImplementation(() => undefined);
     const existsSyncMock = jest.spyOn(fs, 'existsSync').mockImplementation((p) => {
       if (typeof p === 'string' && p.toString().includes('keys')) return true;
+      if (typeof p === 'string' && p.toString().includes('.env')) return true;
       return false;
     });
-    // 型を無理やり合わせるためas unknown as typeof fs.readdirSync
     const readdirSyncMock = jest.spyOn(fs, 'readdirSync') as unknown as jest.Mock;
     readdirSyncMock.mockImplementation((p: any, options?: any) => {
       if (typeof p === 'string' && p.includes('keys')) {
         if (options && options.withFileTypes) {
-          // Direntのダミー
           return [{ name: 'my-key.pem', isFile: () => true, isDirectory: () => false }];
         }
         return ['my-key.pem'];
@@ -256,16 +274,15 @@ describe('DevEnvStack', () => {
     const readFileSyncMock = jest.spyOn(fs, 'readFileSync').mockImplementation((p: any) => {
       if (typeof p === 'string' && p.toString().includes('user-data.sh'))
         return '#!/bin/bash\necho hello';
+      if (typeof p === 'string' && p.toString().includes('.env'))
+        return 'DUMMY_ENV=1\nTAILSCALE_AUTHKEY=dummy';
       return '';
     });
-
     process.env.AWS_ACCESS_KEY_ID = 'dummy-access';
     process.env.AWS_SECRET_ACCESS_KEY = 'dummy-secret';
     process.env.KEY_PAIR_NAME = 'my-key';
     const app = new App();
     new DevEnvStack(app, 'TestStack');
-
-    // ec2_ssh_configとec2-connection-info.csvが出力されているか
     const calls = writeFileSyncMock.mock.calls;
     const configCall = calls.find(
       (c) => typeof c[0] === 'string' && c[0].includes('ec2_ssh_config'),
@@ -281,7 +298,6 @@ describe('DevEnvStack', () => {
       expect(csvCall[1]).toContain('InstanceId');
       expect(csvCall[1]).toContain('ssh -i keys/my-key.pem ec2-user@');
     }
-
     // モック解除
     writeFileSyncMock.mockRestore();
     existsSyncMock.mockRestore();
@@ -293,19 +309,16 @@ describe('DevEnvStack', () => {
   });
 
   test('CDKデプロイ時に.envが自動配置され、Tailscale等のセットアップが実行される', () => {
-    // .envの内容がUserData先頭にcatコマンドで配置されているか
     const app = new App();
     const stack = new DevEnvStack(app, 'TestStackEnvUserData');
     const template = Template.fromStack(stack);
     const resources = template.findResources('AWS::EC2::Instance');
     const instance = Object.values(resources)[0];
     expect(instance.Properties.UserData).toBeDefined();
-    // UserDataに.env配置コマンドが含まれる
     const userDataBase64 = instance.Properties.UserData['Fn::Base64'];
     expect(userDataBase64).toMatch(/cat <<'EOF' > \/home\/ec2-user\/.env/);
     expect(userDataBase64).toMatch(/chown ec2-user:ec2-user \/home\/ec2-user\/.env/);
     expect(userDataBase64).toMatch(/chmod 600 \/home\/ec2-user\/.env/);
-    // Tailscale自動セットアップも含まれる
     expect(userDataBase64).toMatch(/tailscale/);
   });
 });

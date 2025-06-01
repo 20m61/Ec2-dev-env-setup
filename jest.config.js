@@ -1,4 +1,4 @@
-/* eslint-disable */
+ 
 /* eslint-env node */
 export default {
   preset: 'ts-jest',

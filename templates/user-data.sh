@@ -1,19 +1,23 @@
 #!/bin/bash
 set -euo pipefail
 
-# .envファイルの自動読込（存在すれば）
-if [ -f /home/ec2-user/.env ]; then
-  chmod 600 /home/ec2-user/.env
-  set -a
-  # .envの内容を安全にsource（危険な内容が含まれていないか最低限チェック）
-  if grep -q -E '^[A-Za-z_][A-Za-z0-9_]*=' /home/ec2-user/.env; then
-    source /home/ec2-user/.env
-  else
-    echo ".envファイルの内容が不正です。" >&2
-    exit 1
-  fi
-  set +a
+# .envファイルの存在チェック（なければ即エラー終了）
+if [ ! -f /home/ec2-user/.env ]; then
+  echo ".envファイルが存在しません。デプロイを中断します。" >&2
+  exit 1
 fi
+
+# .envファイルの自動読込（存在すれば）
+chmod 600 /home/ec2-user/.env
+set -a
+# .envの内容を安全にsource（危険な内容が含まれていないか最低限チェック）
+if grep -q -E '^[A-Za-z_][A-Za-z0-9_]*=' /home/ec2-user/.env; then
+  source /home/ec2-user/.env
+else
+  echo ".envファイルの内容が不正です。" >&2
+  exit 1
+fi
+set +a
 
 # セキュリティアップデートは定期的に実施してください（Amazon Linuxは自動アップデート設定も推奨）
 sudo yum update -y

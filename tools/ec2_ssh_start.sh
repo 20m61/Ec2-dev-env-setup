@@ -31,6 +31,12 @@ fi
 # 設定ファイルを読み込む
 source $CONFIG_FILE
 
+# 必須値チェック（空なら即エラー終了）
+if [[ -z "$INSTANCE_ID" || -z "$KEY_PATH" || -z "$USER" || -z "$REGION" ]]; then
+  echo "設定ファイルの必須値が未設定です。INSTANCE_ID, KEY_PATH, USER, REGION を確認してください。" >&2
+  exit 1
+fi
+
 # awsコマンドの存在確認
 if ! command -v aws >/dev/null 2>&1; then
   echo "aws CLIが見つかりません。インストールを試みます。"

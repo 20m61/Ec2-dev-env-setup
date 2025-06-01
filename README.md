@@ -636,3 +636,18 @@ zsh tools/ec2_ssh_start.sh
 - 詳細仕様やテスト例は `test/ec2_ssh_start.test.ts` も参照してください。
 
 ---
+
+## 🧪 テスト可視化・粒度分け
+
+- 本リポジトリはJestによる自動テストを導入し、CI/CDで常に品質を担保しています。
+- テストカバレッジは`coverage/`ディレクトリでHTML/LCOV形式で出力されます。
+- テスト粒度は以下の通りです：
+  - `test/dev-env-stack.test.ts` … CDKスタック全体の統合・構成・バリデーション・リソース検証
+  - `test/ec2_ssh_start.test.ts` … シェルスクリプトのE2E・統合テスト
+  - `test/ec2_ssh_start/unit.test.ts` … スクリプトの関数単位ユニットテスト
+- テストカバレッジやCIのバッジは以下の通りです：
+
+[![CI](https://github.com/YOUR_NAME/ec2-dev-env-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/YOUR_NAME/ec2-dev-env-template/actions)
+[![Coverage Status](https://img.shields.io/badge/coverage-auto--generated-brightgreen)](./coverage/lcov-report/index.html)
+
+---

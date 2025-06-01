@@ -9,6 +9,7 @@ import * as cloudwatch from 'aws-cdk-lib/aws-cloudwatch';
 import * as lambda from 'aws-cdk-lib/aws-lambda';
 import * as events from 'aws-cdk-lib/aws-events';
 import * as targets from 'aws-cdk-lib/aws-events-targets';
+import AWS from 'aws-sdk';
 
 export class DevEnvStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
@@ -89,11 +90,22 @@ export class DevEnvStack extends cdk.Stack {
     // EC2 Instance
     const spotMaxPrice = this.node.tryGetContext('SPOT_MAX_PRICE') || process.env.SPOT_MAX_PRICE;
     const keyPairDir = path.join(__dirname, '../keys');
-    let keyPairName = undefined;
+    let keyPairName: string | undefined = undefined;
     if (fs.existsSync(keyPairDir)) {
       const pemFiles = fs.readdirSync(keyPairDir).filter((f) => f.endsWith('.pem'));
       if (pemFiles.length > 0) {
         keyPairName = path.parse(pemFiles[0]).name;
+        // --- AWS側にキーペアが存在するかチェック ---
+        const ec2Client = new AWS.EC2({ region: cdk.Stack.of(this).region });
+        ec2Client
+          .describeKeyPairs({ KeyNames: [keyPairName] })
+          .promise()
+          .catch(() => {
+            // eslint-disable-next-line no-console
+            console.warn(
+              `警告: AWS EC2にキーペア '${keyPairName}' が存在しません。\n\n  → 事前に 'aws ec2 import-key-pair' で登録してください。\n  → デプロイは失敗します。`,
+            );
+          });
       }
     }
     const instance = new ec2.Instance(this, 'DevEnvInstance', {

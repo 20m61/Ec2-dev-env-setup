@@ -209,6 +209,22 @@ ssh -i my-key.pem ec2-user@<EC2のパブリックIP>
 
 ---
 
+## ⚠️ EC2キーペアの自動検出・AWS側キーペア登録について
+
+- `keys/` ディレクトリ内の `*.pem` ファイルを自動検出し、そのファイル名（拡張子なし）をEC2インスタンスの `keyName` として利用します。
+- **注意:** ローカルに `.pem` ファイルが存在しても、AWS EC2側に同名のキーペアが登録されていない場合、デプロイは失敗します。
+- デプロイ前に、以下のコマンドでAWS側にキーペアを登録してください（`my-key.pem` の部分は適宜変更）：
+
+```sh
+aws ec2 import-key-pair \
+  --key-name my-key \
+  --public-key-material "$(openssl rsa -in keys/my-key.pem -pubout 2>/dev/null | tail -n +2 | head -n -1 | tr -d '\n')"
+```
+
+- CDKデプロイ時にも、AWS側にキーペアが存在しない場合は警告が表示されます。
+
+---
+
 ### 3. CLI ツールの自動インストール・認証
 
 - EC2 インスタンス起動時に `gh`（GitHub CLI）、`gh copilot` CLI は自動インストールされます。
@@ -532,7 +548,6 @@ i-xxxxxxxx,203.0.113.10,ec2-user,my-key,ap-northeast-1,"ssh -i keys/my-key.pem e
 - [AWS CDK 公式ドキュメント](https://docs.aws.amazon.com/cdk/latest/guide/home.html)
 - [GitHub Actions 公式ドキュメント](https://docs.github.com/ja/actions)
 - [code-server 公式](https://github.com/coder/code-server)
-- [Maxplan CLI 公式](https://github.com/maxplan-io/cli)
 - [Claude API 公式](https://console.anthropic.com/)
 
 ---

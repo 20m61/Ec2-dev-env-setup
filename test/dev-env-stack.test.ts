@@ -136,14 +136,19 @@ describe('DevEnvStack', () => {
     delete process.env.KEY_PAIR_NAME;
   });
 
-  test('keyNameが未指定の場合はEC2インスタンスにKeyNameプロパティが含まれない', () => {
-    delete process.env.KEY_PAIR_NAME;
+  test('keyNameが未指定の場合はEC2インスタンスにKeyNameプロパティが含まれない（keys/に.pemが無い場合）', () => {
+    // keys/ディレクトリを一時退避
+    const keyDir = path.join(__dirname, '../keys');
+    const tmpDir = path.join(__dirname, '../keys_tmp');
+    if (fs.existsSync(keyDir)) fs.renameSync(keyDir, tmpDir);
     const app = new App();
-    const stack = new DevEnvStack(app, 'TestStackNoKeyPair');
+    const stack = new DevEnvStack(app, 'TestStackNoKey');
     const template = Template.fromStack(stack);
     const resources = template.findResources('AWS::EC2::Instance');
     const instance = Object.values(resources)[0];
     expect(instance.Properties.KeyName).toBeUndefined();
+    // keys/ディレクトリを元に戻す
+    if (fs.existsSync(tmpDir)) fs.renameSync(tmpDir, keyDir);
   });
 
   test('user-data.shにTailscale自動インストール・認証コマンドが含まれる', () => {
@@ -199,6 +204,30 @@ describe('DevEnvStack', () => {
     });
     const app = new App();
     expect(() => new DevEnvStack(app, 'TestStackUserDataMissing')).toThrow(/ENOENT/);
+  });
+
+  test('keys/内の.pemファイル名がkeyNameに使われる & AWS側存在チェック警告が出る', async () => {
+    // テスト用のダミー.pemファイルを作成
+    const keyDir = path.join(__dirname, '../keys');
+    const testPem = path.join(keyDir, 'test-key.pem');
+    if (!fs.existsSync(keyDir)) fs.mkdirSync(keyDir);
+    fs.writeFileSync(testPem, 'dummy');
+    // モック: aws-sdkのdescribeKeyPairsを必ずrejectする
+    jest.mock('aws-sdk', () => {
+      return {
+        EC2: jest.fn().mockImplementation(() => ({
+          describeKeyPairs: () => ({ promise: () => Promise.reject(new Error('Not found')) }),
+        })),
+      };
+    });
+    const app = new App();
+    // 警告が出るか確認（非同期なのでsetTimeoutで待つ）
+    const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
+    new DevEnvStack(app, 'TestStackKeyPair');
+    await new Promise((resolve) => setTimeout(resolve, 100));
+    expect(warnSpy.mock.calls.some((call) => call[0].includes('AWS EC2にキーペア'))).toBe(true);
+    warnSpy.mockRestore();
+    fs.unlinkSync(testPem);
   });
 
   // S3バケットは環境変数/Contextで指定時のみ作成されるため、ここでは省略

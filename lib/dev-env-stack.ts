@@ -129,6 +129,18 @@ export class DevEnvStack extends cdk.Stack {
     //   resources: ['arn:aws:s3:::your-bucket-name', 'arn:aws:s3:::your-bucket-name/*'],
     // }));
 
+    // --- .envファイルをUserDataで自動配置 ---
+    const envPath = path.join(__dirname, '../.env');
+    let envContent = '';
+    if (fs.existsSync(envPath)) {
+      envContent = fs.readFileSync(envPath, 'utf8');
+    } else {
+      throw new Error('.envファイルがプロジェクトルートに存在しません。');
+    }
+    // UserDataスクリプトの先頭で.envを配置するコマンドを追加
+    const envSetupScript = `cat <<'EOF' > /home/ec2-user/.env\n${envContent.replace(/\$/gm, '\\$')}\nEOF\nchown ec2-user:ec2-user /home/ec2-user/.env\nchmod 600 /home/ec2-user/.env\n`;
+    const mergedUserData = envSetupScript + userData;
+
     const instance = new ec2.Instance(this, `${resourcePrefix}-Instance`, {
       vpc,
       instanceType: ec2.InstanceType.of(ec2.InstanceClass.T4G, ec2.InstanceSize.XLARGE),
@@ -136,7 +148,7 @@ export class DevEnvStack extends cdk.Stack {
       securityGroup: sg,
       role,
       blockDevices: [ebs],
-      userData: ec2.UserData.custom(userData),
+      userData: ec2.UserData.custom(mergedUserData),
       ...(spotMaxPrice && {
         spotPrice: spotMaxPrice,
       }),

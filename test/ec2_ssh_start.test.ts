@@ -58,7 +58,9 @@ describe('tools/ec2_ssh_start.sh', () => {
 
   test('設定ファイルが無い場合は自動生成されexitする', (done) => {
     console.time('設定ファイルが無い場合');
+    // 事前にec2_ssh_configとバックアップを必ず削除
     if (fs.existsSync(configPath)) fs.unlinkSync(configPath);
+    if (fs.existsSync(backupPath)) fs.unlinkSync(backupPath);
     const env = { ...process.env, PATH: mockDir + path.delimiter + origPath };
     console.log('テスト実行時PATH:', env.PATH);
     const result = child_process.spawnSync('zsh', [scriptPath], {

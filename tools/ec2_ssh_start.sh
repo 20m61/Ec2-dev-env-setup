@@ -2,6 +2,10 @@
 # EC2インスタンスを起動し、SSH接続するスクリプト
 # 必要: AWS CLI, jq, SSH キーペア
 
+echo "[DEBUG] PATH=$PATH"
+echo "[DEBUG] which aws: $(which aws)"
+ls -l $(which aws)
+
 # 設定ファイルのパス
 CONFIG_FILE="$(dirname $0)/ec2_ssh_config"
 
@@ -46,6 +50,17 @@ if ! command -v aws >/dev/null 2>&1; then
   fi
 fi
 
+# awsコマンドラッパー関数
+function aws_safe() {
+  aws "$@"
+  local aws_status=$?
+  if [[ $aws_status -eq 127 ]]; then
+    echo "aws CLIが見つかりません。インストールを試みます。"
+    exit 1
+  fi
+  return $aws_status
+}
+
 # AWS認証情報のセットアップ
 if [[ -n "$AWS_ACCESS_KEY_ID" && -n "$AWS_SECRET_ACCESS_KEY" ]]; then
   export AWS_ACCESS_KEY_ID
@@ -54,10 +69,11 @@ if [[ -n "$AWS_ACCESS_KEY_ID" && -n "$AWS_SECRET_ACCESS_KEY" ]]; then
 else
   echo "AWS認証情報が設定ファイルにありません。aws configureを実行します。"
   aws configure
+  exit 1
 fi
 
 # インスタンスを起動
-aws ec2 start-instances --instance-ids $INSTANCE_ID --region $REGION
+aws_safe ec2 start-instances --instance-ids $INSTANCE_ID --region $REGION
 
 # runningになるまで待機
 # テスト高速化用: TEST_MODE=1 の場合はsleepを短縮
@@ -70,7 +86,7 @@ function fast_sleep() {
 }
 
 while true; do
-  STATE=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --region $REGION \
+  STATE=$(aws_safe ec2 describe-instances --instance-ids $INSTANCE_ID --region $REGION \
     --query 'Reservations[0].Instances[0].State.Name' --output text)
   if [[ "$STATE" == "running" ]]; then
     break
@@ -80,7 +96,7 @@ while true; do
 done
 
 # パブリックIP取得
-IP=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --region $REGION \
+IP=$(aws_safe ec2 describe-instances --instance-ids $INSTANCE_ID --region $REGION \
   --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
 
 if [[ "$IP" == "None" ]]; then

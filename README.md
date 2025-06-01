@@ -640,3 +640,30 @@ CDKコマンドでAWSへデプロイ後、ローカルのクローン済みコ�
 > - AWS上のリソースはそのまま残るため、必要に応じて管理・削除してください。
 
 ---
+
+### tmuxの自動セットアップ・推奨設定
+
+EC2インスタンス起動時に `~/.tmux.conf` が自動生成され、以下の推奨設定が有効化されます。
+
+- **マウス操作有効化**（ペイン/ウィンドウ切替・リサイズ・選択がマウスで可能）
+- **256色対応**
+- **スクロールバッファ拡張**（10,000行）
+- **viキーバインド**（コピーモード）
+- **クリップボード連携**（xclipがある場合、選択範囲をクリップボードへコピー）
+
+```bash
+cat <<'EOF' > ~/.tmux.conf
+set -g mouse on
+set -g default-terminal "screen-256color"
+set -g history-limit 10000
+setw -g mode-keys vi
+# クリップボード連携（Amazon Linux 2023/Ubuntu等でxclipがある場合）
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection clipboard -in"
+EOF
+```
+
+> これにより、EC2上で `tmux` を起動するだけで快適な多重ターミナル環境がすぐに利用できます。
+>
+> 追加カスタマイズは `~/.tmux.conf` を編集してください。
+
+---

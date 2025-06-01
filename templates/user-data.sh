@@ -151,3 +151,15 @@ export PATH="/usr/local/bin:$PATH"
 # yarn（公式推奨のcorepack経由でインストール）
 corepack enable
 yarn --version
+
+# --- tmux 設定: マウス操作・256色・バッファ拡張・クリップボード連携 ---
+cat <<'EOF' > /home/ec2-user/.tmux.conf
+set -g mouse on
+set -g default-terminal "screen-256color"
+set -g history-limit 10000
+setw -g mode-keys vi
+# クリップボード連携（Amazon Linux 2023/Ubuntu等でxclipがある場合）
+bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection clipboard -in"
+EOF
+chown ec2-user:ec2-user /home/ec2-user/.tmux.conf
+chmod 644 /home/ec2-user/.tmux.conf

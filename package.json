@@ -1,12 +1,12 @@
 {
   "name": "ec2-dev-env-setup",
   "version": "1.0.0",
-  "type": "module",
+  "type": "commonjs",
   "bin": {
     "dev-env": "bin/dev-env.ts"
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && cp -r templates dist/",
     "watch": "tsc -w",
     "cdk": "cdk",
     "lint": "eslint . --ext .ts",

@@ -121,6 +121,11 @@ describe('ec2_ssh_start.ts function unit tests', () => {
     ).toThrow(/SSH接続失敗/);
   });
 
+  test('設定ファイルが存在しない場合はエラーとなる（.env/secret未設定相当）', () => {
+    if (fs.existsSync(configPath)) fs.unlinkSync(configPath);
+    expect(() => ec2ssh.loadConfig(configPath)).toThrow(/見つかりません/);
+  });
+
   // aws/sshコマンドのモック化例（jest.spyOnやmockImplementationで）
   // ここではコマンド呼び出し部分のテスト例を追加できます
 });

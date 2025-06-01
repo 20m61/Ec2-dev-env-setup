@@ -291,4 +291,21 @@ describe('DevEnvStack', () => {
     delete process.env.AWS_SECRET_ACCESS_KEY;
     delete process.env.KEY_PAIR_NAME;
   });
+
+  test('CDKデプロイ時に.envが自動配置され、Tailscale等のセットアップが実行される', () => {
+    // .envの内容がUserData先頭にcatコマンドで配置されているか
+    const app = new App();
+    const stack = new DevEnvStack(app, 'TestStackEnvUserData');
+    const template = Template.fromStack(stack);
+    const resources = template.findResources('AWS::EC2::Instance');
+    const instance = Object.values(resources)[0];
+    expect(instance.Properties.UserData).toBeDefined();
+    // UserDataに.env配置コマンドが含まれる
+    const userDataBase64 = instance.Properties.UserData['Fn::Base64'];
+    expect(userDataBase64).toMatch(/cat <<'EOF' > \/home\/ec2-user\/.env/);
+    expect(userDataBase64).toMatch(/chown ec2-user:ec2-user \/home\/ec2-user\/.env/);
+    expect(userDataBase64).toMatch(/chmod 600 \/home\/ec2-user\/.env/);
+    // Tailscale自動セットアップも含まれる
+    expect(userDataBase64).toMatch(/tailscale/);
+  });
 });

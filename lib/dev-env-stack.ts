@@ -216,5 +216,25 @@ def handler(event, context):
       },
     });
     rule.addTarget(new targets.LambdaFunction(stopInstanceFn));
+
+    // --- 追加: デプロイ後にtools/ec2_ssh_configを自動生成 ---
+    try {
+      const configPath = path.join(__dirname, '../tools/ec2_ssh_config');
+      // キーペア名からpemファイル名を推測
+      const keyFileName = keyPairName ? `../keys/${keyPairName}.pem` : '../keys/my-key.pem';
+      // デフォルトユーザー名（Amazon Linux想定）
+      const user = 'ec2-user';
+      // AWS認証情報は環境変数から取得
+      const accessKey = process.env.AWS_ACCESS_KEY_ID || '';
+      const secretKey = process.env.AWS_SECRET_ACCESS_KEY || '';
+      const region = cdk.Stack.of(this).region;
+      const config = `# EC2 SSH スクリプト用設定ファイル（CDKデプロイ時に自動生成）\nINSTANCE_ID=\"${instance.instanceId}\"\nKEY_PATH=\"${keyFileName}\"\nUSER=\"${user}\"\nREGION=\"${region}\"\nAWS_ACCESS_KEY_ID=\"${accessKey}\"\nAWS_SECRET_ACCESS_KEY=\"${secretKey}\"\nAWS_DEFAULT_REGION=\"${region}\"\n`;
+      fs.writeFileSync(configPath, config, { encoding: 'utf-8' });
+      // eslint-disable-next-line no-console
+      console.log(`tools/ec2_ssh_config を自動生成しました: ${configPath}`);
+    } catch (e) {
+      // eslint-disable-next-line no-console
+      console.error('tools/ec2_ssh_config の自動生成に失敗:', e);
+    }
   }
 }

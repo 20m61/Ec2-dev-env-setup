@@ -656,25 +656,58 @@ zsh tools/ec2_ssh_start.sh
 
 ---
 
+## 🖥️ tmuxセッションの自動保存・自動復元
+
+本テンプレートでは `tmux-resurrect`・`tmux-continuum` を自動導入し、EC2自動停止時にセッションを自動保存します。
+
+- `user-data.sh` でTPM・プラグイン・自動保存設定を自動化
+- EC2停止前に `/usr/local/bin/tmux-save-session.sh` を呼び出すことで、全セッションが自動保存されます
+- 再起動後も `tmux-continuum` により自動復元されます
+
+### EC2自動停止時のセッション保存例
+
+CloudWatch/Lambda等でEC2停止前に以下コマンドを実行してください:
+
+```bash
+sudo /usr/local/bin/tmux-save-session.sh
+```
+
+> Lambda/SSM Automationの「停止前フック」等で実行することで、作業中のtmuxセッションが安全に保存されます。
+
+---
+
 ## 🧪 テスト可視化・粒度分け
 
-- 本リポジトリはJestによる自動テストを導入し、CI/CDで常に品質を担保しています。
-- テストカバレッジは`coverage/`ディレクトリでHTML/LCOV形式で出力されます。
-- テスト粒度は以下の通りです：
-  - `test/dev-env-stack.test.ts` … CDKスタック全体の統合・構成・バリデーション・リソース検証
-  - `test/ec2_ssh_start.test.ts` … シェルスクリプトのE2E・統合テスト
-  - `test/ec2_ssh_start/unit.test.ts` … スクリプトの関数単位ユニットテスト
-- テストカバレッジやCIのバッジは以下の通りです：
+- 本テンプレートはテストの可視化・粒度分けにも配慮しています。
+- `test/dev-env-stack.test.ts` では、
+  - CloudFormationリソースの生成・構成
+  - セキュリティグループのIP/ポート制御仕様
+  - Lambda/CloudWatch/EventBridge連携
+  - EC2インスタンスのkeyName反映
+    など、AWSベストプラクティスやセキュリティ要件を網羅的にテストしています。
+- `test/ec2_ssh_start.test.ts` では、
+  - EC2起動・SSH接続自動化スクリプトの動作
+  - 設定ファイル自動生成・認証情報セットアップ
+  - テスト用モックによるCI/CD自動化検証
+- `test/ec2_ssh_start/unit.test.ts` では、
+  - TypeScriptユニットテストで関数単位の粒度で検証
+  - AWS CLIコマンドのモック化による高速テスト
 
-[![CI](https://github.com/YOUR_NAME/ec2-dev-env-template/actions/workflows/deploy.yml/badge.svg)](https://github.com/YOUR_NAME/ec2-dev-env-template/actions)
-[![Coverage Status](https://img.shields.io/badge/coverage-auto--generated-brightgreen)](./coverage/lcov-report/index.html)
+> テストの粒度を分けることで、CI/CDパイプラインの品質担保とデバッグ効率を両立しています。
 
 ---
 
 ## 🏆 AWSベストプラクティス対応
 
-- 本テンプレートはAWS公式のベストプラクティスに準拠し、リソース名の一意性（スタック名・環境名prefix/postfix付与）を自動化しています。
-  - 例: EC2, S3バケット等のリソース名に `スタック名-環境名-xxx` 形式のprefixが付与されます。
-- UserDataスクリプト（`templates/user-data.sh`）の内容はSHA256ハッシュ化され、EC2タグやCloudFormation Outputsに記録されます。
-  - これにより、UserDataのバージョン管理・追跡性が担保されます。
-- 主要な設定値（環境名、バケット名、キーペア名等）は外部化（環境変数/Context）されており、柔軟な環境切り替え・CI/CD運用が可能です。
+- 本テンプレートはAWS公式のベストプラクティスに準拠しています。
+- インフラ構成はCDKでIaC化し、再現性・保守性を担保
+- セキュリティグループの最小権限設計、IP/ポート制御の自動テスト
+- SSM Session ManagerやTailscaleによる安全なアクセス手段を推奨
+- code-serverのパスワード自動生成・安全な管理
+- S3バケット権限の最小化、IAMロールの限定付与
+- CloudWatch/Alarm/EventBridge/Lambdaによるコスト最適化・自動停止
+- テスト・CI/CD・静的解析による品質担保
+
+> AWS Well-Architected Frameworkの「運用の優秀性」「セキュリティ」「信頼性」「コスト最適化」「パフォーマンス効率」全てに配慮した設計です。
+
+---

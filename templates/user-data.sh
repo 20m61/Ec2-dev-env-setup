@@ -189,3 +189,32 @@ bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection c
 EOF
 chown ec2-user:ec2-user /home/ec2-user/.tmux.conf
 chmod 644 /home/ec2-user/.tmux.conf
+
+# --- tmux-resurrect & tmux-continuum インストール・自動保存設定 ---
+# tmuxプラグインマネージャー (TPM) をインストール
+if [ ! -d "/home/ec2-user/.tmux/plugins/tpm" ]; then
+  sudo -u ec2-user git clone https://github.com/tmux-plugins/tpm /home/ec2-user/.tmux/plugins/tpm
+fi
+# tmux-resurrect, tmux-continuumはTPM経由で管理
+# .tmux.confにプラグイン設定と自動保存有効化を追記
+cat <<'EOF' >> /home/ec2-user/.tmux.conf
+set -g @plugin 'tmux-plugins/tmux-resurrect'
+set -g @plugin 'tmux-plugins/tmux-continuum'
+set -g @continuum-restore 'on'
+set -g @continuum-save-interval '5'
+run '~/.tmux/plugins/tpm/tpm'
+EOF
+chown ec2-user:ec2-user /home/ec2-user/.tmux.conf
+
+# tmux起動時に自動でプラグインインストール
+sudo -u ec2-user bash -c 'tmux new-session -d "sleep 1" && /home/ec2-user/.tmux/plugins/tpm/bin/install_plugins && tmux kill-server'
+
+# EC2自動停止時にセッション保存
+cat <<'EOF' > /usr/local/bin/tmux-save-session.sh
+#!/bin/bash
+sudo -u ec2-user tmux run-shell "~/.tmux/plugins/tmux-resurrect/scripts/save.sh"
+EOF
+chmod +x /usr/local/bin/tmux-save-session.sh
+
+# Lambda等によるEC2停止前にtmux-save-session.shを呼び出す設計例（UserData/READMEで案内）
+# 例: /usr/local/bin/tmux-save-session.sh を停止前フックやSSM Automationで実行

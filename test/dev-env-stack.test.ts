@@ -234,6 +234,61 @@ describe('DevEnvStack', () => {
     jest.dontMock('aws-sdk');
   });
 
-  // S3バケットは環境変数/Contextで指定時のみ作成されるため、ここでは省略
-  // UserDataの内容検証はCDKのTemplate APIでは難しいため、別途スタブ化やモックでの検証が必要
+  test('CDKデプロイ時にSSH接続情報CSVとec2_ssh_configが正しく出力される', () => {
+    // fs.writeFileSync, existsSync, readdirSync, readFileSyncをモック
+    const writeFileSyncMock = jest.spyOn(fs, 'writeFileSync').mockImplementation(() => undefined);
+    const existsSyncMock = jest.spyOn(fs, 'existsSync').mockImplementation((p) => {
+      if (typeof p === 'string' && p.toString().includes('keys')) return true;
+      return false;
+    });
+    // 型を無理やり合わせるためas unknown as typeof fs.readdirSync
+    const readdirSyncMock = jest.spyOn(fs, 'readdirSync') as unknown as jest.Mock;
+    readdirSyncMock.mockImplementation((p: any, options?: any) => {
+      if (typeof p === 'string' && p.includes('keys')) {
+        if (options && options.withFileTypes) {
+          // Direntのダミー
+          return [{ name: 'my-key.pem', isFile: () => true, isDirectory: () => false }];
+        }
+        return ['my-key.pem'];
+      }
+      return [];
+    });
+    const readFileSyncMock = jest.spyOn(fs, 'readFileSync').mockImplementation((p: any) => {
+      if (typeof p === 'string' && p.toString().includes('user-data.sh'))
+        return '#!/bin/bash\necho hello';
+      return '';
+    });
+
+    process.env.AWS_ACCESS_KEY_ID = 'dummy-access';
+    process.env.AWS_SECRET_ACCESS_KEY = 'dummy-secret';
+    process.env.KEY_PAIR_NAME = 'my-key';
+    const app = new App();
+    new DevEnvStack(app, 'TestStack');
+
+    // ec2_ssh_configとec2-connection-info.csvが出力されているか
+    const calls = writeFileSyncMock.mock.calls;
+    const configCall = calls.find(
+      (c) => typeof c[0] === 'string' && c[0].includes('ec2_ssh_config'),
+    );
+    const csvCall = calls.find(
+      (c) => typeof c[0] === 'string' && c[0].includes('ec2-connection-info.csv'),
+    );
+    expect(configCall).toBeDefined();
+    expect(csvCall).toBeDefined();
+    if (configCall && csvCall) {
+      expect(configCall[1]).toContain('INSTANCE_ID=');
+      expect(configCall[1]).toContain('KEY_PATH="../keys/my-key.pem"');
+      expect(csvCall[1]).toContain('InstanceId');
+      expect(csvCall[1]).toContain('ssh -i keys/my-key.pem ec2-user@');
+    }
+
+    // モック解除
+    writeFileSyncMock.mockRestore();
+    existsSyncMock.mockRestore();
+    (fs.readdirSync as any).mockRestore();
+    readFileSyncMock.mockRestore();
+    delete process.env.AWS_ACCESS_KEY_ID;
+    delete process.env.AWS_SECRET_ACCESS_KEY;
+    delete process.env.KEY_PAIR_NAME;
+  });
 });

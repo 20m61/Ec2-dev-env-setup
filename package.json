@@ -1,6 +1,7 @@
 {
   "name": "ec2-dev-env-setup",
   "version": "1.0.0",
+  "type": "module",
   "bin": {
     "dev-env": "bin/dev-env.ts"
   },

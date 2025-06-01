@@ -21,6 +21,7 @@ export default [
             },
             globals: {
                 ...globals.node,
+                ...globals.jest, // Jestグローバル追加
             },
         },
         rules: {
@@ -29,6 +30,12 @@ export default [
         },
     },
     {
-        ignores: ['cdk.out/', 'dist/', 'node_modules/'],
+        ignores: [
+            'cdk.out/',
+            'dist/',
+            'node_modules/',
+            'coverage/',
+            'lcov-report/',
+        ],
     },
 ];

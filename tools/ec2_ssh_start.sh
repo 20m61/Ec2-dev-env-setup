@@ -2,9 +2,10 @@
 # EC2インスタンスを起動し、SSH接続するスクリプト
 # 必要: AWS CLI, jq, SSH キーペア
 
-echo "[DEBUG] PATH=$PATH"
-echo "[DEBUG] which aws: $(which aws)"
-ls -l $(which aws)
+# セキュリティ: デバッグ出力は本番運用時はコメントアウト
+# echo "[DEBUG] PATH=$PATH"
+# echo "[DEBUG] which aws: $(which aws)"
+# ls -l $(which aws)
 
 # 設定ファイルのパス
 CONFIG_FILE="$(dirname $0)/ec2_ssh_config"
@@ -23,6 +24,7 @@ AWS_ACCESS_KEY_ID=""
 AWS_SECRET_ACCESS_KEY=""
 AWS_DEFAULT_REGION="ap-northeast-1"
 EOF
+  chmod 600 $CONFIG_FILE
   echo "設定ファイルを編集してから再度実行してください。"
   exit 1
 fi
@@ -76,7 +78,6 @@ fi
 aws_safe ec2 start-instances --instance-ids $INSTANCE_ID --region $REGION
 
 # runningになるまで待機
-# テスト高速化用: TEST_MODE=1 の場合はsleepを短縮
 function fast_sleep() {
   if [[ "$TEST_MODE" == "1" ]]; then
     sleep 0.01
@@ -85,25 +86,36 @@ function fast_sleep() {
   fi
 }
 
+count=0
 while true; do
   STATE=$(aws_safe ec2 describe-instances --instance-ids $INSTANCE_ID --region $REGION \
     --query 'Reservations[0].Instances[0].State.Name' --output text)
   if [[ "$STATE" == "running" ]]; then
     break
   fi
-  echo "インスタンス起動待機中...($STATE)"
+  # echo "インスタンス起動待機中...($STATE)" # セキュリティ: 状態出力は必要最小限に
   fast_sleep 5
+  # 無限ループ防止: 60回(5分)でタイムアウト
+  ((++count))
+  if [[ $count -ge 60 ]]; then
+    echo "インスタンス起動がタイムアウトしました。" >&2
+    exit 1
+  fi
 done
 
 # パブリックIP取得
 IP=$(aws_safe ec2 describe-instances --instance-ids $INSTANCE_ID --region $REGION \
   --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
 
-if [[ "$IP" == "None" ]]; then
-  echo "パブリックIPが取得できません。Elastic IP割当やセキュリティグループも確認してください。"
+if [[ "$IP" == "None" || -z "$IP" ]]; then
+  echo "パブリックIPが取得できません。Elastic IP割当やセキュリティグループも確認してください。" >&2
   exit 1
 fi
 
-echo "SSH接続: $USER@$IP"
+# SSH秘密鍵のパーミッション強化
 chmod 600 $KEY_PATH
+
+# SSH接続
+# テスト用: SSH接続メッセージを標準出力に出す
+echo "SSH接続: $USER@$IP"
 ssh -i $KEY_PATH $USER@$IP

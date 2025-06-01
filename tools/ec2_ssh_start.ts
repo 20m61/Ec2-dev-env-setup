@@ -18,10 +18,9 @@ export function loadConfig(configPath: string): Ec2SshConfig {
   const content = fs.readFileSync(configPath, 'utf-8');
   const config: Partial<Ec2SshConfig> = {};
   for (const line of content.split('\n')) {
+    // セキュリティ: 変数名・値の妥当性を最低限チェック
     const m = line.match(/^([A-Z_]+)="?([^"]*)"?$/);
-    if (m && m[1] in config) {
-      (config as Record<string, string>)[m[1]] = m[2];
-    } else if (m) {
+    if (m && /^[A-Z_][A-Z0-9_]*$/.test(m[1])) {
       (config as Record<string, string>)[m[1]] = m[2];
     }
   }
@@ -50,10 +49,12 @@ export function startInstance(cfg: Ec2SshConfig): void {
     ['ec2', 'start-instances', '--instance-ids', cfg.INSTANCE_ID, '--region', cfg.REGION],
     { encoding: 'utf-8' },
   );
-  if (r.status !== 0) throw new Error('EC2インスタンス起動失敗: ' + r.stderr);
+  if (r.status !== 0) throw new Error('EC2インスタンス起動失敗: ' + (r.stderr || r.stdout));
 }
 
 export function waitForInstanceRunning(cfg: Ec2SshConfig, sleepMs = 5000): void {
+  let count = 0;
+  // eslint-disable-next-line no-constant-condition
   while (true) {
     const r = spawnSync(
       'aws',
@@ -73,6 +74,7 @@ export function waitForInstanceRunning(cfg: Ec2SshConfig, sleepMs = 5000): void 
     );
     if (r.stdout.trim() === 'running') break;
     if (process.env.TEST_MODE === '1') return;
+    if (++count > 60) throw new Error('インスタンス起動がタイムアウトしました');
     Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, sleepMs);
   }
 }

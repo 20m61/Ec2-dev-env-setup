@@ -193,7 +193,6 @@ describe('DevEnvStack', () => {
   test('keyNameが未指定の場合はEC2インスタンスにKeyNameプロパティが含まれない（keys/に.pemが無い場合）', () => {
     // keys/ディレクトリを完全削除
     const keyDir = path.join(__dirname, '../keys');
-    const tmpDir = path.join(__dirname, '../keys_tmp');
     if (fs.existsSync(keyDir)) {
       fs.rmdirSync(keyDir, { recursive: true });
     }

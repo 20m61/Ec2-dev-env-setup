@@ -29,6 +29,15 @@ module.exports = [
             '@typescript-eslint/no-unused-vars': 'warn',
         },
     },
+    // CommonJSファイル用の設定
+    {
+        files: ['*.js', 'tools/*.js', 'jest.config.js'],
+        languageOptions: {
+            globals: {
+                ...globals.node,
+            },
+        },
+    },
     {
         ignores: [
             'cdk.out/',

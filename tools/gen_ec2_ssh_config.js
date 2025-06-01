@@ -22,6 +22,10 @@ if (csv.length < 2) {
 const [header, row] = csv;
 const cols = header.split(',');
 const vals = row.split(',');
+if (!row || vals.length !== cols.length || vals.every(v => v === '')) {
+    console.error('ec2-connection-info.csv のデータ行が不正です。');
+    process.exit(1);
+}
 const get = (key) => vals[cols.indexOf(key)] || '';
 
 const INSTANCE_ID = get('InstanceId');

@@ -60,42 +60,44 @@
 
 本テンプレートのEC2インスタンスでは、AWS CLI（awscli）に加え、以下のAWS関連コマンドも自動インストールされます。
 
-| ツール名               | 主な用途・使い方例                                           |
-| ---------------------- | ------------------------------------------------------------ |
-| git                    | バージョン管理。`git clone`, `git worktree` など             |
-| docker                 | コンテナ実行。`docker run`, `docker build` など              |
-| docker compose         | 複数コンテナの管理。`docker compose up -d` など              |
-| awscli                 | AWS 操作 CLI。`aws s3 ls`, `aws ec2 describe-instances` など |
-| session-manager-plugin | SSMセッションマネージャ用CLI。`session-manager-plugin`       |
-| amazon-ssm-agent       | SSMエージェント。EC2からSSM操作用                            |
-| ecs-cli                | Amazon ECS CLI。`ecs-cli`                                    |
-| eksctl                 | Amazon EKS クラスター管理CLI。`eksctl`                       |
-| aws-cdk                | AWS CDK CLI。`cdk deploy` など                               |
-| aws-sam-cli            | AWS SAM CLI。`sam build` `sam deploy` など                   |
-| code-server            | ブラウザで VSCode。`http://<EC2-IP>:8080` でアクセス         |
-| gh CLI                 | GitHub 操作 CLI。`gh repo clone`, `gh pr create` など        |
-| gh copilot CLI         | GitHub Copilot CLI 拡張。`gh copilot` コマンド               |
-| maxplan-cli            | Claude Code (Maxplan) API利用CLI。`maxplan chat` など        |
-| claude-cli             | Claude API 利用 CLI（非推奨、Maxplanへ移行推奨）             |
-| zsh                    | 高機能シェル。`chsh -s $(which zsh)` でデフォルト化          |
-| tmux                   | ターミナル多重化。`tmux` で起動、`Ctrl+b` で操作             |
-| htop                   | プロセス監視。`htop`                                         |
-| jq                     | JSON 整形・抽出。`cat file.json \| jq .`                     |
-| tree                   | ディレクトリ構造表示。`tree`                                 |
-| unzip                  | zip 解凍。`unzip file.zip`                                   |
-| make                   | ビルド自動化。`make`                                         |
-| gcc                    | C/C++コンパイラ。`gcc main.c -o main`                        |
-| python3                | Python 実行。`python3 script.py`                             |
-| nodejs                 | Node.js 実行。`node app.js`                                  |
-| n                      | Node.js バージョン管理。`sudo n lts` で LTS 版に切替         |
-| yarn                   | Node.js パッケージ管理。`yarn install`, `yarn run`           |
-| corepack               | Node.js 公式パッケージ管理ラッパー。`corepack enable`        |
-| fzf                    | 高速ファジーファインダー。`fzf`                              |
-| bat                    | cat の高機能版。`bat file.txt`                               |
-| ripgrep                | 高速 grep。`rg pattern`                                      |
-| neovim                 | 高機能エディタ。`nvim`                                       |
+| ツール名               | 主な用途・使い方例                                                                             |
+| ---------------------- | ---------------------------------------------------------------------------------------------- | ----- |
+| git                    | バージョン管理。`git clone`, `git worktree` など                                               |
+| docker                 | コンテナ実行。`docker run`, `docker build` など                                                |
+| docker compose         | 複数コンテナの管理。`docker compose up -d` など                                                |
+| awscli                 | AWS 操作 CLI。`aws s3 ls`, `aws ec2 describe-instances` など                                   |
+| session-manager-plugin | SSMセッションマネージャ用CLI。`session-manager-plugin`                                         |
+| amazon-ssm-agent       | SSMエージェント。EC2からSSM操作用                                                              |
+| copilot-cli            | AWS Copilot CLI。`copilot`                                                                     |
+| eksctl                 | Amazon EKS クラスター管理CLI。`eksctl`                                                         |
+| aws-cdk                | AWS CDK CLI。`cdk deploy` など                                                                 |
+| aws-sam-cli            | AWS SAM CLI。`sam build` `sam deploy` など                                                     |
+| code-server            | ブラウザで VSCode。`http://<EC2-IP>:8080` でアクセス                                           |
+| gh CLI                 | GitHub 操作 CLI。`gh repo clone`, `gh pr create` など                                          |
+| gh copilot CLI         | GitHub Copilot CLI 拡張。`gh copilot` コマンド                                                 |
+| maxplan-cli            | Claude Code (Maxplan) API利用CLI。`maxplan chat` など（※自動インストール対象外、公式手順参照） |
+| claude-cli             | Claude API 利用 CLI（非推奨、Maxplanへ移行推奨）                                               |
+| zsh                    | 高機能シェル。`chsh -s $(which zsh)` でデフォルト化                                            |
+| tmux                   | ターミナル多重化。`tmux` で起動、`Ctrl+b` で操作                                               |
+| htop                   | プロセス監視。`htop`                                                                           |
+| jq                     | JSON 整形・抽出。`cat file.json                                                                | jq .` |
+| tree                   | ディレクトリ構造表示。`tree`                                                                   |
+| unzip                  | zip 解凍。`unzip file.zip`                                                                     |
+| make                   | ビルド自動化。`make`                                                                           |
+| gcc                    | C/C++コンパイラ。`gcc main.c -o main`                                                          |
+| python3                | Python 実行。`python3 script.py`                                                               |
+| nodejs                 | Node.js 実行。`node app.js`                                                                    |
+| n                      | Node.js バージョン管理。`sudo n lts` で LTS 版に切替                                           |
+| yarn                   | Node.js パッケージ管理。`yarn install`, `yarn run`                                             |
+| corepack               | Node.js 公式パッケージ管理ラッパー。`corepack enable`                                          |
+| fzf                    | 高速ファジーファインダー。`fzf`                                                                |
+| bat                    | cat の高機能版。`bat file.txt`                                                                 |
+| ripgrep                | 高速 grep。`rg pattern`                                                                        |
+| neovim                 | 高機能エディタ。`nvim`                                                                         |
 
 > それぞれの詳細な使い方は公式ドキュメントや `--help` オプションで確認できます。
+>
+> **Copilot CLI, Maxplan CLI, Claude CLI など一部ツールは自動インストール対象外です。必要に応じて[公式手順](https://github.com/aws/copilot-cli#installation)や[Maxplan公式](https://github.com/maxplan-io/maxplan-cli)を参照し、各自でインストール・認証設定を行ってください。**
 
 ---
 
@@ -574,6 +576,8 @@ GITHUB_TOKEN=your-github-token
 
 ```txt
 # templates/tools.txt
+# 1行1ツール。yumでインストール可能なもののみ記載してください。
+# 例: zsh, tmux, htop, jq, tree, unzip, make, gcc, python3, nodejs, yarn, fzf, bat, ripgrep, neovim
 zsh
 tmux
 htop
@@ -591,94 +595,13 @@ ripgrep
 neovim
 ```
 
----
-
-## 🧪 テスト・品質保証
-
-本テンプレートは、AWS CDKスタックの主要な構成・分岐・異常系を網羅的にテストしています。
-
-- **テストフレームワーク:** Jest（TypeScript対応）
-- **テスト実行:** `npm test` または `npx jest`
-- **カバレッジ確認:** `npm test -- --coverage`
-- **テストファイル:** `test/dev-env-stack.test.ts`
-
-### 主なテスト内容
-
-- **CDKリソース生成:** EC2, S3, IAM, Lambda, CloudWatch, EventBridge など
-- **環境変数・Contextによる分岐:**
-  - ALLOWED_IP/SSH_PORTの組み合わせによるセキュリティグループ挙動
-  - PROJECT_BUCKET_NAME, KEY_PAIR_NAME などの有無によるリソース生成分岐
-- **バリデーション・異常系:**
-  - CIDR形式やS3バケット名の不正値時の例外
-  - user-data.shが存在しない場合の例外
-- **EBS設定・IAMロール・タグ付与などの詳細検証**
-- **user-data.shの内容検証（Tailscale等の自動インストール確認）**
-
-### テストカバレッジ
-
-- 主要な分岐・異常系を含め、Statements/Branches/Functionsともに高いカバレッジを維持
-- カバレッジレポートは `coverage/` ディレクトリに出力
-
-### テスト追加・カスタマイズ
-
-- Jestのモック/スタブ機能を活用し、fsや環境変数の異常系も柔軟にテスト可能
-- 新たなリソースや分岐を追加した場合は、`test/dev-env-stack.test.ts`に追記してください
+> **tools.txtのカスタマイズ時は、公式リポジトリや信頼できるパッケージのみを記載してください。悪意あるパッケージを追加しないよう十分注意してください。**
 
 ---
 
-## ❓ ローカルコード削除後の対応方法
+## 🔒 セキュリティに関する注意
 
-CDKコマンドでAWSへデプロイ後、ローカルのクローン済みコードを削除してしまった場合は、以下の手順で復旧・管理が可能です。
-
-1. **リポジトリの再クローン**
-   - GitHub等のリモートリポジトリが残っていれば、再度クローンして作業を再開できます。
-   - 例:
-     ```bash
-     git clone https://github.com/YOUR_NAME/ec2-dev-env-template.git
-     cd ec2-dev-env-template
-     npm install
-     ```
-2. **AWSリソースの管理**
-   - 既にデプロイしたEC2やS3等のAWSリソースはそのまま残っています。
-   - ローカルコードがなくてもAWSマネジメントコンソールやAWS CLIでリソースの確認・操作が可能です。
-3. **スタック削除（クリーンアップ）が必要な場合**
-   - 再クローン後、`cdk destroy` コマンドでCDKスタックを削除できます。
-   - もしくはAWSコンソールから手動でリソースを削除してください。
-4. **ローカル固有ファイルの注意**
-   - `.env`や秘密鍵（.pem）はバックアップがなければ復元できません。
-   - 秘密鍵がない場合、EC2へのSSH接続はできなくなります。新たにキーペアを作成し、必要に応じてEC2を再作成してください。
-
-> **ポイント:**
->
-> - リモートリポジトリがあれば再クローンで復旧可能です。
-> - ローカル固有のファイル（.env, 秘密鍵等）はバックアップ推奨です。
-> - AWS上のリソースはそのまま残るため、必要に応じて管理・削除してください。
-
----
-
-### tmuxの自動セットアップ・推奨設定
-
-EC2インスタンス起動時に `~/.tmux.conf` が自動生成され、以下の推奨設定が有効化されます。
-
-- **マウス操作有効化**（ペイン/ウィンドウ切替・リサイズ・選択がマウスで可能）
-- **256色対応**
-- **スクロールバッファ拡張**（10,000行）
-- **viキーバインド**（コピーモード）
-- **クリップボード連携**（xclipがある場合、選択範囲をクリップボードへコピー）
-
-```bash
-cat <<'EOF' > ~/.tmux.conf
-set -g mouse on
-set -g default-terminal "screen-256color"
-set -g history-limit 10000
-setw -g mode-keys vi
-# クリップボード連携（Amazon Linux 2023/Ubuntu等でxclipがある場合）
-bind-key -T copy-mode-vi y send-keys -X copy-pipe-and-cancel "xclip -selection clipboard -in"
-EOF
-```
-
-> これにより、EC2上で `tmux` を起動するだけで快適な多重ターミナル環境がすぐに利用できます。
->
-> 追加カスタマイズは `~/.tmux.conf` を編集してください。
-
----
+- code-serverのパスワードは自動生成され、/home/ec2-user/code-server-password.txtに保存されます。**このファイルのパーミッション・管理には十分注意し、第三者に漏洩しないようにしてください。**
+- code-serverやSSHをインターネット経由で公開する場合は、必ずIP制限やVPN、SSM Session Manager等の安全なアクセス手段を利用してください。
+- 認証キーやトークン（TAILSCALE_AUTHKEY, GITHUB_TOKEN等）は絶対にログ等に出力しないでください。
+- curlやnpm/pip等のインストール元URLは必ず公式・信頼できるもののみ利用してください。

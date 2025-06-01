@@ -14,7 +14,8 @@ sudo yum update -y
 sudo yum install -y git docker awscli
 # AWS CLI v2 install（明示的にv2をインストール）
 if ! command -v aws &>/dev/null || [[ $(aws --version 2>&1) != aws-cli/2* ]]; then
-  curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+  # 公式URL以外からのダウンロード・インストールは絶対に避けてください
+  curl --fail -L "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
   unzip -o awscliv2.zip
   sudo ./aws/install --update
   rm -rf awscliv2.zip aws/
@@ -22,7 +23,7 @@ fi
 
 # Session Manager Plugin
 if ! command -v session-manager-plugin &>/dev/null; then
-  curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux/$(uname -m)/session-manager-plugin.rpm" -o session-manager-plugin.rpm
+  curl --fail -L "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux/$(uname -m)/session-manager-plugin.rpm" -o session-manager-plugin.rpm
   sudo yum install -y session-manager-plugin.rpm
   rm -f session-manager-plugin.rpm
 fi
@@ -33,13 +34,13 @@ sudo systemctl enable --now amazon-ssm-agent
 
 # AWS Copilot CLI（ECS CLIは非推奨のため置換）
 if ! command -v copilot &>/dev/null; then
-  curl -Lo copilot https://github.com/aws/copilot-cli/releases/latest/download/copilot-linux
+  curl --fail -Lo copilot https://github.com/aws/copilot-cli/releases/latest/download/copilot-linux
   chmod +x copilot
   sudo mv copilot /usr/local/bin/copilot
 fi
 
 # eksctl
-curl --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" -o /tmp/eksctl.tar.gz
+curl --fail --silent --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" -o /tmp/eksctl.tar.gz
 mkdir -p /tmp/eksctl-unpack
  tar xz -C /tmp/eksctl-unpack -f /tmp/eksctl.tar.gz
 sudo mv /tmp/eksctl-unpack/eksctl /usr/local/bin/eksctl
@@ -58,11 +59,13 @@ sudo usermod -aG docker ec2-user
 
 # --- Tailscale install & 起動 ---
 if ! command -v tailscale &>/dev/null; then
+  # 公式スクリプト以外は絶対に使わないこと
   curl -fsSL https://pkgs.tailscale.com/stable/install.sh | sh
 fi
 sudo systemctl enable --now tailscaled
 # 認証キーがあれば自動ログイン
 if [ -n "$TAILSCALE_AUTHKEY" ]; then
+  # 認証キーやトークンは絶対にログ等に出力しないこと
   sudo tailscale up --authkey $TAILSCALE_AUTHKEY --ssh
 else
   echo "Tailscaleの認証は手動で行ってください: sudo tailscale up --ssh"
@@ -75,6 +78,7 @@ CODE_SERVER_PASS=$(openssl rand -base64 32)
 echo "code-server password: $CODE_SERVER_PASS" > /home/ec2-user/code-server-password.txt
 chown ec2-user:ec2-user /home/ec2-user/code-server-password.txt
 chmod 600 /home/ec2-user/code-server-password.txt
+# セキュリティ警告: このファイルのパーミッション・管理には十分注意してください
 # systemd起動時にパスワードを環境変数で渡す
 sudo bash -c 'echo "export PASSWORD=\"$CODE_SERVER_PASS\"" > /etc/profile.d/code-server.sh'
 # code-serverをec2-userで起動
@@ -131,10 +135,10 @@ if [ ! -f "$TOOL_LIST" ]; then
   cp /opt/tools.txt "$TOOL_LIST" 2>/dev/null || cp $(dirname "$0")/tools.txt "$TOOL_LIST" 2>/dev/null || true
 fi
 if [ -f "$TOOL_LIST" ]; then
-  xargs -a "$TOOL_LIST" sudo yum install -y
+  xargs -a "$TOOL_LIST" sudo yum install -y || { echo "tools.txt経由のインストールに失敗しました"; exit 1; }
 else
-  # fallback: デフォルトリスト
-  sudo yum install -y zsh tmux htop jq tree unzip make gcc python3 nodejs yarn fzf bat ripgrep neovim
+  # fallback: デフォルトリスト（失敗時はエラーで停止）
+  sudo yum install -y zsh tmux htop jq tree unzip make gcc python3 nodejs yarn fzf bat ripgrep neovim || { echo "デフォルトツールのインストールに失敗"; exit 1; }
 fi
 
 # docker compose (v2) install

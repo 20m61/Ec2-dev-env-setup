@@ -605,3 +605,33 @@ neovim
 - code-serverやSSHをインターネット経由で公開する場合は、必ずIP制限やVPN、SSM Session Manager等の安全なアクセス手段を利用してください。
 - 認証キーやトークン（TAILSCALE_AUTHKEY, GITHUB_TOKEN等）は絶対にログ等に出力しないでください。
 - curlやnpm/pip等のインストール元URLは必ず公式・信頼できるもののみ利用してください。
+
+---
+
+### 2.7. EC2インスタンスの起動・SSH接続自動化スクリプト
+
+- `tools/ec2_ssh_start.sh` は、EC2インスタンスの起動とSSH接続を自動化するzshスクリプトです。
+- 初回実行時は `tools/ec2_ssh_config.sh` 設定ファイルが自動生成されます。必要な値（INSTANCE_ID, KEY_PATH, USER, REGION, AWS認証情報など）を編集してください。
+- 設定例:
+
+```sh
+INSTANCE_ID="i-xxxxxxxxxxxxxxxxx"
+KEY_PATH="../keys/my-key.pem"
+USER="ec2-user"
+REGION="ap-northeast-1"
+AWS_ACCESS_KEY_ID=""
+AWS_SECRET_ACCESS_KEY=""
+AWS_DEFAULT_REGION="ap-northeast-1"
+```
+
+- 設定後、以下でEC2の起動とSSH接続が可能です（macOS/zsh対応）:
+
+```zsh
+zsh tools/ec2_ssh_start.sh
+```
+
+- AWS CLI (v2以上), jq (v1.6以上), SSHキーペアが必要です。awsコマンドが未インストールの場合はbrew等で自動案内されます。
+- テストや自動化にも利用でき、CI/CDやローカル開発の効率化に役立ちます。
+- 詳細仕様やテスト例は `test/ec2_ssh_start.test.ts` も参照してください。
+
+---

@@ -531,35 +531,57 @@ CDK デプロイや EC2 環境構築に必要な最小限の権限例です。IA
 
 ---
 
-## 📝 EC2接続情報CSV出力について
+## 📝 EC2接続情報・SSH設定ファイル・キーペア・.envの運用ルール（推奨）
 
-CDKデプロイ完了後、EC2への接続情報を `ec2-connection-info.csv` としてリポジトリ直下に出力してください。以下は自動生成用のサンプルスクリプトです：
+本テンプレートの運用でデータ不整合を防ぐため、以下のルール・手順を推奨します。
 
-### CSVフォーマット例
+### 1. .envファイル
 
-| InstanceId | PublicIp     | User     | KeyName | Region         | SSHCommand                                     | CreatedAt            |
-| ---------- | ------------ | -------- | ------- | -------------- | ---------------------------------------------- | -------------------- |
-| i-xxxxxxxx | 203.0.113.10 | ec2-user | my-key  | ap-northeast-1 | "ssh -i keys/my-key.pem ec2-user@203.0.113.10" | 2025-05-31T12:34:56Z |
+- プロジェクトルートの`.env`は**常に最新のAWS認証情報・キーペア名・バケット名等を反映**してください。
+- `.env`を更新した場合は**必ず`cdk deploy`を再実行**し、EC2や関連リソースに反映させてください。
+- `.env.example`と差分が出ないよう、定期的に見直してください。
 
-```csv
-InstanceId,PublicIp,User,KeyName,Region,SSHCommand,CreatedAt
-i-xxxxxxxx,203.0.113.10,ec2-user,my-key,ap-northeast-1,"ssh -i keys/my-key.pem ec2-user@203.0.113.10",2025-05-31T12:34:56Z
+### 2. キーペア（\*.pemファイル）
+
+- `keys/`ディレクトリに**利用する.pemファイルのみを配置**し、不要なファイルは削除してください。
+- `KEY_PAIR_NAME`を指定しない場合、`keys/`内の.pemファイル名（拡張子なし）が自動的に利用されます。
+- **`keys/`と`keys_tmp/`の混同に注意**し、運用ディレクトリを統一してください。
+- AWS側にも同名のキーペアが登録されていることを**`aws ec2 describe-key-pairs`で必ず確認**してください。
+
+### 3. EC2接続情報CSV（ec2-connection-info.csv）・SSH設定ファイル（tools/ec2_ssh_config）
+
+- `cdk deploy`後、**最新のEC2情報で`ec2-connection-info.csv`を必ず出力・更新**してください。
+- `tools/gen_ec2_ssh_config.js`を実行し、`tools/ec2_ssh_config`を**最新化**してください。
+- これらのファイルは`.gitignore`対象です。**手動でのバックアップ・管理を推奨**します。
+- ファイル内容が古い場合、SSH接続や自動化スクリプトが失敗します。**常に最新状態を保つこと**。
+
+### 4. 運用チェックリスト（推奨）
+
+- [ ] `.env`を更新したら`cdk deploy`を再実行したか
+- [ ] `keys/`に正しい.pemがあり、AWS側にも同名キーペアが存在するか
+- [ ] `ec2-connection-info.csv`を最新化し、`tools/gen_ec2_ssh_config.js`で`ec2_ssh_config`を再生成したか
+- [ ] これらのファイルが古くなっていないか、定期的に確認したか
+
+### 5. 参考コマンド
+
+```zsh
+# キーペアのAWS側登録確認
+aws ec2 describe-key-pairs --key-names <KEY_PAIR_NAME>
+
+# EC2接続情報CSVの例（手動作成/更新）
+# 必要に応じてOutputsやdescribe-instancesコマンドで取得
+
+# SSH設定ファイルの自動生成
+node tools/gen_ec2_ssh_config.js
+
+# SSH自動化スクリプトの実行例
+zsh tools/ec2_ssh_start.sh
 ```
 
-- `User` は Amazon Linux の場合 `ec2-user` です。
-- `KeyName` はCDKで指定したキーペア名。
-- `SSHCommand` は実際の接続コマンド例。
-- `CreatedAt` は出力時のUTC日時。
-
-> このファイルは `.gitignore` によりGit管理対象外です。
-
----
-
-## ⚠️ 注意事項
-
-- AWSリソース作成にはコストが発生します。不要になったリソースは必ず削除してください。
-- 秘密鍵（.pemファイル）は安全に保管し、第三者に渡さないでください。
-- セキュリティのため、秘密鍵は絶対にリポジトリにコミットしないでください。
+> **運用上の注意:**
+>
+> - これらのファイルは`.gitignore`対象です。**必ず安全な場所で管理**してください。
+> - 認証情報や秘密鍵の漏洩リスクに十分注意し、不要になったファイルは速やかに削除してください。
 
 ---
 

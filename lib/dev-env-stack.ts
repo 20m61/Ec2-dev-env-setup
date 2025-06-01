@@ -178,16 +178,21 @@ export class DevEnvStack extends cdk.Stack {
     ]);
 
     // --- 追加: EC2接続情報をOutputsとして出力 ---
+    const isTailscale = !!process.env.TAILSCALE_AUTHKEY;
     const createOutput = (name: string, value: string, description: string) => {
       new cdk.CfnOutput(this, name, { value, description });
     };
 
     createOutput('EC2InstanceId', instance.instanceId, 'EC2 Instance ID');
-    createOutput('EC2PublicIp', instance.instancePublicIp, 'EC2 Public IP');
     createOutput('EC2Region', cdk.Stack.of(this).region, 'EC2 Region');
     createOutput('EC2KeyName', instance.instance.keyName || '(not set)', 'EC2 SSH Key Name');
-    // UserDataハッシュをOutputsにも出力
     createOutput('UserDataHash', userDataHash, 'UserData script SHA256 hash');
+    // Tailscale運用時はPublicIp出力を空欄またはTailscale Onlyに
+    if (isTailscale) {
+      createOutput('EC2PublicIp', 'Tailscale Only', 'EC2 Public IP (Tailscale)');
+    } else {
+      createOutput('EC2PublicIp', instance.instancePublicIp, 'EC2 Public IP');
+    }
 
     // --- CloudWatch アラーム + Lambda でアイドル時自動停止 ---
     // 1. CloudWatch アラーム（CPU利用率5%未満が30分続いたら）
@@ -266,9 +271,11 @@ def handler(event, context):
       const csvPath = path.join(__dirname, '../ec2-connection-info.csv');
       // パブリックIPはOutputsでしか取得できないため、CloudFormation出力値を利用する想定
       // ここではCDKデプロイ時点で取得できる値で出力（PublicIpはデプロイ直後は未割当の可能性あり）
-      const publicIp = instance.instancePublicIp || '';
+      const publicIp = isTailscale ? 'Tailscale Only' : instance.instancePublicIp || '';
       const keyName = keyPairName || '';
-      const sshCmd = `ssh -i keys/${keyName}.pem ${user}@${publicIp}`;
+      const sshCmd = isTailscale
+        ? `# Tailscale経由でSSH: tailscale ip取得後 ssh -i keys/${keyName}.pem ec2-user@<tailscale-ip>`
+        : `ssh -i keys/${keyName}.pem ${user}@${publicIp}`;
       const createdAt = new Date().toISOString();
       const csvHeader = 'InstanceId,PublicIp,User,KeyName,Region,SSHCommand,CreatedAt\n';
       const csvRow = `${instance.instanceId},${publicIp},${user},${keyName},${region},"${sshCmd}",${createdAt}\n`;

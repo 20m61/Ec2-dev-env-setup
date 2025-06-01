@@ -558,6 +558,7 @@ i-xxxxxxxx,203.0.113.10,ec2-user,my-key,ap-northeast-1,"ssh -i keys/my-key.pem e
 
 - プロジェクトルートに `.env` ファイルを作成し、`.env.example` を参考に必要な値を設定してください。
 - 追加でインストールしたいツールは `templates/tools.txt` に1行ずつ記載できます。
+- `templates/tools.txt` の内容はEC2起動時に自動でインストールされます。
 - `.env.example` と `templates/tools.txt` の内容例:
 
 ```env

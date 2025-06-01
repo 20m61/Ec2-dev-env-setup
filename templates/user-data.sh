@@ -79,8 +79,9 @@ echo "code-server password: $CODE_SERVER_PASS" > /home/ec2-user/code-server-pass
 chown ec2-user:ec2-user /home/ec2-user/code-server-password.txt
 chmod 600 /home/ec2-user/code-server-password.txt
 # セキュリティ警告: このファイルのパーミッション・管理には十分注意してください
-# systemd起動時にパスワードを環境変数で渡す
-sudo bash -c 'echo "export PASSWORD=\"$CODE_SERVER_PASS\"" > /etc/profile.d/code-server.sh'
+# code-server systemd起動時の環境変数渡しを堅牢化
+sudo bash -c 'echo "[Service]\nEnvironment=PASSWORD=$CODE_SERVER_PASS" > /etc/systemd/system/code-server@ec2-user.service.d/override.conf'
+sudo systemctl daemon-reload
 # code-serverをec2-userで起動
 sudo systemctl enable --now code-server@ec2-user
 
@@ -139,6 +140,15 @@ if [ -f "$TOOL_LIST" ]; then
 else
   # fallback: デフォルトリスト（失敗時はエラーで停止）
   sudo yum install -y zsh tmux htop jq tree unzip make gcc python3 nodejs yarn fzf bat ripgrep neovim || { echo "デフォルトツールのインストールに失敗"; exit 1; }
+fi
+
+# tools.txtの内容を自動インストール
+TOOLS_TXT="/home/ec2-user/tools.txt"
+if [ -f "$TOOLS_TXT" ]; then
+  while read -r tool; do
+    [[ "$tool" =~ ^#.*$ || -z "$tool" ]] && continue
+    sudo yum install -y "$tool" || true
+  done < "$TOOLS_TXT"
 fi
 
 # docker compose (v2) install

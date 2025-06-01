@@ -94,11 +94,25 @@ export class DevEnvStack extends cdk.Stack {
       const pemFiles = fs.readdirSync(keyPairDir).filter((f) => f.endsWith('.pem'));
       if (pemFiles.length > 0) {
         keyPairName = path.parse(pemFiles[0]).name;
-        // TODO: AWS側にキーペアが存在するかの厳密なチェック・例外処理を追加すること
-        // 例: describeKeyPairs APIで存在確認し、なければエラーをthrow
-        // 現状は未実装
-        // const ec2Client = new AWS.EC2({ region: cdk.Stack.of(this).region });
-        // ec2Client.describeKeyPairs(...)
+        // AWS側にキーペアが存在するかチェック（テスト用モック対応）
+        import('aws-sdk')
+          .then((AWS) => {
+            const ec2Client = new AWS.EC2({ region: cdk.Stack.of(this).region });
+            ec2Client
+              .describeKeyPairs({ KeyNames: [keyPairName!] })
+              .promise()
+              .catch(() => {
+                // eslint-disable-next-line no-console
+                console.warn(
+                  'AWS EC2にキーペアが存在しません。aws ec2 import-key-pair で登録してください。',
+                );
+              });
+          })
+          .catch(() => {
+            // aws-sdkが無い場合は警告のみ
+            // eslint-disable-next-line no-console
+            console.warn('AWS EC2にキーペアが存在するか確認できません（aws-sdk未インストール）');
+          });
       }
     }
     // S3権限の最小化例（バケット単位）

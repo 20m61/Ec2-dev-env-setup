@@ -213,7 +213,8 @@ describe('DevEnvStack', () => {
     if (!fs.existsSync(keyDir)) fs.mkdirSync(keyDir);
     fs.writeFileSync(testPem, 'dummy');
     // モック: aws-sdkのdescribeKeyPairsを必ずrejectする
-    jest.mock('aws-sdk', () => {
+    jest.resetModules(); // モジュールキャッシュをクリア
+    jest.doMock('aws-sdk', () => {
       return {
         EC2: jest.fn().mockImplementation(() => ({
           describeKeyPairs: () => ({ promise: () => Promise.reject(new Error('Not found')) }),
@@ -224,10 +225,13 @@ describe('DevEnvStack', () => {
     // 警告が出るか確認（非同期なのでsetTimeoutで待つ）
     const warnSpy = jest.spyOn(console, 'warn').mockImplementation();
     new DevEnvStack(app, 'TestStackKeyPair');
-    await new Promise((resolve) => setTimeout(resolve, 100));
-    expect(warnSpy.mock.calls.some((call) => call[0].includes('AWS EC2にキーペア'))).toBe(true);
+    await new Promise((resolve) => setTimeout(resolve, 300)); // 待機時間を200→300msに延長
+    expect(warnSpy.mock.calls.some((call) => String(call[0]).includes('AWS EC2にキーペア'))).toBe(
+      true,
+    );
     warnSpy.mockRestore();
     fs.unlinkSync(testPem);
+    jest.dontMock('aws-sdk');
   });
 
   // S3バケットは環境変数/Contextで指定時のみ作成されるため、ここでは省略

@@ -71,7 +71,8 @@ describe('tools/ec2_ssh_start.sh', () => {
     console.log('error:', result.error);
     expect(result.stdout).toMatch(/自動生成/);
     expect(fs.existsSync(configPath)).toBe(true);
-    expect(result.status).not.toBe(0);
+    // ステータスコードは1であることを明示的にチェック
+    expect(result.status).toBe(1);
     console.timeEnd('設定ファイルが無い場合');
     done();
   }, 10000);
@@ -100,7 +101,8 @@ describe('tools/ec2_ssh_start.sh', () => {
 });
 
 it('SSH接続コマンドを生成できる', () => {
-  const configPath = path.join(__dirname, '../../tools/ec2_ssh_config');
+  const configPath = path.join(__dirname, '../tools/ec2_ssh_config');
+  // テスト用設定ファイルを必ず作成
   fs.writeFileSync(
     configPath,
     'INSTANCE_ID="i-1234567890abcdef0"\nKEY_PATH="~/.ssh/test-key.pem"\nUSER="ec2-user"\nREGION="ap-northeast-1"\n',
@@ -111,5 +113,6 @@ it('SSH接続コマンドを生成できる', () => {
   expect(cfg.KEY_PATH).toBe('~/.ssh/test-key.pem');
   expect(cfg.USER).toBe('ec2-user');
   expect(cfg.REGION).toBe('ap-northeast-1');
-  fs.unlinkSync(configPath);
+  // テスト後に必ず削除
+  if (fs.existsSync(configPath)) fs.unlinkSync(configPath);
 });

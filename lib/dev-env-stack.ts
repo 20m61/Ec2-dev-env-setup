@@ -102,7 +102,6 @@ export class DevEnvStack extends cdk.Stack {
               .describeKeyPairs({ KeyNames: [keyPairName!] })
               .promise()
               .catch(() => {
-                // eslint-disable-next-line no-console
                 console.warn(
                   'AWS EC2にキーペアが存在しません。aws ec2 import-key-pair で登録してください。',
                 );
@@ -110,7 +109,7 @@ export class DevEnvStack extends cdk.Stack {
           })
           .catch(() => {
             // aws-sdkが無い場合は警告のみ
-            // eslint-disable-next-line no-console
+
             console.warn('AWS EC2にキーペアが存在するか確認できません（aws-sdk未インストール）');
           });
       }
@@ -146,7 +145,7 @@ export class DevEnvStack extends cdk.Stack {
     if (bucketName) {
       const bucket = new s3.Bucket(this, 'ProjectBucket', {
         bucketName,
-        removalPolicy: cdk.RemovalPolicy.DESTROY, // スタック削除時にバケットも削除
+        removalPolicy: cdk.RemovalPolicy.DESTROY, // スタック削除時にバケットも削除,
         autoDeleteObjects: true, // バケット内の全オブジェクトも削除
       });
       // S3バケット単位の権限のみ付与
@@ -251,11 +250,14 @@ AWS_SECRET_ACCESS_KEY="${secretKey}"
 AWS_DEFAULT_REGION="${region}"
 `;
       fs.writeFileSync(configPath, config, { encoding: 'utf-8' });
-      // eslint-disable-next-line no-console
+
       console.log(`tools/ec2_ssh_config を自動生成しました: ${configPath}`);
     } catch (e) {
-      // eslint-disable-next-line no-console
       console.error('tools/ec2_ssh_config の自動生成に失敗:', e);
     }
   }
 }
+
+// Node.jsグローバル変数をESLintに認識させるための設定が必要
+
+// Removed redefinition of Node.js globals. Ensure ESLint is configured properly for these globals.

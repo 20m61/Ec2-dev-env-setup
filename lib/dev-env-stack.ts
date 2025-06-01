@@ -228,7 +228,15 @@ def handler(event, context):
       const accessKey = process.env.AWS_ACCESS_KEY_ID || '';
       const secretKey = process.env.AWS_SECRET_ACCESS_KEY || '';
       const region = cdk.Stack.of(this).region;
-      const config = `# EC2 SSH スクリプト用設定ファイル（CDKデプロイ時に自動生成）\nINSTANCE_ID=\"${instance.instanceId}\"\nKEY_PATH=\"${keyFileName}\"\nUSER=\"${user}\"\nREGION=\"${region}\"\nAWS_ACCESS_KEY_ID=\"${accessKey}\"\nAWS_SECRET_ACCESS_KEY=\"${secretKey}\"\nAWS_DEFAULT_REGION=\"${region}\"\n`;
+      const config = `# EC2 SSH スクリプト用設定ファイル（CDKデプロイ時に自動生成）
+INSTANCE_ID="${instance.instanceId}"
+KEY_PATH="${keyFileName}"
+USER="${user}"
+REGION="${region}"
+AWS_ACCESS_KEY_ID="${accessKey}"
+AWS_SECRET_ACCESS_KEY="${secretKey}"
+AWS_DEFAULT_REGION="${region}"
+`;
       fs.writeFileSync(configPath, config, { encoding: 'utf-8' });
       // eslint-disable-next-line no-console
       console.log(`tools/ec2_ssh_config を自動生成しました: ${configPath}`);

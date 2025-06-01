@@ -60,6 +60,15 @@ fi
 aws ec2 start-instances --instance-ids $INSTANCE_ID --region $REGION
 
 # runningになるまで待機
+# テスト高速化用: TEST_MODE=1 の場合はsleepを短縮
+function fast_sleep() {
+  if [[ "$TEST_MODE" == "1" ]]; then
+    sleep 0.01
+  else
+    sleep "$1"
+  fi
+}
+
 while true; do
   STATE=$(aws ec2 describe-instances --instance-ids $INSTANCE_ID --region $REGION \
     --query 'Reservations[0].Instances[0].State.Name' --output text)
@@ -67,7 +76,7 @@ while true; do
     break
   fi
   echo "インスタンス起動待機中...($STATE)"
-  sleep 5
+  fast_sleep 5
 done
 
 # パブリックIP取得

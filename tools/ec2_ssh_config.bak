@@ -1,0 +1,8 @@
+# EC2 SSH スクリプト用設定ファイル（CDKデプロイ時に自動生成）
+INSTANCE_ID="${Token[TOKEN.2799]}"
+KEY_PATH="../keys/my-key.pem"
+USER="ec2-user"
+REGION="${Token[AWS.Region.13]}"
+AWS_ACCESS_KEY_ID=""
+AWS_SECRET_ACCESS_KEY=""
+AWS_DEFAULT_REGION="${Token[AWS.Region.13]}"

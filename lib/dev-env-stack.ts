@@ -88,7 +88,14 @@ export class DevEnvStack extends cdk.Stack {
 
     // EC2 Instance
     const spotMaxPrice = this.node.tryGetContext('SPOT_MAX_PRICE') || process.env.SPOT_MAX_PRICE;
-    const keyPairName = process.env.KEY_PAIR_NAME || this.node.tryGetContext('KEY_PAIR_NAME');
+    const keyPairDir = path.join(__dirname, '../keys');
+    let keyPairName = undefined;
+    if (fs.existsSync(keyPairDir)) {
+      const pemFiles = fs.readdirSync(keyPairDir).filter((f) => f.endsWith('.pem'));
+      if (pemFiles.length > 0) {
+        keyPairName = path.parse(pemFiles[0]).name;
+      }
+    }
     const instance = new ec2.Instance(this, 'DevEnvInstance', {
       vpc,
       instanceType: ec2.InstanceType.of(ec2.InstanceClass.T4G, ec2.InstanceSize.XLARGE),

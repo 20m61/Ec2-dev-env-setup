@@ -140,3 +140,6 @@ dist
 
 # EC2接続情報（自動出力ファイル）
 ec2-connection-info.csv
+
+# CDK一時成果物（デプロイ時に自動生成。git管理不要）
+cdk.out/

@@ -257,20 +257,25 @@ def handler(event, context):
       const accessKey = process.env.AWS_ACCESS_KEY_ID || '';
       const secretKey = process.env.AWS_SECRET_ACCESS_KEY || '';
       const region = cdk.Stack.of(this).region;
-      const config = `# EC2 SSH スクリプト用設定ファイル（CDKデプロイ時に自動生成）
-INSTANCE_ID="${instance.instanceId}"
-KEY_PATH="${keyFileName}"
-USER="${user}"
-REGION="${region}"
-AWS_ACCESS_KEY_ID="${accessKey}"
-AWS_SECRET_ACCESS_KEY="${secretKey}"
-AWS_DEFAULT_REGION="${region}"
-`;
+      const config = `# EC2 SSH スクリプト用設定ファイル（CDKデプロイ時に自動生成）\nINSTANCE_ID="${instance.instanceId}"\nKEY_PATH="${keyFileName}"\nUSER="${user}"\nREGION="${region}"\nAWS_ACCESS_KEY_ID="${accessKey}"\nAWS_SECRET_ACCESS_KEY="${secretKey}"\nAWS_DEFAULT_REGION="${region}"\n`;
       fs.writeFileSync(configPath, config, { encoding: 'utf-8' });
 
       console.log(`tools/ec2_ssh_config を自動生成しました: ${configPath}`);
+
+      // --- 追加: EC2接続情報CSVを自動生成 ---
+      const csvPath = path.join(__dirname, '../ec2-connection-info.csv');
+      // パブリックIPはOutputsでしか取得できないため、CloudFormation出力値を利用する想定
+      // ここではCDKデプロイ時点で取得できる値で出力（PublicIpはデプロイ直後は未割当の可能性あり）
+      const publicIp = instance.instancePublicIp || '';
+      const keyName = keyPairName || '';
+      const sshCmd = `ssh -i keys/${keyName}.pem ${user}@${publicIp}`;
+      const createdAt = new Date().toISOString();
+      const csvHeader = 'InstanceId,PublicIp,User,KeyName,Region,SSHCommand,CreatedAt\n';
+      const csvRow = `${instance.instanceId},${publicIp},${user},${keyName},${region},"${sshCmd}",${createdAt}\n`;
+      fs.writeFileSync(csvPath, csvHeader + csvRow, { encoding: 'utf-8' });
+      console.log(`ec2-connection-info.csv を自動生成しました: ${csvPath}`);
     } catch (e) {
-      console.error('tools/ec2_ssh_config の自動生成に失敗:', e);
+      console.error('tools/ec2_ssh_config/ec2-connection-info.csv の自動生成に失敗:', e);
     }
   }
 }

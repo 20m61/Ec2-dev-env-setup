@@ -136,18 +136,18 @@ npm install
 
 ### 2. シークレットの設定（GitHub）
 
-| シークレット名          | 内容                                                                                                                                                                     |
-| ----------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `AWS_ACCESS_KEY_ID`     | IAM ユーザーのアクセスキー                                                                                                                                               |
-| `AWS_SECRET_ACCESS_KEY` | 同上                                                                                                                                                                     |
-| `AWS_REGION`            | 例：`ap-northeast-1`                                                                                                                                                     |
-| `PROJECT_BUCKET_NAME`   | S3 バケット名（任意）                                                                                                                                                    |
-| `GITHUB_TOKEN`          | GitHub CLI/Copilot 用トークン（必須）                                                                                                                                    |
-| `MAXPLAN_API_KEY`       | Maxplan CLI 用 API キー（公式でAPIキー発行がない場合は不要。利用時は各自で取得・設定）                                                                                   |
-| `CLAUDE_API_KEY`        | Claude CLI 用 API キー（非推奨、Maxplanへ移行推奨）                                                                                                                      |
-| `ALLOWED_IP`            | SSH/HTTPS/code-server の許可 IP（CIDR 表記）。例: `203.0.113.1/32`（単一 IP 許可）や `0.0.0.0/0`（全 IP 許可）。複数 IP を許可する場合は CIDR をカンマ区切りで指定。     |
-| `SPOT_MAX_PRICE`        | スポットインスタンスの最大価格（USD/h）。例: `0.05`（最大 0.05 USD/h まで）。未指定の場合はオンデマンドインスタンスとして起動。価格は AWS のスポット価格を確認して設定。 |
-| `KEY_PAIR_NAME`         | EC2用キーペア名（必須）。AWSコンソールやCLIで作成したキーペア名を指定。                                                                                                  |
+| シークレット名          | 内容                                                                                                                                                                                                                                |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `AWS_ACCESS_KEY_ID`     | IAM ユーザーのアクセスキー                                                                                                                                                                                                          |
+| `AWS_SECRET_ACCESS_KEY` | 同上                                                                                                                                                                                                                                |
+| `AWS_REGION`            | 例：`ap-northeast-1`                                                                                                                                                                                                                |
+| `PROJECT_BUCKET_NAME`   | S3 バケット名（任意）                                                                                                                                                                                                               |
+| `GITHUB_TOKEN`          | GitHub CLI/Copilot 用トークン（必須）                                                                                                                                                                                               |
+| `MAXPLAN_API_KEY`       | Maxplan CLI 用 API キー（公式でAPIキー発行がない場合は不要。利用時は各自で取得・設定）                                                                                                                                              |
+| `CLAUDE_API_KEY`        | Claude CLI 用 API キー（非推奨、Maxplanへ移行推奨）                                                                                                                                                                                 |
+| `ALLOWED_IP`            | SSH/HTTPS/code-server の許可 IP（CIDR 表記）。例: `203.0.113.1/32`（単一 IP 許可）や `0.0.0.0/0`（全 IP 許可）。複数 IP を許可する場合は CIDR をカンマ区切りで指定。                                                                |
+| `SPOT_MAX_PRICE`        | スポットインスタンスの最大価格（USD/h）。例: `0.05`（最大 0.05 USD/h まで）。未指定の場合はオンデマンドインスタンスとして起動。価格は AWS のスポット価格を確認して設定。                                                            |
+| `KEY_PAIR_NAME`         | EC2用キーペア名（**任意**）。AWSコンソールやCLIで作成したキーペア名を指定。`keys/` ディレクトリに .pem ファイルが存在する場合は自動検出されます。指定しない場合はキーペア無しでデプロイされます（SSMやTailscale経由の接続を推奨）。 |
 
 > ⚠️ **注意:**
 > GitHub Actions で AWS にデプロイするには、必ずリポジトリの「Settings > Secrets and variables > Actions > Secrets」に
@@ -175,7 +175,11 @@ chmod 600 my-key.pem
 
 #### 2. CDKスタックでキーペア名を指定
 
-`KEY_PAIR_NAME` 環境変数またはGitHub Secretsでキーペア名を指定してください。CDKスタックは自動的にこの値を利用します。
+`KEY_PAIR_NAME` 環境変数またはGitHub Secretsでキーペア名を指定できます。**ただし、必須ではありません。**
+
+- `KEY_PAIR_NAME` を指定した場合、そのキーペア名がEC2インスタンスの `keyName` に反映されます。
+- 指定しない場合は、`keys/` ディレクトリ内の `.pem` ファイル名（拡張子なし）が自動的に利用されます。
+- どちらも無い場合は、EC2インスタンスはキーペア無しで作成されます（SSM Session ManagerやTailscale経由での接続を推奨）。
 
 例: .env または GitHub Secrets に
 
@@ -183,9 +187,11 @@ chmod 600 my-key.pem
 KEY_PAIR_NAME=my-key
 ```
 
-を設定してください。
+を設定してください（任意）。
 
-`lib/dev-env-stack.ts` の `ec2.Instance` 作成時は自動的に `keyName: process.env.KEY_PAIR_NAME` が利用されます。
+`lib/dev-env-stack.ts` の `ec2.Instance` 作成時は自動的に `keyName` が決定されます。
+
+> **注意:** キーペア無しでデプロイした場合、SSH秘密鍵による接続はできません。SSM Session ManagerやTailscale経由での接続をご利用ください。
 
 #### 3. EC2のパブリックIPアドレスを確認
 
@@ -203,9 +209,10 @@ ssh -i my-key.pem ec2-user@<EC2のパブリックIP>
 
 ### 2.6. キーペア（\*.pemファイル）の配置とワークフロー利用
 
-- 作成したEC2用キーペア（例: `my-key.pem`）は、リポジトリ直下の `keys/` ディレクトリに配置してください。
+- 作成したEC2用キーペア（例: `my-key.pem`）は、リポジトリ直下の `keys/` ディレクトリに配置してください（**任意**）。
 - `keys/` ディレクトリと `*.pem` ファイルは `.gitignore` によりGit管理対象外となっており、公開されません。
 - GitHub Actions等のワークフローで秘密鍵を利用する場合は、`keys/my-key.pem` を参照してください。
+- **キーペア無しの場合はこの手順は不要です。**
 
 > ⚠️ セキュリティのため、秘密鍵は絶対にリポジトリにコミットしないでください。
 
@@ -213,8 +220,9 @@ ssh -i my-key.pem ec2-user@<EC2のパブリックIP>
 
 ## ⚠️ EC2キーペアの自動検出・AWS側キーペア登録について
 
-- `keys/` ディレクトリ内の `*.pem` ファイルを自動検出し、そのファイル名（拡張子なし）をEC2インスタンスの `keyName` として利用します。
-- **注意:** ローカルに `.pem` ファイルが存在しても、AWS EC2側に同名のキーペアが登録されていない場合、デプロイは失敗します。
+- `KEY_PAIR_NAME` を指定しない場合、`keys/` ディレクトリ内の `*.pem` ファイルが自動検出され、そのファイル名（拡張子なし）がEC2インスタンスの `keyName` として利用されます。
+- **どちらも無い場合は、EC2インスタンスはキーペア無しで作成されます。**
+- ローカルに `.pem` ファイルが存在しても、AWS EC2側に同名のキーペアが登録されていない場合、デプロイは失敗します。
 - デプロイ前に、以下のコマンドでAWS側にキーペアを登録してください（`my-key.pem` の部分は適宜変更）：
 
 ```sh
@@ -224,6 +232,17 @@ aws ec2 import-key-pair \
 ```
 
 - CDKデプロイ時にも、AWS側にキーペアが存在しない場合は警告が表示されます。
+
+> **キーペア無し運用の場合は、SSM Session ManagerやTailscale経由での接続を推奨します。**
+
+---
+
+### 2.7. キーペア無しでの運用・接続方法
+
+- `KEY_PAIR_NAME` を指定せず、`keys/` ディレクトリにも `.pem` ファイルが無い場合、EC2インスタンスはキーペア無しで作成されます。
+- この場合、SSH秘密鍵による接続はできません。**SSM Session ManagerやTailscale経由での接続を推奨します。**
+- SSM Session Managerの利用方法は[公式ドキュメント](https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html)を参照してください。
+- Tailscale経由の場合は、`TAILSCALE_AUTHKEY` をSecretsや.envで指定し、Tailscaleネットワーク経由でSSHできます。
 
 ---
 

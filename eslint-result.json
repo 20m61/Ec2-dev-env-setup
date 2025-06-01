@@ -1,1 +1,3523 @@
-[{"filePath":"/Users/20m61/Documents/workspace/Ec2-dev-env-setup/.eslintrc.js","messages":[],"suppressedMessages":[],"errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]},{"filePath":"/Users/20m61/Documents/workspace/Ec2-dev-env-setup/bin/dev-env.ts","messages":[],"suppressedMessages":[],"errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]},{"filePath":"/Users/20m61/Documents/workspace/Ec2-dev-env-setup/coverage/lcov-report/block-navigation.js","messages":[],"suppressedMessages":[{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":20,"column":35,"nodeType":"Identifier","messageId":"undef","endLine":20,"endColumn":43,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":67,"column":13,"nodeType":"Identifier","messageId":"undef","endLine":67,"endColumn":21,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":67,"column":55,"nodeType":"Identifier","messageId":"undef","endLine":67,"endColumn":63,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":68,"column":13,"nodeType":"Identifier","messageId":"undef","endLine":68,"endColumn":21,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'window' is not defined.","line":87,"column":1,"nodeType":"Identifier","messageId":"undef","endLine":87,"endColumn":7,"suppressions":[{"kind":"directive","justification":""}]}],"errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]},{"filePath":"/Users/20m61/Documents/workspace/Ec2-dev-env-setup/coverage/lcov-report/prettify.js","messages":[],"suppressedMessages":[{"ruleId":"no-undef","severity":2,"message":"'window' is not defined.","line":2,"column":1,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":7,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'ar' is already defined.","line":2,"column":3893,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":3895,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'ar' is already defined.","line":2,"column":4061,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":4063,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'at' is already defined.","line":2,"column":4089,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":4091,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'ak' is already defined.","line":2,"column":4604,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":4606,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'ak' is already defined.","line":2,"column":4665,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":4667,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'am' is already defined.","line":2,"column":4670,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":4672,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'ag' is already defined.","line":2,"column":4691,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":4693,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'af' is already defined.","line":2,"column":4789,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":4791,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'ak' is already defined.","line":2,"column":4854,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":4856,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'am' is already defined.","line":2,"column":4859,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":4861,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'ak' is already defined.","line":2,"column":4949,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":4951,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'ag' is already defined.","line":2,"column":4970,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":4972,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'V' is already defined.","line":2,"column":5216,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":5217,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'U' is already defined.","line":2,"column":5220,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":5221,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'ae' is already defined.","line":2,"column":5244,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":5246,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'window' is not defined.","line":2,"column":5512,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":5518,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":2,"column":5539,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":5547,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-prototype-builtins","severity":2,"message":"Do not access Object.prototype method 'hasOwnProperty' from target object.","line":2,"column":6621,"nodeType":"CallExpression","messageId":"prototypeBuildIn","endLine":2,"endColumn":6635,"suggestions":[{"messageId":"callObjectPrototype","data":{"prop":"hasOwnProperty"},"fix":{"range":[6638,6656],"text":"Object.prototype.hasOwnProperty.call(ag, "},"desc":"Call Object.prototype.hasOwnProperty explicitly."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7590,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7591,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7610,7611],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7610,7610],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7592,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7593,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7612,7613],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7612,7612],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7594,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7595,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7614,7615],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7614,7614],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7601,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7602,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7621,7622],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7621,7621],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7616,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7617,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7636,7637],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7636,7636],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7628,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7629,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7648,7649],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7648,7648],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7637,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7638,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7657,7658],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7657,7657],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7639,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7640,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7659,7660],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7659,7659],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7641,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7642,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7661,7662],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7661,7661],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7647,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7648,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7667,7668],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7667,7667],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7649,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7650,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7669,7670],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7669,7669],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7651,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7652,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7671,7672],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7671,7671],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7658,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7659,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7678,7679],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7678,7678],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7673,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7674,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7693,7694],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7693,7693],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7685,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7686,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7705,7706],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7705,7705],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7694,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7695,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7714,7715],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7714,7714],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7696,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7697,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7716,7717],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7716,7716],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7698,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7699,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7718,7719],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7718,7718],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7704,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7705,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7724,7725],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7724,7724],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7713,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7714,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7733,7734],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7733,7733],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7730,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7731,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7750,7751],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7750,7750],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7736,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7737,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7756,7757],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7756,7756],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7745,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7746,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7765,7766],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7765,7765],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7762,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7763,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7782,7783],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7782,7782],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7826,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7827,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7846,7847],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7846,7846],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7835,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7836,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7855,7856],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7855,7855],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7852,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7853,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7872,7873],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7872,7872],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7858,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7859,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7878,7879],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7878,7878],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7867,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7868,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7887,7888],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7887,7887],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7884,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7885,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7904,7905],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7904,7904],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\`.","line":2,"column":7890,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7891,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7910,7911],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7910,7910],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\`.","line":2,"column":7899,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7900,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7919,7920],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7919,7919],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\`.","line":2,"column":7916,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7917,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7936,7937],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7936,7936],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7958,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7959,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7978,7979],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7978,7978],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7967,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7968,"suggestions":[{"messageId":"removeEscape","fix":{"range":[7987,7988],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[7987,7987],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":7983,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7984,"suggestions":[{"messageId":"removeEscape","fix":{"range":[8003,8004],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[8003,8003],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7989,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7990,"suggestions":[{"messageId":"removeEscape","fix":{"range":[8009,8010],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[8009,8009],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":7998,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":7999,"suggestions":[{"messageId":"removeEscape","fix":{"range":[8018,8019],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[8018,8018],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":8014,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":8015,"suggestions":[{"messageId":"removeEscape","fix":{"range":[8034,8035],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[8034,8034],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":8071,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":8072,"suggestions":[{"messageId":"removeEscape","fix":{"range":[8091,8092],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[8091,8091],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":8078,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":8079,"suggestions":[{"messageId":"removeEscape","fix":{"range":[8098,8099],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[8098,8098],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":8082,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":8083,"suggestions":[{"messageId":"removeEscape","fix":{"range":[8102,8103],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[8102,8102],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":8084,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":8085,"suggestions":[{"messageId":"removeEscape","fix":{"range":[8104,8105],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[8104,8104],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":8091,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":8092,"suggestions":[{"messageId":"removeEscape","fix":{"range":[8111,8112],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[8111,8111],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\..","line":2,"column":9231,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":9232,"suggestions":[{"messageId":"removeEscape","fix":{"range":[9251,9252],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[9251,9251],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":9235,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":9236,"suggestions":[{"messageId":"removeEscape","fix":{"range":[9255,9256],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[9255,9255],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":9237,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":9238,"suggestions":[{"messageId":"removeEscape","fix":{"range":[9257,9258],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[9257,9257],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\`.","line":2,"column":9239,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":9240,"suggestions":[{"messageId":"removeEscape","fix":{"range":[9259,9260],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[9259,9259],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\/.","line":2,"column":9241,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":9242,"suggestions":[{"messageId":"removeEscape","fix":{"range":[9261,9262],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[9261,9261],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\#.","line":2,"column":9243,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":9244,"suggestions":[{"messageId":"removeEscape","fix":{"range":[9263,9264],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[9263,9263],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'window' is not defined.","line":2,"column":9523,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":9529,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'Y' is already defined.","line":2,"column":10812,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":10813,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'navigator' is not defined.","line":2,"column":11008,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":11017,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'ae' is assigned a value but never used.","line":2,"column":11414,"nodeType":null,"messageId":"unusedVar","endLine":2,"endColumn":11416,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'af' is assigned a value but never used.","line":2,"column":11438,"nodeType":null,"messageId":"unusedVar","endLine":2,"endColumn":11440,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'ag' is assigned a value but never used.","line":2,"column":11471,"nodeType":null,"messageId":"unusedVar","endLine":2,"endColumn":11473,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-redeclare","severity":2,"message":"'W' is already defined.","line":2,"column":11501,"nodeType":"Identifier","messageId":"redeclared","endLine":2,"endColumn":11502,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-prototype-builtins","severity":2,"message":"Do not access Object.prototype method 'hasOwnProperty' from target object.","line":2,"column":11964,"nodeType":"CallExpression","messageId":"prototypeBuildIn","endLine":2,"endColumn":11978,"suggestions":[{"messageId":"callObjectPrototype","data":{"prop":"hasOwnProperty"},"fix":{"range":[11982,11999],"text":"Object.prototype.hasOwnProperty.call(t, "},"desc":"Call Object.prototype.hasOwnProperty explicitly."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'window' is not defined.","line":2,"column":11998,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":12004,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'console' is not defined.","line":2,"column":12014,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":12021,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-prototype-builtins","severity":2,"message":"Do not access Object.prototype method 'hasOwnProperty' from target object.","line":2,"column":12097,"nodeType":"CallExpression","messageId":"prototypeBuildIn","endLine":2,"endColumn":12111,"suggestions":[{"messageId":"callObjectPrototype","data":{"prop":"hasOwnProperty"},"fix":{"range":[12115,12132],"text":"Object.prototype.hasOwnProperty.call(t, "},"desc":"Call Object.prototype.hasOwnProperty explicitly."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\!.","line":2,"column":12253,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12254,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12273,12274],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12273,12273],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\-.","line":2,"column":12269,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12270,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12289,12290],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12289,12289],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":12685,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12686,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12705,12706],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12705,12705],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":12689,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12690,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12709,12710],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12709,12709],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":12693,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12694,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12713,12714],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12713,12713],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":12697,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12698,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12717,12718],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12717,12717],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":12701,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12702,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12721,12722],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12721,12721],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":12705,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12706,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12725,12726],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12725,12725],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":12835,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12836,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12855,12856],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12855,12855],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":12837,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12838,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12857,12858],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12857,12857],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":12849,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12850,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12869,12870],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12869,12869],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":12851,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12852,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12871,12872],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12871,12871],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\/.","line":2,"column":12855,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12856,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12875,12876],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12875,12875],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\/.","line":2,"column":12881,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12882,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12901,12902],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12901,12901],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":12913,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12914,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12933,12934],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12933,12933],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":12918,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12919,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12938,12939],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12938,12938],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":12923,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12924,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12943,12944],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12943,12943],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":12954,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12955,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12974,12975],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12974,12974],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":12959,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12960,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12979,12980],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12979,12979],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":12964,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12965,"suggestions":[{"messageId":"removeEscape","fix":{"range":[12984,12985],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[12984,12984],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":12998,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":12999,"suggestions":[{"messageId":"removeEscape","fix":{"range":[13018,13019],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[13018,13018],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":13000,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":13001,"suggestions":[{"messageId":"removeEscape","fix":{"range":[13020,13021],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[13020,13020],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":13038,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":13039,"suggestions":[{"messageId":"removeEscape","fix":{"range":[13058,13059],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[13058,13058],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":13043,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":13044,"suggestions":[{"messageId":"removeEscape","fix":{"range":[13063,13064],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[13063,13063],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":13048,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":13049,"suggestions":[{"messageId":"removeEscape","fix":{"range":[13068,13069],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[13068,13068],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":13080,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":13081,"suggestions":[{"messageId":"removeEscape","fix":{"range":[13100,13101],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[13100,13100],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":13085,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":13086,"suggestions":[{"messageId":"removeEscape","fix":{"range":[13105,13106],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[13105,13105],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":13090,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":13091,"suggestions":[{"messageId":"removeEscape","fix":{"range":[13110,13111],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[13110,13110],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":13125,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":13126,"suggestions":[{"messageId":"removeEscape","fix":{"range":[13145,13146],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[13145,13145],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":13127,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":13128,"suggestions":[{"messageId":"removeEscape","fix":{"range":[13147,13148],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[13147,13147],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'window' is not defined.","line":2,"column":14225,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":14231,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'console' is not defined.","line":2,"column":14233,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":14240,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":2,"column":14293,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":14301,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":2,"column":14462,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":14470,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"@typescript-eslint/no-unused-vars","severity":1,"message":"'ae' is assigned a value but never used.","line":2,"column":14757,"nodeType":null,"messageId":"unusedVar","endLine":2,"endColumn":14759,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'window' is not defined.","line":2,"column":14799,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":14805,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'setTimeout' is not defined.","line":2,"column":15450,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":15460,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'window' is not defined.","line":2,"column":15491,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":15497,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'window' is not defined.","line":2,"column":15515,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":15521,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'window' is not defined.","line":2,"column":15536,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":15542,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":15786,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":15788,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":15809,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":15811,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":15835,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":15837,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":15875,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":15877,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\!.","line":2,"column":15892,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":15893,"suggestions":[{"messageId":"removeEscape","fix":{"range":[15912,15913],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[15912,15912],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\-.","line":2,"column":15908,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":15909,"suggestions":[{"messageId":"removeEscape","fix":{"range":[15928,15929],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[15928,15928],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":15918,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":15920,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":16362,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":16364,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":16410,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":16412,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":16453,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":16455,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":16498,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":16500,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":16551,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":16553,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":16574,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":16576,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":16597,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":16599,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":16646,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":16648,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":16661,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":16662,"suggestions":[{"messageId":"removeEscape","fix":{"range":[16681,16682],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[16681,16681],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":16676,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":16677,"suggestions":[{"messageId":"removeEscape","fix":{"range":[16696,16697],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[16696,16696],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":16708,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":16709,"suggestions":[{"messageId":"removeEscape","fix":{"range":[16728,16729],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[16728,16728],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":16719,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":16721,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":16734,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":16735,"suggestions":[{"messageId":"removeEscape","fix":{"range":[16754,16755],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[16754,16754],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":16749,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":16750,"suggestions":[{"messageId":"removeEscape","fix":{"range":[16769,16770],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[16769,16769],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":16781,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":16782,"suggestions":[{"messageId":"removeEscape","fix":{"range":[16801,16802],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[16801,16801],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\).","line":2,"column":16817,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":16818,"suggestions":[{"messageId":"removeEscape","fix":{"range":[16837,16838],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[16837,16837],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":16819,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":16820,"suggestions":[{"messageId":"removeEscape","fix":{"range":[16839,16840],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[16839,16839],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":16821,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":16822,"suggestions":[{"messageId":"removeEscape","fix":{"range":[16841,16842],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[16841,16841],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":16833,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":16835,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\!.","line":2,"column":16860,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":16861,"suggestions":[{"messageId":"removeEscape","fix":{"range":[16880,16881],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[16880,16880],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\-.","line":2,"column":16991,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":16992,"suggestions":[{"messageId":"removeEscape","fix":{"range":[17011,17012],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[17011,17011],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17026,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17028,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\/.","line":2,"column":17059,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":17060,"suggestions":[{"messageId":"removeEscape","fix":{"range":[17079,17080],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[17079,17079],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17079,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17081,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17111,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17113,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17161,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17163,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17203,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17205,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\-.","line":2,"column":17256,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":17257,"suggestions":[{"messageId":"removeEscape","fix":{"range":[17276,17277],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[17276,17276],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17285,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17287,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":17311,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":17312,"suggestions":[{"messageId":"removeEscape","fix":{"range":[17331,17332],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[17331,17331],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":17313,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":17314,"suggestions":[{"messageId":"removeEscape","fix":{"range":[17333,17334],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[17333,17333],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17331,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17333,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17354,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17356,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17380,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17382,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\-.","line":2,"column":17435,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":17436,"suggestions":[{"messageId":"removeEscape","fix":{"range":[17455,17456],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[17455,17455],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17477,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17479,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17500,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17502,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'PR' is not defined.","line":2,"column":17526,"nodeType":"Identifier","messageId":"undef","endLine":2,"endColumn":17528,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\).","line":2,"column":17543,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":17544,"suggestions":[{"messageId":"removeEscape","fix":{"range":[17563,17564],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[17563,17563],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\\".","line":2,"column":17545,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":17546,"suggestions":[{"messageId":"removeEscape","fix":{"range":[17565,17566],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[17565,17565],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-useless-escape","severity":2,"message":"Unnecessary escape character: \\'.","line":2,"column":17547,"nodeType":"Literal","messageId":"unnecessaryEscape","endLine":2,"endColumn":17548,"suggestions":[{"messageId":"removeEscape","fix":{"range":[17567,17568],"text":""},"desc":"Remove the `\\`. This maintains the current functionality."},{"messageId":"escapeBackslash","fix":{"range":[17567,17567],"text":"\\"},"desc":"Replace the `\\` with `\\\\` to include the actual backslash character."}],"suppressions":[{"kind":"directive","justification":""}]}],"errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]},{"filePath":"/Users/20m61/Documents/workspace/Ec2-dev-env-setup/coverage/lcov-report/sorter.js","messages":[],"suppressedMessages":[{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":12,"column":16,"nodeType":"Identifier","messageId":"undef","endLine":12,"endColumn":24,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":28,"column":29,"nodeType":"Identifier","messageId":"undef","endLine":28,"endColumn":37,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":29,"column":22,"nodeType":"Identifier","messageId":"undef","endLine":29,"endColumn":30,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":46,"column":24,"nodeType":"Identifier","messageId":"undef","endLine":46,"endColumn":32,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'document' is not defined.","line":114,"column":25,"nodeType":"Identifier","messageId":"undef","endLine":114,"endColumn":33,"suppressions":[{"kind":"directive","justification":""}]},{"ruleId":"no-undef","severity":2,"message":"'window' is not defined.","line":196,"column":1,"nodeType":"Identifier","messageId":"undef","endLine":196,"endColumn":7,"suppressions":[{"kind":"directive","justification":""}]}],"errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]},{"filePath":"/Users/20m61/Documents/workspace/Ec2-dev-env-setup/jest.config.js","messages":[],"suppressedMessages":[],"errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]},{"filePath":"/Users/20m61/Documents/workspace/Ec2-dev-env-setup/lib/dev-env-stack.ts","messages":[],"suppressedMessages":[],"errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]},{"filePath":"/Users/20m61/Documents/workspace/Ec2-dev-env-setup/test/dev-env-stack.test.ts","messages":[],"suppressedMessages":[],"errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]},{"filePath":"/Users/20m61/Documents/workspace/Ec2-dev-env-setup/test/ec2_ssh_start.test.ts","messages":[],"suppressedMessages":[],"errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]},{"filePath":"/Users/20m61/Documents/workspace/Ec2-dev-env-setup/test/ec2_ssh_start/unit.test.ts","messages":[],"suppressedMessages":[],"errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]},{"filePath":"/Users/20m61/Documents/workspace/Ec2-dev-env-setup/tools/ec2_ssh_start.ts","messages":[],"suppressedMessages":[{"ruleId":"no-constant-condition","severity":2,"message":"Unexpected constant condition.","line":58,"column":10,"nodeType":"Literal","messageId":"unexpected","endLine":58,"endColumn":14,"suppressions":[{"kind":"directive","justification":""}]}],"errorCount":0,"fatalErrorCount":0,"warningCount":0,"fixableErrorCount":0,"fixableWarningCount":0,"usedDeprecatedRules":[]}]
+[
+  {
+    "filePath": "/Users/20m61/Documents/workspace/Ec2-dev-env-setup/.eslintrc.js",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/20m61/Documents/workspace/Ec2-dev-env-setup/bin/dev-env.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/20m61/Documents/workspace/Ec2-dev-env-setup/coverage/lcov-report/block-navigation.js",
+    "messages": [],
+    "suppressedMessages": [
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 20,
+        "column": 35,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 20,
+        "endColumn": 43,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 67,
+        "column": 13,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 67,
+        "endColumn": 21,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 67,
+        "column": 55,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 67,
+        "endColumn": 63,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 68,
+        "column": 13,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 68,
+        "endColumn": 21,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'window' is not defined.",
+        "line": 87,
+        "column": 1,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 87,
+        "endColumn": 7,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      }
+    ],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/20m61/Documents/workspace/Ec2-dev-env-setup/coverage/lcov-report/prettify.js",
+    "messages": [],
+    "suppressedMessages": [
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'window' is not defined.",
+        "line": 2,
+        "column": 1,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 7,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'ar' is already defined.",
+        "line": 2,
+        "column": 3893,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 3895,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'ar' is already defined.",
+        "line": 2,
+        "column": 4061,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 4063,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'at' is already defined.",
+        "line": 2,
+        "column": 4089,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 4091,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'ak' is already defined.",
+        "line": 2,
+        "column": 4604,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 4606,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'ak' is already defined.",
+        "line": 2,
+        "column": 4665,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 4667,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'am' is already defined.",
+        "line": 2,
+        "column": 4670,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 4672,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'ag' is already defined.",
+        "line": 2,
+        "column": 4691,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 4693,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'af' is already defined.",
+        "line": 2,
+        "column": 4789,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 4791,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'ak' is already defined.",
+        "line": 2,
+        "column": 4854,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 4856,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'am' is already defined.",
+        "line": 2,
+        "column": 4859,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 4861,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'ak' is already defined.",
+        "line": 2,
+        "column": 4949,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 4951,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'ag' is already defined.",
+        "line": 2,
+        "column": 4970,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 4972,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'V' is already defined.",
+        "line": 2,
+        "column": 5216,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 5217,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'U' is already defined.",
+        "line": 2,
+        "column": 5220,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 5221,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'ae' is already defined.",
+        "line": 2,
+        "column": 5244,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 5246,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'window' is not defined.",
+        "line": 2,
+        "column": 5512,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 5518,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 2,
+        "column": 5539,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 5547,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-prototype-builtins",
+        "severity": 2,
+        "message": "Do not access Object.prototype method 'hasOwnProperty' from target object.",
+        "line": 2,
+        "column": 6621,
+        "nodeType": "CallExpression",
+        "messageId": "prototypeBuildIn",
+        "endLine": 2,
+        "endColumn": 6635,
+        "suggestions": [
+          {
+            "messageId": "callObjectPrototype",
+            "data": { "prop": "hasOwnProperty" },
+            "fix": { "range": [6638, 6656], "text": "Object.prototype.hasOwnProperty.call(ag, " },
+            "desc": "Call Object.prototype.hasOwnProperty explicitly."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7590,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7591,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7610, 7611], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7610, 7610], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7592,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7593,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7612, 7613], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7612, 7612], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7594,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7595,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7614, 7615], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7614, 7614], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7601,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7602,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7621, 7622], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7621, 7621], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7616,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7617,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7636, 7637], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7636, 7636], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7628,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7629,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7648, 7649], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7648, 7648], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7637,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7638,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7657, 7658], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7657, 7657], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7639,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7640,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7659, 7660], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7659, 7659], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7641,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7642,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7661, 7662], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7661, 7661], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7647,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7648,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7667, 7668], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7667, 7667], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7649,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7650,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7669, 7670], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7669, 7669], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7651,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7652,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7671, 7672], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7671, 7671], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7658,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7659,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7678, 7679], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7678, 7678], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7673,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7674,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7693, 7694], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7693, 7693], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7685,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7686,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7705, 7706], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7705, 7705], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7694,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7695,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7714, 7715], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7714, 7714], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7696,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7697,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7716, 7717], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7716, 7716], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7698,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7699,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7718, 7719], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7718, 7718], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7704,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7705,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7724, 7725], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7724, 7724], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7713,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7714,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7733, 7734], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7733, 7733], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7730,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7731,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7750, 7751], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7750, 7750], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7736,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7737,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7756, 7757], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7756, 7756], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7745,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7746,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7765, 7766], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7765, 7765], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7762,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7763,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7782, 7783], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7782, 7782], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7826,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7827,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7846, 7847], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7846, 7846], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7835,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7836,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7855, 7856], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7855, 7855], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7852,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7853,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7872, 7873], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7872, 7872], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7858,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7859,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7878, 7879], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7878, 7878], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7867,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7868,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7887, 7888], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7887, 7887], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7884,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7885,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7904, 7905], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7904, 7904], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\`.",
+        "line": 2,
+        "column": 7890,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7891,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7910, 7911], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7910, 7910], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\`.",
+        "line": 2,
+        "column": 7899,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7900,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7919, 7920], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7919, 7919], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\`.",
+        "line": 2,
+        "column": 7916,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7917,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7936, 7937], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7936, 7936], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7958,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7959,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7978, 7979], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7978, 7978], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7967,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7968,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [7987, 7988], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [7987, 7987], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 7983,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7984,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [8003, 8004], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [8003, 8003], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7989,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7990,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [8009, 8010], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [8009, 8009], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 7998,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 7999,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [8018, 8019], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [8018, 8018], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 8014,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 8015,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [8034, 8035], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [8034, 8034], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 8071,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 8072,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [8091, 8092], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [8091, 8091], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 8078,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 8079,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [8098, 8099], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [8098, 8098], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 8082,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 8083,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [8102, 8103], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [8102, 8102], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 8084,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 8085,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [8104, 8105], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [8104, 8104], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 8091,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 8092,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [8111, 8112], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [8111, 8111], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\..",
+        "line": 2,
+        "column": 9231,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 9232,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [9251, 9252], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [9251, 9251], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 9235,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 9236,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [9255, 9256], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [9255, 9255], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 9237,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 9238,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [9257, 9258], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [9257, 9257], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\`.",
+        "line": 2,
+        "column": 9239,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 9240,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [9259, 9260], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [9259, 9259], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\/.",
+        "line": 2,
+        "column": 9241,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 9242,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [9261, 9262], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [9261, 9261], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\#.",
+        "line": 2,
+        "column": 9243,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 9244,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [9263, 9264], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [9263, 9263], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'window' is not defined.",
+        "line": 2,
+        "column": 9523,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 9529,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'Y' is already defined.",
+        "line": 2,
+        "column": 10812,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 10813,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'navigator' is not defined.",
+        "line": 2,
+        "column": 11008,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 11017,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'ae' is assigned a value but never used.",
+        "line": 2,
+        "column": 11414,
+        "nodeType": null,
+        "messageId": "unusedVar",
+        "endLine": 2,
+        "endColumn": 11416,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'af' is assigned a value but never used.",
+        "line": 2,
+        "column": 11438,
+        "nodeType": null,
+        "messageId": "unusedVar",
+        "endLine": 2,
+        "endColumn": 11440,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'ag' is assigned a value but never used.",
+        "line": 2,
+        "column": 11471,
+        "nodeType": null,
+        "messageId": "unusedVar",
+        "endLine": 2,
+        "endColumn": 11473,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-redeclare",
+        "severity": 2,
+        "message": "'W' is already defined.",
+        "line": 2,
+        "column": 11501,
+        "nodeType": "Identifier",
+        "messageId": "redeclared",
+        "endLine": 2,
+        "endColumn": 11502,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-prototype-builtins",
+        "severity": 2,
+        "message": "Do not access Object.prototype method 'hasOwnProperty' from target object.",
+        "line": 2,
+        "column": 11964,
+        "nodeType": "CallExpression",
+        "messageId": "prototypeBuildIn",
+        "endLine": 2,
+        "endColumn": 11978,
+        "suggestions": [
+          {
+            "messageId": "callObjectPrototype",
+            "data": { "prop": "hasOwnProperty" },
+            "fix": { "range": [11982, 11999], "text": "Object.prototype.hasOwnProperty.call(t, " },
+            "desc": "Call Object.prototype.hasOwnProperty explicitly."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'window' is not defined.",
+        "line": 2,
+        "column": 11998,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 12004,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'console' is not defined.",
+        "line": 2,
+        "column": 12014,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 12021,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-prototype-builtins",
+        "severity": 2,
+        "message": "Do not access Object.prototype method 'hasOwnProperty' from target object.",
+        "line": 2,
+        "column": 12097,
+        "nodeType": "CallExpression",
+        "messageId": "prototypeBuildIn",
+        "endLine": 2,
+        "endColumn": 12111,
+        "suggestions": [
+          {
+            "messageId": "callObjectPrototype",
+            "data": { "prop": "hasOwnProperty" },
+            "fix": { "range": [12115, 12132], "text": "Object.prototype.hasOwnProperty.call(t, " },
+            "desc": "Call Object.prototype.hasOwnProperty explicitly."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\!.",
+        "line": 2,
+        "column": 12253,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12254,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12273, 12274], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12273, 12273], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\-.",
+        "line": 2,
+        "column": 12269,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12270,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12289, 12290], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12289, 12289], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 12685,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12686,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12705, 12706], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12705, 12705], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 12689,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12690,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12709, 12710], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12709, 12709], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 12693,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12694,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12713, 12714], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12713, 12713], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 12697,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12698,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12717, 12718], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12717, 12717], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 12701,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12702,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12721, 12722], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12721, 12721], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 12705,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12706,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12725, 12726], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12725, 12725], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 12835,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12836,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12855, 12856], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12855, 12855], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 12837,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12838,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12857, 12858], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12857, 12857], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 12849,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12850,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12869, 12870], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12869, 12869], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 12851,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12852,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12871, 12872], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12871, 12871], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\/.",
+        "line": 2,
+        "column": 12855,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12856,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12875, 12876], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12875, 12875], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\/.",
+        "line": 2,
+        "column": 12881,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12882,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12901, 12902], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12901, 12901], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 12913,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12914,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12933, 12934], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12933, 12933], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 12918,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12919,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12938, 12939], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12938, 12938], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 12923,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12924,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12943, 12944], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12943, 12943], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 12954,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12955,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12974, 12975], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12974, 12974], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 12959,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12960,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12979, 12980], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12979, 12979], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 12964,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12965,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [12984, 12985], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [12984, 12984], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 12998,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 12999,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [13018, 13019], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [13018, 13018], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 13000,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 13001,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [13020, 13021], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [13020, 13020], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 13038,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 13039,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [13058, 13059], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [13058, 13058], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 13043,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 13044,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [13063, 13064], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [13063, 13063], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 13048,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 13049,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [13068, 13069], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [13068, 13068], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 13080,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 13081,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [13100, 13101], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [13100, 13100], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 13085,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 13086,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [13105, 13106], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [13105, 13105], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 13090,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 13091,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [13110, 13111], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [13110, 13110], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 13125,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 13126,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [13145, 13146], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [13145, 13145], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 13127,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 13128,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [13147, 13148], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [13147, 13147], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'window' is not defined.",
+        "line": 2,
+        "column": 14225,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 14231,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'console' is not defined.",
+        "line": 2,
+        "column": 14233,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 14240,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 2,
+        "column": 14293,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 14301,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 2,
+        "column": 14462,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 14470,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "@typescript-eslint/no-unused-vars",
+        "severity": 1,
+        "message": "'ae' is assigned a value but never used.",
+        "line": 2,
+        "column": 14757,
+        "nodeType": null,
+        "messageId": "unusedVar",
+        "endLine": 2,
+        "endColumn": 14759,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'window' is not defined.",
+        "line": 2,
+        "column": 14799,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 14805,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'setTimeout' is not defined.",
+        "line": 2,
+        "column": 15450,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 15460,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'window' is not defined.",
+        "line": 2,
+        "column": 15491,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 15497,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'window' is not defined.",
+        "line": 2,
+        "column": 15515,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 15521,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'window' is not defined.",
+        "line": 2,
+        "column": 15536,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 15542,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 15786,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 15788,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 15809,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 15811,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 15835,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 15837,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 15875,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 15877,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\!.",
+        "line": 2,
+        "column": 15892,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 15893,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [15912, 15913], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [15912, 15912], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\-.",
+        "line": 2,
+        "column": 15908,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 15909,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [15928, 15929], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [15928, 15928], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 15918,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 15920,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 16362,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 16364,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 16410,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 16412,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 16453,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 16455,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 16498,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 16500,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 16551,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 16553,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 16574,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 16576,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 16597,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 16599,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 16646,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 16648,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 16661,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 16662,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [16681, 16682], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [16681, 16681], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 16676,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 16677,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [16696, 16697], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [16696, 16696], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 16708,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 16709,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [16728, 16729], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [16728, 16728], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 16719,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 16721,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 16734,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 16735,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [16754, 16755], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [16754, 16754], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 16749,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 16750,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [16769, 16770], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [16769, 16769], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 16781,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 16782,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [16801, 16802], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [16801, 16801], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\).",
+        "line": 2,
+        "column": 16817,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 16818,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [16837, 16838], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [16837, 16837], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 16819,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 16820,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [16839, 16840], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [16839, 16839], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 16821,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 16822,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [16841, 16842], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [16841, 16841], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 16833,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 16835,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\!.",
+        "line": 2,
+        "column": 16860,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 16861,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [16880, 16881], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [16880, 16880], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\-.",
+        "line": 2,
+        "column": 16991,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 16992,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [17011, 17012], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [17011, 17011], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17026,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17028,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\/.",
+        "line": 2,
+        "column": 17059,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 17060,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [17079, 17080], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [17079, 17079], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17079,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17081,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17111,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17113,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17161,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17163,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17203,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17205,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\-.",
+        "line": 2,
+        "column": 17256,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 17257,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [17276, 17277], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [17276, 17276], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17285,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17287,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 17311,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 17312,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [17331, 17332], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [17331, 17331], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 17313,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 17314,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [17333, 17334], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [17333, 17333], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17331,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17333,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17354,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17356,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17380,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17382,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\-.",
+        "line": 2,
+        "column": 17435,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 17436,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [17455, 17456], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [17455, 17455], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17477,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17479,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17500,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17502,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'PR' is not defined.",
+        "line": 2,
+        "column": 17526,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 2,
+        "endColumn": 17528,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\).",
+        "line": 2,
+        "column": 17543,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 17544,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [17563, 17564], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [17563, 17563], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\\".",
+        "line": 2,
+        "column": 17545,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 17546,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [17565, 17566], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [17565, 17565], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-useless-escape",
+        "severity": 2,
+        "message": "Unnecessary escape character: \\'.",
+        "line": 2,
+        "column": 17547,
+        "nodeType": "Literal",
+        "messageId": "unnecessaryEscape",
+        "endLine": 2,
+        "endColumn": 17548,
+        "suggestions": [
+          {
+            "messageId": "removeEscape",
+            "fix": { "range": [17567, 17568], "text": "" },
+            "desc": "Remove the `\\`. This maintains the current functionality."
+          },
+          {
+            "messageId": "escapeBackslash",
+            "fix": { "range": [17567, 17567], "text": "\\" },
+            "desc": "Replace the `\\` with `\\\\` to include the actual backslash character."
+          }
+        ],
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      }
+    ],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/20m61/Documents/workspace/Ec2-dev-env-setup/coverage/lcov-report/sorter.js",
+    "messages": [],
+    "suppressedMessages": [
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 12,
+        "column": 16,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 12,
+        "endColumn": 24,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 28,
+        "column": 29,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 28,
+        "endColumn": 37,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 29,
+        "column": 22,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 29,
+        "endColumn": 30,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 46,
+        "column": 24,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 46,
+        "endColumn": 32,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'document' is not defined.",
+        "line": 114,
+        "column": 25,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 114,
+        "endColumn": 33,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      },
+      {
+        "ruleId": "no-undef",
+        "severity": 2,
+        "message": "'window' is not defined.",
+        "line": 196,
+        "column": 1,
+        "nodeType": "Identifier",
+        "messageId": "undef",
+        "endLine": 196,
+        "endColumn": 7,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      }
+    ],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/20m61/Documents/workspace/Ec2-dev-env-setup/jest.config.js",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/20m61/Documents/workspace/Ec2-dev-env-setup/lib/dev-env-stack.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/20m61/Documents/workspace/Ec2-dev-env-setup/test/dev-env-stack.test.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/20m61/Documents/workspace/Ec2-dev-env-setup/test/ec2_ssh_start.test.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/20m61/Documents/workspace/Ec2-dev-env-setup/test/ec2_ssh_start/unit.test.ts",
+    "messages": [],
+    "suppressedMessages": [],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  },
+  {
+    "filePath": "/Users/20m61/Documents/workspace/Ec2-dev-env-setup/tools/ec2_ssh_start.ts",
+    "messages": [],
+    "suppressedMessages": [
+      {
+        "ruleId": "no-constant-condition",
+        "severity": 2,
+        "message": "Unexpected constant condition.",
+        "line": 58,
+        "column": 10,
+        "nodeType": "Literal",
+        "messageId": "unexpected",
+        "endLine": 58,
+        "endColumn": 14,
+        "suppressions": [{ "kind": "directive", "justification": "" }]
+      }
+    ],
+    "errorCount": 0,
+    "fatalErrorCount": 0,
+    "warningCount": 0,
+    "fixableErrorCount": 0,
+    "fixableWarningCount": 0,
+    "usedDeprecatedRules": []
+  }
+]

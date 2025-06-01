@@ -1,6 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import child_process from 'child_process';
+import { loadConfig } from '../tools/ec2_ssh_start';
 
 describe('tools/ec2_ssh_start.sh', () => {
   const configPath = path.join(__dirname, '../tools/ec2_ssh_config');
@@ -15,7 +16,7 @@ describe('tools/ec2_ssh_start.sh', () => {
     // aws モック
     fs.writeFileSync(
       path.join(mockDir, 'aws'),
-      `#!/bin/bash\n\n# 引数をすべてログに出力（デバッグ用）\necho \"[MOCK AWS] $@\" >&2\nif [[ $1 == 'ec2' && $2 == 'describe-instances' ]]; then\n  if [[ $@ == *"State.Name"* ]]; then\n    echo running\n  elif [[ $@ == *"PublicIpAddress"* ]]; then\n    echo 203.0.113.10\n  fi\n  exit 0\nelif [[ $1 == 'ec2' && $2 == 'start-instances' ]]; then\n  exit 0\nfi\nexit 0\n`,
+      `#!/bin/bash\n\n# 引数をすべてログに出力（デバッグ用）\necho "[MOCK AWS] $@" >&2\nif [[ $1 == 'ec2' && $2 == 'describe-instances' ]]; then\n  if [[ $@ == *State.Name* ]]; then\n    echo running\n  elif [[ $@ == *PublicIpAddress* ]]; then\n    echo 203.0.113.10\n  fi\n  exit 0\nelif [[ $1 == 'ec2' && $2 == 'start-instances' ]]; then\n  exit 0\nfi\nexit 0\n`,
     );
     fs.chmodSync(path.join(mockDir, 'aws'), 0o755);
     // ssh モック
@@ -96,4 +97,19 @@ describe('tools/ec2_ssh_start.sh', () => {
     console.timeEnd('インスタンス起動からSSHまで');
     done();
   }, 10000);
+});
+
+it('SSH接続コマンドを生成できる', () => {
+  const configPath = path.join(__dirname, '../../tools/ec2_ssh_config');
+  fs.writeFileSync(
+    configPath,
+    'INSTANCE_ID="i-1234567890abcdef0"\nKEY_PATH="~/.ssh/test-key.pem"\nUSER="ec2-user"\nREGION="ap-northeast-1"\n',
+    { encoding: 'utf-8' },
+  );
+  const cfg = loadConfig(configPath);
+  expect(cfg.INSTANCE_ID).toBe('i-1234567890abcdef0');
+  expect(cfg.KEY_PATH).toBe('~/.ssh/test-key.pem');
+  expect(cfg.USER).toBe('ec2-user');
+  expect(cfg.REGION).toBe('ap-northeast-1');
+  fs.unlinkSync(configPath);
 });

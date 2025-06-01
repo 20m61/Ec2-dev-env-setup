@@ -651,3 +651,11 @@ zsh tools/ec2_ssh_start.sh
 [![Coverage Status](https://img.shields.io/badge/coverage-auto--generated-brightgreen)](./coverage/lcov-report/index.html)
 
 ---
+
+## 🏆 AWSベストプラクティス対応
+
+- 本テンプレートはAWS公式のベストプラクティスに準拠し、リソース名の一意性（スタック名・環境名prefix/postfix付与）を自動化しています。
+  - 例: EC2, S3バケット等のリソース名に `スタック名-環境名-xxx` 形式のprefixが付与されます。
+- UserDataスクリプト（`templates/user-data.sh`）の内容はSHA256ハッシュ化され、EC2タグやCloudFormation Outputsに記録されます。
+  - これにより、UserDataのバージョン管理・追跡性が担保されます。
+- 主要な設定値（環境名、バケット名、キーペア名等）は外部化（環境変数/Context）されており、柔軟な環境切り替え・CI/CD運用が可能です。

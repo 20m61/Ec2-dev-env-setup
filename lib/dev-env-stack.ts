@@ -1,5 +1,6 @@
 import * as fs from 'fs';
 import * as path from 'path';
+import * as crypto from 'crypto';
 import * as cdk from 'aws-cdk-lib';
 import { Construct } from 'constructs';
 import * as ec2 from 'aws-cdk-lib/aws-ec2';
@@ -83,8 +84,15 @@ export class DevEnvStack extends cdk.Stack {
       }),
     };
 
-    // user-data
-    const userData = fs.readFileSync(path.join(__dirname, '../templates/user-data.sh'), 'utf8');
+    // --- UserDataのハッシュ計算（バージョン管理用） ---
+    const userDataPath = path.join(__dirname, '../templates/user-data.sh');
+    const userData = fs.readFileSync(userDataPath, 'utf8');
+    const userDataHash = crypto.createHash('sha256').update(userData).digest('hex').slice(0, 12);
+
+    // --- リソース名の一意性確保用prefix/postfix ---
+    const envName = process.env.ENV_NAME || this.node.tryGetContext('ENV_NAME') || 'dev';
+    const stackName = cdk.Stack.of(this).stackName;
+    const resourcePrefix = `${stackName}-${envName}`;
 
     // EC2 Instance
     const spotMaxPrice = this.node.tryGetContext('SPOT_MAX_PRICE') || process.env.SPOT_MAX_PRICE;
@@ -121,7 +129,7 @@ export class DevEnvStack extends cdk.Stack {
     //   resources: ['arn:aws:s3:::your-bucket-name', 'arn:aws:s3:::your-bucket-name/*'],
     // }));
 
-    const instance = new ec2.Instance(this, 'DevEnvInstance', {
+    const instance = new ec2.Instance(this, `${resourcePrefix}-Instance`, {
       vpc,
       instanceType: ec2.InstanceType.of(ec2.InstanceClass.T4G, ec2.InstanceSize.XLARGE),
       machineImage: ami,
@@ -144,8 +152,12 @@ export class DevEnvStack extends cdk.Stack {
       throw new Error(`S3バケット名が不正です: ${bucketName}`);
     }
     if (bucketName) {
-      const bucket = new s3.Bucket(this, 'ProjectBucket', {
-        bucketName,
+      const uniqueBucketName = `${resourcePrefix}-${bucketName}`
+        .toLowerCase()
+        .replace(/[^a-z0-9.-]/g, '')
+        .slice(0, 63);
+      const bucket = new s3.Bucket(this, `${resourcePrefix}-ProjectBucket`, {
+        bucketName: uniqueBucketName,
         removalPolicy: cdk.RemovalPolicy.DESTROY, // スタック削除時にバケットも削除,
         autoDeleteObjects: true, // バケット内の全オブジェクトも削除
       });
@@ -159,8 +171,11 @@ export class DevEnvStack extends cdk.Stack {
     }
     // CloudWatch Logs等を追加する場合もremovalPolicy: DESTROYを必ず指定してください
 
-    // EC2 Nameタグ付与
-    instance.instance.addPropertyOverride('Tags', [{ Key: 'Name', Value: id }]);
+    // EC2 Nameタグ付与（prefix+id+UserDataハッシュ）
+    instance.instance.addPropertyOverride('Tags', [
+      { Key: 'Name', Value: `${resourcePrefix}-${id}` },
+      { Key: 'UserDataHash', Value: userDataHash },
+    ]);
 
     // --- 追加: EC2接続情報をOutputsとして出力 ---
     const createOutput = (name: string, value: string, description: string) => {
@@ -171,7 +186,8 @@ export class DevEnvStack extends cdk.Stack {
     createOutput('EC2PublicIp', instance.instancePublicIp, 'EC2 Public IP');
     createOutput('EC2Region', cdk.Stack.of(this).region, 'EC2 Region');
     createOutput('EC2KeyName', instance.instance.keyName || '(not set)', 'EC2 SSH Key Name');
-    // ---
+    // UserDataハッシュをOutputsにも出力
+    createOutput('UserDataHash', userDataHash, 'UserData script SHA256 hash');
 
     // --- CloudWatch アラーム + Lambda でアイドル時自動停止 ---
     // 1. CloudWatch アラーム（CPU利用率5%未満が30分続いたら）

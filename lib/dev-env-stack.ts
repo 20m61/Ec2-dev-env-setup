@@ -69,8 +69,7 @@ export class DevEnvStack extends cdk.Stack {
     // allowedIp/SSH_PORT未指定時はTailscale以外のIngressルールを追加しない（全ポート閉鎖）
 
     // Amazon Linux 2023 ARM64 AMI
-    const ami = ec2.MachineImage.latestAmazonLinux({
-      generation: ec2.AmazonLinuxGeneration.AMAZON_LINUX_2023,
+    const ami = ec2.MachineImage.latestAmazonLinux2({
       cpuType: ec2.AmazonLinuxCpuType.ARM_64,
       edition: ec2.AmazonLinuxEdition.STANDARD,
     });
@@ -129,17 +128,84 @@ export class DevEnvStack extends cdk.Stack {
     //   resources: ['arn:aws:s3:::your-bucket-name', 'arn:aws:s3:::your-bucket-name/*'],
     // }));
 
-    // --- .envファイルをUserDataで自動配置 ---
-    const envPath = path.join(__dirname, '../.env');
-    let envContent = '';
-    if (fs.existsSync(envPath)) {
-      envContent = fs.readFileSync(envPath, 'utf8');
-    } else {
+    // --- .envファイルをUserDataで自動配置（S3ダウンロード方式） ---
+    // プロジェクトルートの絶対パスを取得
+    const envPath = path.resolve(process.cwd(), '.env');
+    if (!fs.existsSync(envPath)) {
       throw new Error('.envファイルがプロジェクトルートに存在しません。');
     }
-    // UserDataスクリプトの先頭で.envを配置するコマンドを追加
-    const envSetupScript = `cat <<'EOF' > /home/ec2-user/.env\n${envContent.replace(/\$/gm, '\\$')}\nEOF\nchown ec2-user:ec2-user /home/ec2-user/.env\nchmod 600 /home/ec2-user/.env\n`;
-    const mergedUserData = envSetupScript + userData;
+
+    // S3バケット名の決定
+    const bucketName =
+      process.env.PROJECT_BUCKET_NAME ||
+      this.node.tryGetContext('PROJECT_BUCKET_NAME') ||
+      `${resourcePrefix}-envbucket`
+        .toLowerCase()
+        .replace(/[^a-z0-9.-]/g, '')
+        .slice(0, 63);
+    // envObjectKeyを必ず小文字で統一
+    const envObjectKey = `${resourcePrefix}`.toLowerCase() + '/.env';
+    console.log('envObjectKey:', envObjectKey); // デバッグ用
+
+    // S3バケット作成（既存バケット名があれば流用）
+    const envBucket = new s3.Bucket(this, `${resourcePrefix}-EnvBucket`, {
+      bucketName,
+      removalPolicy: cdk.RemovalPolicy.DESTROY,
+      autoDeleteObjects: true,
+    });
+    // EC2ロールにバケットアクセス権限を付与
+    role.addToPolicy(
+      new iam.PolicyStatement({
+        actions: ['s3:GetObject'],
+        resources: [envBucket.arnForObjects('*')],
+      }),
+    );
+
+    // UserDataでS3から.envをダウンロード
+    const region = cdk.Stack.of(this).region;
+    const envSetupScript = `#!/bin/bash
+exec > /var/log/env_setup_script.log 2>&1
+set -e
+BUCKET="${bucketName}"
+KEY="${envObjectKey}"
+REGION="${region}"
+echo "Downloading .env from S3: s3://$BUCKET/$KEY"
+for i in {1..10}; do
+  if aws s3 cp s3://$BUCKET/$KEY /home/ec2-user/.env --region $REGION; then
+    chown ec2-user:ec2-user /home/ec2-user/.env
+    chmod 600 /home/ec2-user/.env
+    echo ".env downloaded and permissions set."
+    break
+  else
+    echo "Attempt $i: .env download failed. Retrying in 2s..."
+    sleep 2
+  fi
+done
+if [ ! -f /home/ec2-user/.env ]; then
+  echo ".env download failed after retries. Check S3 permissions, bucket/key, and region."
+  exit 1
+fi
+ls -l /home/ec2-user/.env || true
+head -n 5 /home/ec2-user/.env || true
+`;
+
+    const originalUserDataPath = path.join(__dirname, '../templates/user-data.sh');
+    let baseUserData = fs.readFileSync(originalUserDataPath, 'utf8');
+    if (baseUserData.startsWith('#!/bin/bash')) {
+      baseUserData = baseUserData.split('\n').slice(1).join('\n');
+    }
+
+    const multipartUserData = new ec2.MultipartUserData();
+    multipartUserData.addUserDataPart(
+      ec2.UserData.custom(envSetupScript),
+      ec2.MultipartBody.SHELL_SCRIPT,
+      false,
+    );
+    multipartUserData.addUserDataPart(
+      ec2.UserData.custom(baseUserData),
+      ec2.MultipartBody.SHELL_SCRIPT,
+      false,
+    );
 
     const instance = new ec2.Instance(this, `${resourcePrefix}-Instance`, {
       vpc,
@@ -148,39 +214,18 @@ export class DevEnvStack extends cdk.Stack {
       securityGroup: sg,
       role,
       blockDevices: [ebs],
-      userData: ec2.UserData.custom(mergedUserData),
-      ...(spotMaxPrice && {
-        spotPrice: spotMaxPrice,
+      userData: multipartUserData,
+      ...(spotMaxPrice && { spotPrice: spotMaxPrice }),
+      ...(keyPairName && {
+        keyPair: ec2.KeyPair.fromKeyPairName(this, 'ImportedKeyPair', keyPairName),
       }),
-      ...(keyPairName && { keyName: keyPairName }),
     });
 
-    // S3バケット（任意）
-    const bucketName =
-      process.env.PROJECT_BUCKET_NAME || this.node.tryGetContext('PROJECT_BUCKET_NAME');
-    // S3バケット名バリデーション
-    const bucketNameRegex = /^[a-z0-9.-]{3,63}$/;
-    if (bucketName && !bucketNameRegex.test(bucketName)) {
-      throw new Error(`S3バケット名が不正です: ${bucketName}`);
-    }
-    if (bucketName) {
-      const uniqueBucketName = `${resourcePrefix}-${bucketName}`
-        .toLowerCase()
-        .replace(/[^a-z0-9.-]/g, '')
-        .slice(0, 63);
-      const bucket = new s3.Bucket(this, `${resourcePrefix}-ProjectBucket`, {
-        bucketName: uniqueBucketName,
-        removalPolicy: cdk.RemovalPolicy.DESTROY, // スタック削除時にバケットも削除,
-        autoDeleteObjects: true, // バケット内の全オブジェクトも削除
-      });
-      // S3バケット単位の権限のみ付与
-      role.addToPolicy(
-        new iam.PolicyStatement({
-          actions: ['s3:*'],
-          resources: [bucket.bucketArn, `${bucket.bucketArn}/*`],
-        }),
-      );
-    }
+    // --- デプロイ前に.envをS3へアップロード（自動化） ---
+    // ※CDKからの自動アップロードは廃止。必ず事前にS3へアップロードしてください。
+    // 例: aws s3 cp .env s3://" + bucketName + "/" + envObjectKey
+    // READMEやnpm scriptで手順を明記することを推奨
+
     // CloudWatch Logs等を追加する場合もremovalPolicy: DESTROYを必ず指定してください
 
     // EC2 Nameタグ付与（prefix+id+UserDataハッシュ）

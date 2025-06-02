@@ -1,5 +1,18 @@
-#!/bin/bash
 set -euo pipefail
+
+# --- S3から.envダウンロード（失敗時は詳細ログ出力して即終了） ---
+if [ -z "${S3_BUCKET_NAME:-}" ]; then
+  echo "S3_BUCKET_NAME環境変数が設定されていません。" >&2
+  exit 1
+fi
+{
+  echo "[env-setup] S3から.env取得: $(date)"
+  aws s3 cp s3://${S3_BUCKET_NAME}/devenvstack-dev/.env /home/ec2-user/.env --region ap-northeast-1
+  ls -l /home/ec2-user/.env
+} >> /var/log/env_setup_script.log 2>&1 || {
+  echo "[env-setup] .envダウンロード失敗: $(date)" >> /var/log/env_setup_script.log
+  exit 1
+}
 
 # .envファイルの存在チェック（なければ即エラー終了）
 if [ ! -f /home/ec2-user/.env ]; then
@@ -68,16 +81,29 @@ sudo yum install -y aws-sam-cli || sudo pip3 install aws-sam-cli
 sudo usermod -aG docker ec2-user
 
 # --- Tailscale install & 起動 ---
+echo "[Tailscale] インストール開始: $(date)"
 if ! command -v tailscale &>/dev/null; then
   curl --fail --proto '=https' --tlsv1.2 -fsSL https://pkgs.tailscale.com/stable/install.sh | sh
+  if ! command -v tailscale &>/dev/null; then
+    echo "[Tailscale] インストール失敗: tailscaleコマンドが見つかりません" >&2
+    exit 1
+  fi
 fi
+echo "[Tailscale] tailscaledサービス起動: $(date)"
 sudo systemctl enable --now tailscaled
+sudo systemctl status tailscaled --no-pager || true
 # 認証キーがあれば自動ログイン
-echo "Tailscaleの認証は手動で行ってください: sudo tailscale up --ssh"
+echo "[Tailscale] 認証処理: $(date)"
 if [ -n "${TAILSCALE_AUTHKEY:-}" ]; then
-  # 認証キーやトークンは絶対にログ等に出力しないこと
-  sudo tailscale up --authkey "$TAILSCALE_AUTHKEY" --ssh >/dev/null 2>&1 || true
+  sudo tailscale up --authkey "$TAILSCALE_AUTHKEY" --ssh >/dev/null 2>&1 || {
+    echo "[Tailscale] 認証失敗: tailscale up" >&2
+    exit 1
+  }
+  echo "[Tailscale] 認証成功"
+else
+  echo "[Tailscale] 認証キー未設定。手動認証が必要です。"
 fi
+echo "[Tailscale] インストール・認証完了: $(date)"
 
 # code-server install
 curl --fail --proto '=https' --tlsv1.2 -fsSL https://code-server.dev/install.sh | sh

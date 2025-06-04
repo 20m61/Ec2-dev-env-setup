@@ -54,7 +54,7 @@ export function startInstance(cfg: Ec2SshConfig): void {
 
 export function waitForInstanceRunning(cfg: Ec2SshConfig, sleepMs = 5000): void {
   let count = 0;
-   
+
   while (true) {
     const r = spawnSync(
       'aws',

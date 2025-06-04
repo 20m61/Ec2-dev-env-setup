@@ -10,21 +10,21 @@ const csvPath = path.join(__dirname, '../ec2-connection-info.csv');
 const configPath = path.join(__dirname, 'ec2_ssh_config');
 
 if (!fs.existsSync(csvPath)) {
-    console.error('ec2-connection-info.csv が見つかりません。cdk deploy 後に再実行してください。');
-    process.exit(1);
+  console.error('ec2-connection-info.csv が見つかりません。cdk deploy 後に再実行してください。');
+  process.exit(1);
 }
 
 const csv = fs.readFileSync(csvPath, 'utf-8').split('\n');
 if (csv.length < 2) {
-    console.error('ec2-connection-info.csv に有効なデータがありません。');
-    process.exit(1);
+  console.error('ec2-connection-info.csv に有効なデータがありません。');
+  process.exit(1);
 }
 const [header, row] = csv;
 const cols = header.split(',');
 const vals = row.split(',');
-if (!row || vals.length !== cols.length || vals.every(v => v === '')) {
-    console.error('ec2-connection-info.csv のデータ行が不正です。');
-    process.exit(1);
+if (!row || vals.length !== cols.length || vals.every((v) => v === '')) {
+  console.error('ec2-connection-info.csv のデータ行が不正です。');
+  process.exit(1);
 }
 const get = (key) => vals[cols.indexOf(key)] || '';
 

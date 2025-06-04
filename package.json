@@ -11,9 +11,12 @@
     "cdk": "cdk",
     "lint": "eslint . --ext .ts",
     "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "test": "jest",
-    "predeploy": "aws s3 cp .env s3://$S3_BUCKET_PATH/.env --region ap-northeast-1",
-    "deploy": "cdk deploy"
+    "deploy:bucket": "cdk deploy S3BucketStack --outputs-file cdk-outputs.json",
+    "predeploy": "aws s3 cp .env s3://$(jq -r '.S3BucketStack.EnvBucketName' cdk-outputs.json)/devenvstack-dev/.env --region ap-northeast-1",
+    "deploy:ec2": "cdk deploy DevEnvStack",
+    "ssm:check": "zsh tools/ssm_check.sh"
   },
   "devDependencies": {
     "@eslint/js": "^9.28.0",

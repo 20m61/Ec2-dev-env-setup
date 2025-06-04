@@ -1,4 +1,7 @@
-set -euo pipefail
+#!/bin/bash
+set -euxo pipefail
+# すべての出力をログにリダイレクト
+exec > >(tee -a /var/log/env_setup_script.log) 2>&1
 
 # --- S3から.envダウンロード（失敗時は詳細ログ出力して即終了） ---
 if [ -z "${S3_BUCKET_NAME:-}" ]; then

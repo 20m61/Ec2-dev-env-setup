@@ -1,0 +1,7 @@
+{
+  "S3BucketStack": {
+    "EnvBucketName": "devenvstack-dev-envbucket",
+    "ExportsOutputFnGetAttdevenvstackdevEnvBucket89333896ArnE2F60CCA": "arn:aws:s3:::devenvstack-dev-envbucket",
+    "ExportsOutputRefdevenvstackdevEnvBucket89333896C1ED5C8D": "devenvstack-dev-envbucket"
+  }
+}

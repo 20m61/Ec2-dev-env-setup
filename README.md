@@ -297,6 +297,41 @@ jobs:
 
 ---
 
+## 🚀 2スタック分離・CI/CDデプロイ手順（2025年対応）
+
+### スタック構成
+
+- **S3BucketStack**: S3バケット（.env配置用）
+- **DevEnvStack**: EC2/その他リソース
+
+### 推奨デプロイ手順
+
+1. **S3バケットのみ先に作成**
+   ```sh
+   npm run deploy:bucket
+   # => cdk-outputs.json に S3バケット名が出力される
+   ```
+2. **.envをS3にアップロード**
+   ```sh
+   npm run predeploy
+   # => .envがS3にアップロードされる（バケット名はoutputsから自動取得）
+   ```
+3. **EC2/その他リソースをデプロイ**
+   ```sh
+   npm run deploy:ec2
+   ```
+
+> これによりUserDataのS3ダウンロード失敗やレースコンディションを完全排除できます。
+> すべてのCI/CD・手動運用でこの順序を厳守してください。
+
+### npm scripts（抜粋）
+
+- `deploy:bucket`: S3バケットのみデプロイ
+- `predeploy`: .envをS3にアップロード（バケット名はoutputsから取得）
+- `deploy:ec2`: EC2/その他リソースをデプロイ
+
+---
+
 ## 💡 よくある Tips
 
 ### スポットインスタンスにしたい場合：
@@ -731,5 +766,40 @@ sudo /usr/local/bin/tmux-save-session.sh
 - テスト・CI/CD・静的解析による品質担保
 
 > AWS Well-Architected Frameworkの「運用の優秀性」「セキュリティ」「信頼性」「コスト最適化」「パフォーマンス効率」全てに配慮した設計です。
+
+---
+
+## 🛠️ SSM/ログ/ページャ回避Tips（less/moreを自動で無効化する方法）
+
+AWS SSMやEC2上でログやコマンド出力を確認する際、less/more等のページャが自動で起動し「q」で抜ける必要がある場合は、
+コマンド末尾に `| cat` または `| tail -n +1` を付けて実行してください。
+
+### 例: SSMで主要ツールやログをページャ無しで確認
+
+```sh
+# Tailscale/docker/code-serverのバージョン確認
+aws ssm send-command \
+  --instance-ids <INSTANCE_ID> \
+  --document-name "AWS-RunShellScript" \
+  --parameters 'commands=["tailscale version | cat; docker --version | cat; code-server --version | cat"]' \
+  --region <REGION>
+
+# cloud-initログ確認
+aws ssm send-command \
+  --instance-ids <INSTANCE_ID> \
+  --document-name "AWS-RunShellScript" \
+  --parameters 'commands=["cat /var/log/cloud-init-output.log"]' \
+  --region <REGION>
+
+# env_setup_script.log確認
+aws ssm send-command \
+  --instance-ids <INSTANCE_ID> \
+  --document-name "AWS-RunShellScript" \
+  --parameters 'commands=["cat /var/log/env_setup_script.log"]' \
+  --region <REGION>
+```
+
+- ページャを無効化することで、出力がそのまま表示され「q」で抜ける必要がなくなります。
+- CI/CDや自動化スクリプトでも同様に活用できます。
 
 ---

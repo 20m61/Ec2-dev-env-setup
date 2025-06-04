@@ -6,36 +6,30 @@ import importPlugin from 'eslint-plugin-import';
 import globals from 'globals';
 
 export default [
-    js.configs.recommended,
-    {
-        files: ['**/*.ts', '**/*.tsx', 'test/**/*.ts'],
-        plugins: {
-            '@typescript-eslint': tseslint,
-            import: importPlugin,
-        },
-        languageOptions: {
-            parser: parser,
-            parserOptions: {
-                project: ['./tsconfig.json'],
-                sourceType: 'module',
-            },
-            globals: {
-                ...globals.node,
-                ...globals.jest, // Jestグローバル追加
-            },
-        },
-        rules: {
-            'import/order': 'warn',
-            '@typescript-eslint/no-unused-vars': 'warn',
-        },
+  js.configs.recommended,
+  {
+    files: ['**/*.ts', '**/*.tsx', 'test/**/*.ts'],
+    plugins: {
+      '@typescript-eslint': tseslint,
+      import: importPlugin,
     },
-    {
-        ignores: [
-            'cdk.out/',
-            'dist/',
-            'node_modules/',
-            'coverage/',
-            'lcov-report/',
-        ],
+    languageOptions: {
+      parser: parser,
+      parserOptions: {
+        project: ['./tsconfig.json'],
+        sourceType: 'module',
+      },
+      globals: {
+        ...globals.node,
+        ...globals.jest, // Jestグローバル追加
+      },
     },
+    rules: {
+      'import/order': 'warn',
+      '@typescript-eslint/no-unused-vars': 'warn',
+    },
+  },
+  {
+    ignores: ['cdk.out/', 'dist/', 'node_modules/', 'coverage/', 'lcov-report/'],
+  },
 ];

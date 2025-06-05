@@ -63,6 +63,7 @@ afterAll(() => {
 class MockBucket implements IBucket {
   public bucketName = 'mock-bucket';
   public arnForObjects(_pattern: string) {
+    void _pattern; // avoid unused param lint error
     return 'arn:aws:s3:::mock-bucket/*';
   }
   // ...必要なメソッドだけ実装（最低限）...

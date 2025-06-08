@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-import json
+import os, json
 from pathlib import Path
 
 feedback_dir = Path("feedback/claude-tasks")

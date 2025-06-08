@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 echo "Generating AI review report..."
 DATE=$(date +%Y-%m-%d)
 mkdir -p docs/reports

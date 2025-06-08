@@ -16,7 +16,7 @@ jobs:
         language: [node, python, php]
     steps:
       - uses: actions/checkout@v3
-      - name: Set up Node
+      - name: Set up Node.js
         if: matrix.language == 'node'
         uses: actions/setup-node@v3
       - name: Set up Python

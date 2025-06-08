@@ -19,15 +19,12 @@ jobs:
       - name: Set up Node
         if: matrix.language == 'node'
         uses: actions/setup-node@v3
-        continue-on-error: true
       - name: Set up Python
         if: matrix.language == 'python'
         uses: actions/setup-python@v4
-        continue-on-error: true
       - name: Set up PHP
         if: matrix.language == 'php'
         uses: shivammathur/setup-php@v2
-        continue-on-error: true
       - run: echo "Run Lint/Test for ${{ matrix.language }}"
 
   archive_task_log:

@@ -26,6 +26,6 @@ This document lists follow-up tasks and improvements identified after reviewing 
 5. **Operational scripts**
    - Create `gen-connection-info.sh` to output `ec2-connection-info.csv` and SSH config from stack outputs.
    - Provide a `cleanup-old-keys.sh` script to remove outdated key pairs and temporary files.
-   - Schedule these utilities from GitHub Actions or manual scripts.
+   - Schedule these utilities using GitHub Actions to ensure consistency with the CI/CD pipeline.
 
 These tasks are derived from `ARCHITECTURE.md` and the existing README.

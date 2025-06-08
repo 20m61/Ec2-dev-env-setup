@@ -7,6 +7,7 @@ REPORT="docs/reports/ai-report-${DATE}.md"
 echo "# AI Review Report (${DATE})" > "$REPORT"
 if [ -f docs/task-log.md ]; then
   echo "## Recent Tasks" >> "$REPORT"
+  echo "" >> "$REPORT"
   grep '^|' docs/task-log.md | tail -n 5 >> "$REPORT"
 fi
 echo "Report saved to $REPORT"

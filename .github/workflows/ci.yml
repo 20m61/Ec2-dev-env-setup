@@ -16,9 +16,12 @@ jobs:
         language: [node, python, php]
     steps:
       - uses: actions/checkout@v3
-      - name: Set up ${{ matrix.language }}
-        if: matrix.language != 'php'
-        uses: actions/setup-${{ matrix.language }}@v3
+      - name: Set up Node.js
+        if: matrix.language == 'node'
+        uses: actions/setup-node@v3
+      - name: Set up Python
+        if: matrix.language == 'python'
+        uses: actions/setup-python@v4
       - name: Set up PHP
         if: matrix.language == 'php'
         uses: shivammathur/setup-php@v2

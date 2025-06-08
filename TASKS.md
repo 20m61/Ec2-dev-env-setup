@@ -10,19 +10,22 @@ This document lists follow-up tasks and improvements identified after reviewing 
 
 ## Outstanding Tasks
 1. **UserData reliability**
-   - Investigate cases where the second part of the multipart `user-data` does not run.
-   - Add clear log output at the beginning of the second part for easier verification.
+   - Gather `cloud-init-output.log` and `env_setup_script.log` from existing instances to confirm part two execution.
+   - Add a log marker like `=== PART2 STARTED ===` at the start of the second script section and verify its presence via SSM.
+   - Review OS and CDK version differences; adjust the multipart layout or use a fallback systemd unit if necessary.
 2. **CI/CD automated checks**
-   - Integrate `tools/ssm_check.sh` into CI to automatically validate EC2 setup.
-   - Verify `.env` content and S3 bucket permissions within the pipeline.
+   - Add a post-deploy job in GitHub Actions that runs `tools/ssm_check.sh` using the stack outputs.
+   - Parse the script output and fail the workflow if Tailscale, Docker or code-server are missing.
+   - Confirm `.env` variables and check S3 bucket encryption/versioning from the pipeline. Upload the logs as artifacts.
 3. **Security operations**
-   - Document and implement credential rotation for `.env` secrets.
-   - Enable bucket encryption and versioning; restrict access to minimum required.
+   - Document a credential rotation procedure for both AWS keys and GitHub tokens, updating `.env` and re-uploading to S3.
+   - Enable SSE-KMS encryption and versioning on the S3 bucket and restrict access to the EC2 instance role only.
 4. **Documentation enhancements**
-   - Expand troubleshooting section with CloudFormation rollback steps and SSM usage tips.
-   - Provide Q&A style tips for common issues.
+   - Add troubleshooting for SSM session errors and CloudFormation rollback recovery steps.
+   - Expand the FAQ with guidance on locating user-data logs and common Tailscale/Docker issues.
 5. **Operational scripts**
-   - Automate generation of `ec2-connection-info.csv` and SSH config as part of deployment.
-   - Consider scripted cleanup for old key pairs and temporary files.
+   - Create `gen-connection-info.sh` to output `ec2-connection-info.csv` and SSH config from stack outputs.
+   - Provide a `cleanup-old-keys.sh` script to remove outdated key pairs and temporary files.
+   - Schedule these utilities using GitHub Actions to ensure consistency with the CI/CD pipeline.
 
 These tasks are derived from `ARCHITECTURE.md` and the existing README.

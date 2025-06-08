@@ -803,3 +803,11 @@ aws ssm send-command \
 - CI/CDや自動化スクリプトでも同様に活用できます。
 
 ---
+
+## 🛠️ Automation Scripts
+
+`scripts/` ディレクトリには CI や手動作業で利用する補助スクリプトが含まれます。
+
+- `scripts/gen-ai-report.sh` : AI レビューの結果を `docs/reports/` に出力する簡易レポート生成スクリプト。必要に応じて手動実行するか、CI で定期実行します。
+- `scripts/archive-task-log.sh` : `docs/task-log.md` の行数が増えすぎた際に自動でバックアップし、新しいログファイルを生成します。CI の `archive_task_log` ジョブから呼び出されます。
+

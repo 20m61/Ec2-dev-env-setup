@@ -146,3 +146,5 @@ cdk.out/
 
 # EC2 SSH config（自動生成ファイル。秘匿情報含むため除外）
 tools/ec2_ssh_config
+# Generated tasks
+tasks/

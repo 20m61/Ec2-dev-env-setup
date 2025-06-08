@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 18 * * 0' # 毎週月曜3:00 JST (UTC 09:00)
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        language: [node, python, php]
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Node
+        if: matrix.language == 'node'
+        uses: actions/setup-node@v3
+        continue-on-error: true
+      - name: Set up Python
+        if: matrix.language == 'python'
+        uses: actions/setup-python@v4
+        continue-on-error: true
+      - name: Set up PHP
+        if: matrix.language == 'php'
+        uses: shivammathur/setup-php@v2
+        continue-on-error: true
+      - run: echo "Run Lint/Test for ${{ matrix.language }}"
+
+  archive_task_log:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run archive task log script
+        run: |
+          chmod +x scripts/archive-task-log.sh
+          ./scripts/archive-task-log.sh
+
+  parse_claude_feedback:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && contains(toJson(github.event.head_commit.modified), 'feedback/claude-tasks/')
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Run parse Claude feedback script
+        run: |
+          chmod +x scripts/parse-claude-feedback.py
+          python3 scripts/parse-claude-feedback.py
